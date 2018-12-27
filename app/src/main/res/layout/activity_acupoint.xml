@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <customview.MyTitleBar
+        app:title="分类"
+        android:id="@+id/acuPoint_titBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <customview.SortItemView
+                app:turnInactivity="acuPointActivity"
+                app:type="足太阳膀胱经穴"
+                app:number="(65种)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="acuPointActivity"
+                app:type="足厥阴肝经穴"
+                app:number="(14种)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="acuPointActivity"
+                app:type="足少阳胆经穴"
+                app:number="(43种)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="acuPointActivity"
+                app:type="手少阴心经穴"
+                app:number="(9种)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="acuPointActivity"
+                app:type="足太阴脾经穴"
+                app:number="(21种)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="acuPointActivity"
+                app:type="手阳明大肠经穴"
+                app:number="(20种)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="acuPointActivity"
+                app:type="手太阳小肠经穴"
+                app:number="(19种)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="acuPointActivity"
+                app:type="手太阴肺经穴"
+                app:number="(11种)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="acuPointActivity"
+                app:type="足阳明胃经穴"
+                app:number="(44种)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="acuPointActivity"
+                app:type="手厥阴心包经穴"
+                app:number="(9种)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="acuPointActivity"
+                app:type="足少阴肾经穴"
+                app:number="(29种)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="acuPointActivity"
+                app:type="手少阳三焦经穴"
+                app:number="(20种)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="acuPointActivity"
+                app:type="任脉穴"
+                app:number="(26种)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="acuPointActivity"
+                app:type="督脉穴"
+                app:number="(22种)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="acuPointActivity"
+                app:type="经外穴"
+                app:number="(12种)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+
+</LinearLayout>

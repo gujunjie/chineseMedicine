@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    tools:context=".ScanningActivity">
+
+    <customview.MyTitleBar
+        android:id="@+id/titlebar"
+        app:title="植物识别"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <android.support.v7.widget.CardView
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iv_plant"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+    </android.support.v7.widget.CardView>
+
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/iv_loading"
+        android:layout_gravity="center"
+        android:layout_width="210dp"
+        android:layout_height="210dp" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_showNotPlant"
+        android:padding="10dp"
+        android:gravity="center"
+        android:drawableTop="@mipmap/notplant"
+        android:textSize="16sp"
+        android:text="非植物图片"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.github.mikephil.charting.charts.HorizontalBarChart
+        android:visibility="gone"
+        android:id="@+id/barChart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <customview.MyTitleBar
+        android:id="@+id/drugfirstcategory_titlebar"
+        app:title="按功效分"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+       <LinearLayout
+           android:orientation="vertical"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+           <customview.SortItemView
+               app:type="解表药"
+               app:number="(14种)"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+
+           <customview.SortItemView
+               app:type="泻下药"
+               app:number="(12种)"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+           <customview.SortItemView
+               app:type="清热药"
+               app:number="(25种)"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+           <customview.SortItemView
+               app:type="温里药"
+               app:number="(7种)"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+           <customview.SortItemView
+               app:type="理血药"
+               app:number="(14种)"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+           <customview.SortItemView
+               app:type="补益药"
+               app:number="(31种)"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+           <customview.SortItemView
+               app:type="固涩药"
+               app:number="(12种)"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+           <customview.SortItemView
+               app:type="开窍药"
+               app:number="(7种)"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+           <customview.SortItemView
+               app:type="祛湿药"
+               app:number="(22种)"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+           <customview.SortItemView
+               app:type="化痰止咳平喘药"
+               app:number="(32种)"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+           <customview.SortItemView
+               app:type="治风解痉药"
+               app:number="(8种)"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+
+           <customview.SortItemView
+               app:type="消导药"
+               app:number="(8种)"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+           <customview.SortItemView
+               app:type="理气药"
+               app:number="(7种)"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+           <customview.SortItemView
+               app:type="安神药"
+               app:number="(10种)"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+           <customview.SortItemView
+               app:type="外用药"
+               app:number="(16种)"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+
+
+       </LinearLayout>
+
+
+
+
+    </ScrollView>
+
+
+</LinearLayout>
