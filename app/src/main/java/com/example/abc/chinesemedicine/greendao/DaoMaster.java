@@ -21,24 +21,24 @@ public class DaoMaster extends AbstractDaoMaster {
 
     /** Creates underlying database table using DAOs. */
     public static void createAllTables(Database db, boolean ifNotExists) {
+        AcuPointDao.createTable(db, ifNotExists);
         ChineseMedicineDao.createTable(db, ifNotExists);
-        HotSearchDao.createTable(db, ifNotExists);
-        SearchHistoryDao.createTable(db, ifNotExists);
         ChinesePatentDrugDao.createTable(db, ifNotExists);
         ChinesePatentDrugSecondCategoryDao.createTable(db, ifNotExists);
-        AcuPointDao.createTable(db, ifNotExists);
+        HotSearchDao.createTable(db, ifNotExists);
         PrescriptionDao.createTable(db, ifNotExists);
+        SearchHistoryDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
     public static void dropAllTables(Database db, boolean ifExists) {
+        AcuPointDao.dropTable(db, ifExists);
         ChineseMedicineDao.dropTable(db, ifExists);
-        HotSearchDao.dropTable(db, ifExists);
-        SearchHistoryDao.dropTable(db, ifExists);
         ChinesePatentDrugDao.dropTable(db, ifExists);
         ChinesePatentDrugSecondCategoryDao.dropTable(db, ifExists);
-        AcuPointDao.dropTable(db, ifExists);
+        HotSearchDao.dropTable(db, ifExists);
         PrescriptionDao.dropTable(db, ifExists);
+        SearchHistoryDao.dropTable(db, ifExists);
     }
 
     /**
@@ -57,13 +57,13 @@ public class DaoMaster extends AbstractDaoMaster {
 
     public DaoMaster(Database db) {
         super(db, SCHEMA_VERSION);
+        registerDaoClass(AcuPointDao.class);
         registerDaoClass(ChineseMedicineDao.class);
-        registerDaoClass(HotSearchDao.class);
-        registerDaoClass(SearchHistoryDao.class);
         registerDaoClass(ChinesePatentDrugDao.class);
         registerDaoClass(ChinesePatentDrugSecondCategoryDao.class);
-        registerDaoClass(AcuPointDao.class);
+        registerDaoClass(HotSearchDao.class);
         registerDaoClass(PrescriptionDao.class);
+        registerDaoClass(SearchHistoryDao.class);
     }
 
     public DaoSession newSession() {

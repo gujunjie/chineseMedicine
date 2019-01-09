@@ -41,6 +41,7 @@ public class SecondCategoryActivity extends AppCompatActivity {
         titleBar.setTitle(firstCategory);
         titleBar.getActivityForFinish(this);
 
+
         initSecondCategory();
 
     }

@@ -48,6 +48,12 @@ public class SortActivity extends AppCompatActivity {
                 MyTitleBar prescriptionTitleBar=contentView.findViewById(R.id.prescription_titleBar);
                 prescriptionTitleBar.getActivityForFinish(this);
                 break;
+            case "medicalBook":
+                contentView= mInflater.inflate(R.layout.activity_medicalbook,null);
+                setContentView(contentView);
+                MyTitleBar medicalBookTitleBar=contentView.findViewById(R.id.medicalBook_titleBar);
+                medicalBookTitleBar.getActivityForFinish(this);
+                break;
         }
 
 

@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.abc.chinesemedicine.R;
+import com.gyf.barlibrary.ImmersionBar;
+import com.gyf.barlibrary.ImmersionFragment;
 
 public class StudyFragment extends Fragment {
 
@@ -17,5 +19,8 @@ public class StudyFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.studyfragment_layout,container,false);
         return view;
+
     }
+
+
 }

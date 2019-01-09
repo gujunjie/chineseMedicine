@@ -48,9 +48,21 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.homefragment_layout, container, false);
 
 
+        initFindViewById(view);//获取控件实例
+
+        initSearchBar();//初始化搜索栏
+
+        initBanner();//初始化轮播图
+
+        initTuiJian();//初始化推荐栏
+        return view;
+    }
+
+    public void initFindViewById(View view)
+    {
         banner = (Banner) view.findViewById(R.id.banner);
         TextView tv_chineseMedicine = (TextView) view.findViewById(R.id.tv_chineseMedicine);
-         tv_chineseMedicine.setOnClickListener(this);
+        tv_chineseMedicine.setOnClickListener(this);
 
         TextView tv_chinesepatentdrug = (TextView) view.findViewById(R.id.tv_chinesepatentdrug);
         tv_chinesepatentdrug.setOnClickListener(this);
@@ -61,6 +73,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         TextView tv_prescription = (TextView) view.findViewById(R.id.tv_prescription);
         tv_prescription.setOnClickListener(this);
 
+        TextView tv_medicalBook = (TextView) view.findViewById(R.id.tv_medicalBook);
+        tv_medicalBook.setOnClickListener(this);
+
         Button btn_scanning=(Button)view.findViewById(R.id.btn_scanning);
         btn_scanning.setOnClickListener(this);
 
@@ -69,13 +84,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         health_tuijian = (TuiJianView) view.findViewById(R.id.health_tuijian);
         medicineDiet_tuijian = (TuiJianView) view.findViewById(R.id.medicineDiet_tuijian);
         prescription_tuijian = (TuiJianView) view.findViewById(R.id.prescription_tuijian);
-
-        initSearchBar();
-
-        initBanner();
-
-        initTuiJian();
-        return view;
     }
 
     @Override
@@ -145,6 +153,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 Intent intent5 = new Intent(getActivity(), SortActivity.class);
                 intent5.putExtra("sortType","prescription");
                 startActivity(intent5);
+                break;
+            case  R.id.tv_medicalBook:
+                Intent intent6 = new Intent(getActivity(), SortActivity.class);
+                intent6.putExtra("sortType","medicalBook");
+                startActivity(intent6);
                 break;
         }
     }

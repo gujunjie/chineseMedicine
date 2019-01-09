@@ -150,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         CompositeDisposable disposable = new CompositeDisposable();
         disposable.dispose();
+        ImmersionBar.with(this).destroy();
     }
 
     //处理权限回调
