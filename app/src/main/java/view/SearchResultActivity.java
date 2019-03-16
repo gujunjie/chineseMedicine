@@ -1,13 +1,11 @@
 package view;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -19,6 +17,7 @@ import com.example.abc.chinesemedicine.R;
 import com.example.abc.chinesemedicine.greendao.AcuPointDao;
 import com.example.abc.chinesemedicine.greendao.ChineseMedicineDao;
 import com.example.abc.chinesemedicine.greendao.ChinesePatentDrugDao;
+import com.example.abc.chinesemedicine.greendao.MedicalBookDao;
 import com.example.abc.chinesemedicine.greendao.PrescriptionDao;
 import com.gyf.barlibrary.ImmersionBar;
 
@@ -29,6 +28,7 @@ import adapter.SearchResultRecyclerViewAdapter;
 import bean.AcuPoint;
 import bean.ChineseMedicine;
 import bean.ChinesePatentDrug;
+import bean.MedicalBook;
 import bean.Prescription;
 import bean.SearchResult;
 import butterknife.BindView;
@@ -164,6 +164,18 @@ public class SearchResultActivity extends AppCompatActivity {
                         resultList.add(result);
                     }
                 }
+
+                List<MedicalBook> bookList=MyApplication.getDaoSession().getMedicalBookDao().queryBuilder().where(MedicalBookDao.Properties.Name.like("%" + searchKeyWord + "%")).list();
+                if (bookList.size() != 0) {
+                    for (int i = 0; i < bookList.size(); i++) {
+                        SearchResult result = new SearchResult();
+                        result.setName(bookList.get(i).getName());
+                        result.setImageUrl(bookList.get(i).getImageUrl());
+                        result.setSortType(bookList.get(i).getBookName());
+                        resultList.add(result);
+                    }
+                }
+
                 e.onNext(resultList);
             }
         }).subscribeOn(Schedulers.io())
@@ -209,5 +221,11 @@ public class SearchResultActivity extends AppCompatActivity {
     @OnClick(R.id.tv_cancel)
     public void onViewClicked() {
         finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ImmersionBar.with(this).destroy();
     }
 }

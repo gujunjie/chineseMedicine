@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <customview.MyTitleBar
+        android:id="@+id/huangdi_titleBar"
+        app:title="黄帝内经"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+            <customview.SortItemView
+            app:turnInactivity="medicalBook_huangdi_activity"
+            app:number="(81种)"
+            app:type="素问"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_huangdi_activity"
+                app:number="(81种)"
+                app:type="灵枢"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
+
+
+
+
+
+</LinearLayout>

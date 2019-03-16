@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+    <android.support.v7.widget.CardView
+        app:cardCornerRadius="8dp"
+        app:cardElevation="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:background="@color/colorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_mainImage"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:src="@mipmap/p1"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+            <Button
+                android:id="@+id/btn_study"
+                android:textColor="@color/colorWhite"
+                android:text="学习"
+                android:textSize="13sp"
+                android:background="@drawable/tuijian_sort_background"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_width="50dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:id="@+id/tv_studyName"
+                android:layout_marginTop="30dp"
+                android:layout_toEndOf="@id/iv_mainImage"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:layout_marginStart="20dp"
+                android:text="中药学"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/line"
+                android:layout_below="@+id/btn_study"
+                android:layout_alignStart="@+id/tv_studyName"
+                android:background="#d3d3d3"
+                android:layout_width="wrap_content"
+                android:layout_height="1px"/>
+
+            <TextView
+                android:maxLines="3"
+                android:id="@+id/tv_studyData"
+                android:lineSpacingExtra="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="faeiofyhioaahfuihuiafuihagfuiagsgfuiagkfgkajgfjkasgfjgasjfgjasgfajsgfjasgfiagsfgasjkgfjkasehgoaejfoaehoaehglaehviaehglaehgo"
+                android:layout_below="@+id/iv_mainImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_studyImage1"
+                app:cardCornerRadius="5dp"
+                android:elevation="4dp"
+                android:layout_marginStart="20dp"
+                android:layout_below="@+id/tv_studyData"
+                android:layout_width="60dp"
+                android:layout_height="60dp">
+
+                <ImageView
+                    android:id="@+id/iv_studyImage1"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/p1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_studyImage2"
+                android:layout_toEndOf="@+id/cv_studyImage1"
+                app:cardCornerRadius="5dp"
+                android:elevation="4dp"
+                android:layout_marginStart="20dp"
+                android:layout_below="@+id/tv_studyData"
+                android:layout_width="60dp"
+                android:layout_height="60dp">
+
+                <ImageView
+                    android:id="@+id/iv_studyImage2"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/p1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_studyImage3"
+                android:layout_toEndOf="@+id/cv_studyImage2"
+                app:cardCornerRadius="5dp"
+                android:elevation="4dp"
+                android:layout_marginStart="20dp"
+                android:layout_below="@+id/tv_studyData"
+                android:layout_width="60dp"
+                android:layout_height="60dp">
+
+                <ImageView
+                    android:id="@+id/iv_studyImage3"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/p1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_studyImage4"
+                android:layout_toEndOf="@+id/cv_studyImage3"
+                app:cardCornerRadius="5dp"
+                android:elevation="4dp"
+                android:layout_marginStart="20dp"
+                android:layout_below="@+id/tv_studyData"
+                android:layout_width="60dp"
+                android:layout_height="60dp">
+
+                <ImageView
+                    android:id="@+id/iv_studyImage4"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/p1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </android.support.v7.widget.CardView>
+
+            <View
+                android:id="@+id/line2"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/cv_studyImage1"
+                android:background="#d3d3d3"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+
+
+
+            <ImageView
+                android:id="@+id/iv_difficulty"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_below="@+id/line2"
+                android:src="@mipmap/difficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_margin="10dp"
+                android:id="@+id/tv_difficultyNumber"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/iv_difficulty"
+                android:layout_below="@id/line2"
+                android:text="难度系数：5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_toStartOf="@id/tv_progressNumber"
+                android:id="@+id/iv_progress"
+                android:layout_margin="10dp"
+                android:layout_below="@+id/line2"
+                android:src="@mipmap/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:id="@+id/tv_progressNumber"
+                android:layout_alignParentEnd="true"
+                android:text="学习进度：0%"
+                android:layout_below="@id/line2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_margin="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/line2"
+                android:background="#d3d3d3"
+                android:layout_width="1px"
+                android:layout_height="20dp"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</android.support.design.widget.CoordinatorLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+

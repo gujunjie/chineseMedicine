@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <customview.MyTitleBar
+        android:id="@+id/jinkui_titleBar"
+        app:title="金匮要略"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+      <customview.SortItemView
+          app:turnInactivity="medicalBook_jingkui_activity"
+          app:number="(9章)"
+          app:type="卷上"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"/>
+
+    <customview.SortItemView
+        app:turnInactivity="medicalBook_jingkui_activity"
+        app:number="(9章)"
+        app:type="卷中"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <customview.SortItemView
+        app:turnInactivity="medicalBook_jingkui_activity"
+        app:number="(7章)"
+        app:type="卷下"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

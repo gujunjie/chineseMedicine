@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:scrollbars="none"
+    android:background="@color/colorBackground"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:lineSpacingExtra="3dp"
+            android:textColor="@color/colorExamNormal"
+            android:textSize="24sp"
+            android:text="方剂学是研究治法与方剂配伍规律及临床运用的一门学科，专门研究药物配伍与提( )"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <customview.SectionView
+            android:id="@+id/sv_a"
+            app:section="@drawable/a"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <customview.SectionView
+            android:id="@+id/sv_b"
+            app:section="@drawable/b"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <customview.SectionView
+            android:id="@+id/sv_c"
+            app:section="@drawable/c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <customview.SectionView
+            android:id="@+id/sv_d"
+            app:section="@drawable/d"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <customview.SectionView
+            android:id="@+id/sv_e"
+            app:section="@drawable/e"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/ll_answer"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_margin="10dp"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:text="试题详解"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <android.support.v7.widget.CardView
+                android:layout_margin="10dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_correctSection"
+                        android:layout_margin="10dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorAccent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:letterSpacing="0.05"
+                        android:id="@+id/tv_answerText"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:lineSpacingExtra="2dp"
+                        android:textSize="20sp"
+                        android:text="暂无解析"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+</ScrollView>

@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.abc.chinesemedicine.CacheInterceptor;
-import com.example.abc.chinesemedicine.MoreActivity;
+import view.MoreActivity;
 import com.example.abc.chinesemedicine.R;
 
 import java.io.File;

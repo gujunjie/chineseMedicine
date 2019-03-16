@@ -1,33 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/colorBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
+    <TextView
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"/>
 
-    <ImageView
-        android:src="@mipmap/p1"
-        android:scaleType="centerCrop"
-        android:layout_weight="1"
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="0dp" />
-    <ImageView
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp" />
-    <ImageView
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp" />
-    <ImageView
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp" />
-    <ImageView
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp" />
+        android:layout_height="wrap_content">
 
-</LinearLayout>
+        <ScrollView
+
+            android:scrollbars="none"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <customview.StudyView
+                    android:id="@+id/sv_chineseMedicine"
+                    app:difficultyNumber="难度系数：2"
+                    app:mainImage="@mipmap/p1"
+                    app:studyImage1="@mipmap/p11"
+                    app:studyImage2="@mipmap/p12"
+                    app:studyImage3="@mipmap/p13"
+                    app:studyImage4="@mipmap/p14"
+                    app:studyName="中药学"
+                    app:studyData="中药学是研究中药的基本理论和临床应用的学科，是中医药各专业的基础学科之一。"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <customview.StudyView
+                    android:id="@+id/sv_prescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:difficultyNumber="难度系数：3"
+                    app:mainImage="@mipmap/p21"
+                    app:studyData="方剂学是研究治法与方剂配伍规律及临床运用的一门学科，专门研究药物配伍与提高临床疗效的学科，是中医药学各类专业必修的基础课程。"
+                    app:studyImage1="@mipmap/p23"
+                    app:studyImage2="@mipmap/p22"
+                    app:studyImage3="@mipmap/p24"
+                    app:studyImage4="@mipmap/p2"
+                    app:studyName="方剂学" />
+
+                <customview.StudyView
+                    android:id="@+id/sv_chinesepatentdrug"
+                    app:difficultyNumber="难度系数：1"
+                    app:mainImage="@mipmap/p3"
+                    app:studyImage1="@mipmap/p31"
+                    app:studyImage2="@mipmap/p32"
+                    app:studyImage3="@mipmap/p33"
+                    app:studyImage4="@mipmap/p34"
+                    app:studyName="中成药"
+                    app:studyData="中成药是以中药材为原料，在中医药理论指导下，为了预防及治疗疾病的需要，按规定的处方和制剂工艺将其加工制成一定剂型的中药制品，是经国家药品监督管理部门批准的商品化的一类中药制剂。"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <customview.StudyView
+                    android:id="@+id/sv_medicalBook"
+                    app:difficultyNumber="难度系数：3"
+                    app:mainImage="@mipmap/p4"
+                    app:studyImage1="@mipmap/p41"
+                    app:studyImage2="@mipmap/p42"
+                    app:studyImage3="@mipmap/p43"
+                    app:studyImage4="@mipmap/p44"
+                    app:studyName="经典医书"
+                    app:studyData="关于古代医学疗法和药理知识的专著。"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <customview.StudyView
+                    android:id="@+id/sv_acuPoint"
+                    app:difficultyNumber="难度系数：3"
+                    app:mainImage="@mipmap/p5"
+                    app:studyImage1="@mipmap/p51"
+                    app:studyImage2="@mipmap/p52"
+                    app:studyImage3="@mipmap/p53"
+                    app:studyImage4="@mipmap/p54"
+                    app:studyName="针灸学"
+                    app:studyData="针灸学（Science of acupuncture and moxibustion）是以中医理论为指导，研究经络、腧穴及刺灸方法，探讨运用针灸防治疾病规律的一门学科。"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+        </ScrollView>
+
+
+
+
+
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+
+
+
+
+
+</android.support.design.widget.CoordinatorLayout>

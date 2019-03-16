@@ -22,284 +22,104 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-       <LinearLayout
-           android:layout_margin="1dp"
-           android:background="@color/colorWhite"
+       <customview.IconView
+           app:name="黄帝内经"
            android:gravity="center"
-           android:orientation="vertical"
+           app:icon="@mipmap/gushu1"
            android:layout_columnWeight="1"
            android:layout_rowWeight="1"
-           >
+           />
 
-           <ImageView
-               android:src="@mipmap/gushu1"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
 
-           <TextView
-               android:textSize="13sp"
-               android:text="黄帝内经"
-               android:gravity="center"
-               android:layout_margin="10dp"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content" />
-
-       </LinearLayout>
-
-        <LinearLayout
-            android:layout_margin="1dp"
-            android:background="@color/colorWhite"
+        <customview.IconView
+            app:name="本草纲目"
             android:gravity="center"
-            android:orientation="vertical"
+            app:icon="@mipmap/gushu2"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            >
+            />
 
-            <ImageView
-                android:src="@mipmap/gushu2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:textSize="13sp"
-                android:text="本草纲目"
-                android:gravity="center"
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_margin="1dp"
-            android:background="@color/colorWhite"
+        <customview.IconView
+            app:name="汤头歌诀"
             android:gravity="center"
-            android:orientation="vertical"
+            app:icon="@mipmap/gushu3"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            >
+            />
 
-            <ImageView
-                android:src="@mipmap/gushu3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:textSize="13sp"
-                android:text="汤头歌诀"
-                android:gravity="center"
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_margin="1dp"
-            android:background="@color/colorWhite"
+        <customview.IconView
+            app:name="伤寒论"
             android:gravity="center"
-            android:orientation="vertical"
+            app:icon="@mipmap/gushu4"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            >
+            />
 
-            <ImageView
-                android:src="@mipmap/gushu4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:textSize="13sp"
-                android:text="伤寒论"
-                android:gravity="center"
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_margin="1dp"
-            android:background="@color/colorWhite"
+        <customview.IconView
+            app:name="难经"
             android:gravity="center"
-            android:orientation="vertical"
+            app:icon="@mipmap/gushu5"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            >
+            />
 
-            <ImageView
-                android:src="@mipmap/gushu5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:textSize="13sp"
-                android:text="难经"
-                android:gravity="center"
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_margin="1dp"
-            android:background="@color/colorWhite"
+        <customview.IconView
+            app:name="医学三字经"
             android:gravity="center"
-            android:orientation="vertical"
+            app:icon="@mipmap/gushu6"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            >
+            />
 
-            <ImageView
-                android:src="@mipmap/gushu6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:textSize="13sp"
-                android:text="医学三字经"
-                android:gravity="center"
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_margin="1dp"
-            android:background="@color/colorWhite"
+        <customview.IconView
+            app:name="濒湖脉学"
             android:gravity="center"
-            android:orientation="vertical"
+            app:icon="@mipmap/gushu7"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            >
+            />
 
-            <ImageView
-                android:src="@mipmap/gushu7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:textSize="13sp"
-                android:text="濒湖脉学"
-                android:gravity="center"
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_margin="1dp"
-            android:background="@color/colorWhite"
+        <customview.IconView
+            app:name="金匮要略"
             android:gravity="center"
-            android:orientation="vertical"
+            app:icon="@mipmap/gushu8"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            >
+            />
 
-            <ImageView
-                android:src="@mipmap/gushu8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:textSize="13sp"
-                android:text="金匮要略"
-                android:gravity="center"
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_margin="1dp"
-            android:background="@color/colorWhite"
+        <customview.IconView
+            app:name="温病条辨"
             android:gravity="center"
-            android:orientation="vertical"
+            app:icon="@mipmap/gushu9"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            >
+            />
 
-            <ImageView
-                android:layout_gravity="center"
-                android:src="@mipmap/gushu9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:textSize="13sp"
-                android:text="温病条辨"
-                android:gravity="center"
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_margin="1dp"
-            android:background="@color/colorWhite"
+        <customview.IconView
+            app:name="千金要方"
             android:gravity="center"
-            android:orientation="vertical"
+            app:icon="@mipmap/gushu10"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            >
+            />
 
-            <ImageView
-                android:src="@mipmap/gushu10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:textSize="13sp"
-                android:text="千金要方"
-                android:gravity="center"
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_margin="1dp"
-            android:background="@color/colorWhite"
+        <customview.IconView
+            app:name="医宗金鉴"
             android:gravity="center"
-            android:orientation="vertical"
+            app:icon="@mipmap/gushu11"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            >
+            />
 
-            <ImageView
-                android:src="@mipmap/gushu11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:textSize="13sp"
-                android:text="医宗金鉴"
-                android:gravity="center"
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_margin="1dp"
-            android:background="@color/colorWhite"
+        <customview.IconView
+            app:name="神农本草经"
             android:gravity="center"
-            android:orientation="vertical"
+            app:icon="@mipmap/gushu12"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            >
+            />
 
-            <ImageView
-                android:src="@mipmap/gushu12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
 
-            <TextView
-                android:textSize="13sp"
-                android:text="神农本草经"
-                android:gravity="center"
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
 
     </GridLayout>
 

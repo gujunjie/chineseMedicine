@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <customview.MyTitleBar
+        android:id="@+id/shanghan_titleBar"
+        app:title="伤寒论"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_shanghan_activity"
+                app:type="序"
+                app:number="(2章)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_shanghan_activity"
+                app:type="卷第一"
+                app:number="(2章)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_shanghan_activity"
+                app:type="卷第二"
+                app:number="(3章)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_shanghan_activity"
+                app:type="卷第三"
+                app:number="(1章)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_shanghan_activity"
+                app:type="卷第四"
+                app:number="(1章)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_shanghan_activity"
+                app:type="卷第五"
+                app:number="(2章)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_shanghan_activity"
+                app:type="卷第六"
+                app:number="(3章)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_shanghan_activity"
+                app:type="卷第七"
+                app:number="(4章)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_shanghan_activity"
+                app:type="卷第八"
+                app:number="(3章)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_shanghan_activity"
+                app:type="卷第九"
+                app:number="(2章)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_shanghan_activity"
+                app:type="卷第十"
+                app:number="(1章)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

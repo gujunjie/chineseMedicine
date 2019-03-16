@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sothree.slidinguppanel.SlidingUpPanelLayout
+    android:id="@+id/slidingUpPanel"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="bottom"
+    app:umanoPanelHeight="40dp"
+    app:umanoShadowHeight="0dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LearningActivity">
+
+
+
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rl_titleBar"
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <Button
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/btn_back"
+                android:background="@drawable/back"
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
+
+            <TextView
+                android:layout_toEndOf="@+id/btn_back"
+                android:text="加载中..."
+                android:layout_margin="15dp"
+                android:id="@+id/tv_title"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:background="@mipmap/textsize"
+                android:layout_toStartOf="@+id/btn_takeNote"
+                android:layout_margin="10dp"
+                android:id="@+id/btn_ChangeTextSize"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <Button
+                android:background="@mipmap/takenote"
+                android:layout_margin="10dp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/btn_takeNote"
+                android:layout_centerVertical="true"
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
+
+        </RelativeLayout>
+
+        <android.support.v4.view.ViewPager
+            android:layout_weight="1"
+            android:id="@+id/vp_learning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="400dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:background="#a9a9a9"
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+
+            <Button
+                android:layout_above="@+id/line"
+                android:background="@mipmap/collection_normal"
+                android:id="@+id/btn_collect"
+                android:layout_margin="10dp"
+                android:layout_centerVertical="true"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+            <TextView
+                android:id="@+id/tv_collectionText"
+                android:layout_marginTop="20dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/btn_collect"
+                android:text="收藏"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_progress"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="进度：0 %"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_allNumber"
+                android:layout_marginEnd="10dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:text="/245"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textColor="#000000"
+                android:layout_marginStart="5dp"
+                android:id="@+id/tv_currentNumber"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/tv_allNumber"
+                android:text="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/tv_currentNumber"
+                android:src="@mipmap/all"
+                android:layout_width="15dp"
+                android:layout_height="15dp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:textColor="#000000"
+            android:padding="8dp"
+            android:background="@color/colorBackground"
+            android:text="所有内容"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
+
+
+
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    app:max_select="1"
+                    android:id="@+id/tfl_allItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </ScrollView>
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>

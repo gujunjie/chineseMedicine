@@ -1,10 +1,11 @@
-package com.example.abc.chinesemedicine;
+package view;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.abc.chinesemedicine.R;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.gyf.barlibrary.ImmersionBar;
 
@@ -65,10 +66,16 @@ public class MoreActivity extends AppCompatActivity {
         MyFragmentPageAdapter adapter=new MyFragmentPageAdapter(getSupportFragmentManager(),list);
 
         vpMore.setAdapter(adapter);
-        vpMore.setOffscreenPageLimit(2);
+        //vpMore.setOffscreenPageLimit(2);
 
         stlMore.setViewPager(vpMore,title);
 
         vpMore.setCurrentItem(getIntent().getIntExtra("sortType",0));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ImmersionBar.with(this).destroy();
     }
 }

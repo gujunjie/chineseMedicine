@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <customview.MyTitleBar
+        android:id="@+id/nanjing_titleBar"
+        app:title="难经"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_nanjing_activity"
+                app:number="(22种)"
+                app:type="论脉"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_nanjing_activity"
+                app:number="(7种)"
+                app:type="论经络"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_nanjing_activity"
+                app:number="(18种)"
+                app:type="论脏腑"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_nanjing_activity"
+                app:number="(14种)"
+                app:type="论病"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_nanjing_activity"
+                app:number="(7种)"
+                app:type="论穴道"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_nanjing_activity"
+                app:number="(13种)"
+                app:type="论针法"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

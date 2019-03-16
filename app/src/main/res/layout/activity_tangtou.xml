@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <customview.MyTitleBar
+        android:id="@+id/tangtou_titleBar"
+        app:title="汤头歌诀"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+
+        <ScrollView
+            android:scrollbars="none"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(22种)"
+                    app:type="补益之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(19种)"
+                    app:type="发表之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(10种)"
+                    app:type="攻里之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(2种)"
+                    app:type="涌吐之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(13种)"
+                    app:type="和解之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(8种)"
+                    app:type="表里之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(7种)"
+                    app:type="消补之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(14种)"
+                    app:type="理气之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(19种)"
+                    app:type="理血之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(12种)"
+                    app:type="补益之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(16种)"
+                    app:type="祛风之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(18种)"
+                    app:type="祛寒之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(5种)"
+                    app:type="祛暑之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(19种)"
+                    app:type="利湿之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(19种)"
+                    app:type="润燥之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(35种)"
+                    app:type="泻火之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(19种)"
+                    app:type="除痰之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(13种)"
+                    app:type="收涩之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(3种)"
+                    app:type="杀虫之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(14种)"
+                    app:type="痈疡之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(25种)"
+                    app:type="经产之剂"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <customview.SortItemView
+                    app:turnInactivity="medicalBook_tangtou_activity"
+                    app:number="(8种)"
+                    app:type="附"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </ScrollView>
+
+
+
+
+</LinearLayout>

@@ -1,10 +1,12 @@
-package com.example.abc.chinesemedicine;
+package view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.abc.chinesemedicine.MyApplication;
+import com.example.abc.chinesemedicine.R;
 import com.example.abc.chinesemedicine.greendao.ChinesePatentDrugSecondCategoryDao;
 
 import java.util.List;
@@ -52,7 +54,7 @@ public class SecondCategoryActivity extends AppCompatActivity {
         Observable.create(new ObservableOnSubscribe<List<ChinesePatentDrugSecondCategory>>() {
             @Override
             public void subscribe(ObservableEmitter<List<ChinesePatentDrugSecondCategory>> e) {
-                ChinesePatentDrugSecondCategoryDao dao=MyApplication.getDaoSession().getChinesePatentDrugSecondCategoryDao();
+                ChinesePatentDrugSecondCategoryDao dao= MyApplication.getDaoSession().getChinesePatentDrugSecondCategoryDao();
 
                 List<ChinesePatentDrugSecondCategory> list=dao.queryBuilder().where(ChinesePatentDrugSecondCategoryDao.Properties.FirstCategoryName.eq(firstCategory)).list();
                 e.onNext(list);
@@ -85,4 +87,6 @@ public class SecondCategoryActivity extends AppCompatActivity {
                 });
 
     }
+
+
 }

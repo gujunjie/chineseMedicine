@@ -1,4 +1,4 @@
-package com.example.abc.chinesemedicine;
+package view;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,14 +6,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.abc.chinesemedicine.CacheInterceptor;
+import com.example.abc.chinesemedicine.R;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.gyf.barlibrary.ImmersionBar;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -158,6 +158,12 @@ public class ScanningActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ImmersionBar.with(this).destroy();
     }
 
 

@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.abc.chinesemedicine.R;
-import com.example.abc.chinesemedicine.SecondCategoryActivity;
+import view.SecondCategoryActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -88,6 +88,72 @@ public class SortItemView extends RelativeLayout {
                         intent4.putExtra("sortType", "prescription");
                         intent4.putExtra("type", tvType.getText().toString());
                         context.startActivity(intent4);
+                        break;
+                    case "medicalBook_huangdi_activity":
+                        Intent intent5 = new Intent(context, ChineseMedicineActivity.class);
+                        intent5.putExtra("sortType", "medicalBook_huangdi");
+                        intent5.putExtra("type", tvType.getText().toString());
+                        context.startActivity(intent5);
+                        break;
+                    case "medicalBook_bencao_activity":
+                        Intent intent6 = new Intent(context, ChineseMedicineActivity.class);
+                        intent6.putExtra("sortType", "medicalBook_bencao");
+                        intent6.putExtra("type", tvType.getText().toString());
+                        context.startActivity(intent6);
+                        break;
+                    case "medicalBook_tangtou_activity":
+                        Intent intent7 = new Intent(context, ChineseMedicineActivity.class);
+                        intent7.putExtra("sortType", "medicalBook_tangtou");
+                        intent7.putExtra("type", tvType.getText().toString());
+                        context.startActivity(intent7);
+                        break;
+                    case "medicalBook_shanghan_activity":
+                        Intent intent8 = new Intent(context, ChineseMedicineActivity.class);
+                        intent8.putExtra("sortType", "medicalBook_shanghan");
+                        intent8.putExtra("type", tvType.getText().toString());
+                        context.startActivity(intent8);
+                        break;
+                    case "medicalBook_nanjing_activity":
+                        Intent intent9 = new Intent(context, ChineseMedicineActivity.class);
+                        intent9.putExtra("sortType", "medicalBook_nanjing");
+                        intent9.putExtra("type", tvType.getText().toString());
+                        context.startActivity(intent9);
+                        break;
+                    case "medicalBook_yixue_activity":
+                        Intent intent10 = new Intent(context, ChineseMedicineActivity.class);
+                        intent10.putExtra("sortType", "medicalBook_yixue");
+                        intent10.putExtra("type", tvType.getText().toString());
+                        context.startActivity(intent10);
+                        break;
+                    case "medicalBook_pinghu_activity":
+                        Intent intent11 = new Intent(context, ChineseMedicineActivity.class);
+                        intent11.putExtra("sortType", "medicalBook_pinghu");
+                        intent11.putExtra("type", tvType.getText().toString());
+                        context.startActivity(intent11);
+                        break;
+                    case "medicalBook_jingkui_activity":
+                        Intent intent12 = new Intent(context, ChineseMedicineActivity.class);
+                        intent12.putExtra("sortType", "medicalBook_jingkui");
+                        intent12.putExtra("type", tvType.getText().toString());
+                        context.startActivity(intent12);
+                        break;
+                    case "medicalBook_qianjing_activity":
+                        Intent intent13 = new Intent(context, ChineseMedicineActivity.class);
+                        intent13.putExtra("sortType", "medicalBook_qianjing");
+                        intent13.putExtra("type", tvType.getText().toString());
+                        context.startActivity(intent13);
+                        break;
+                    case "medicalBook_wenbing_activity":
+                        Intent intent14 = new Intent(context, ChineseMedicineActivity.class);
+                        intent14.putExtra("sortType", "medicalBook_wenbing");
+                        intent14.putExtra("type", tvType.getText().toString());
+                        context.startActivity(intent14);
+                        break;
+                    case "medicalBook_shennong_activity":
+                        Intent intent15 = new Intent(context, ChineseMedicineActivity.class);
+                        intent15.putExtra("sortType", "medicalBook_shennong");
+                        intent15.putExtra("type", tvType.getText().toString());
+                        context.startActivity(intent15);
                         break;
                 }
 

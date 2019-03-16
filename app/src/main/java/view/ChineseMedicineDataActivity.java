@@ -1,13 +1,11 @@
 package view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.PointerIcon;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,6 +18,7 @@ import com.gyf.barlibrary.ImmersionBar;
 import bean.AcuPoint;
 import bean.ChineseMedicine;
 import bean.ChinesePatentDrug;
+import bean.MedicalBook;
 import bean.Prescription;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,6 +54,7 @@ public class ChineseMedicineDataActivity extends AppCompatActivity {
         initView();
 
 
+
     }
 
     public void initView()
@@ -87,7 +87,12 @@ public class ChineseMedicineDataActivity extends AppCompatActivity {
                 Glide.with(this).load(prescription.getImageUrl()).into(ivMedicinePhoto);
                 tvMedicineData.setText(prescription.getData());
                 break;
-
+            case "medicalBook":
+                MedicalBook book=getIntent().getParcelableExtra("object");
+                collapsingToolbar.setTitle(book.getName());
+                Glide.with(this).load(book.getImageUrl()).into(ivMedicinePhoto);
+                tvMedicineData.setText(book.getData());
+                break;
 
         }
     }
@@ -116,5 +121,11 @@ public class ChineseMedicineDataActivity extends AppCompatActivity {
                 tvMedicineData.setTextSize(17);
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ImmersionBar.with(this).destroy();
     }
 }

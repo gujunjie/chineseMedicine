@@ -12,12 +12,18 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content">
 
-      <com.youth.banner.Banner
-          android:id="@+id/banner"
-          app:indicator_width="8dp"
-          app:indicator_height="8dp"
-          android:layout_width="match_parent"
-          android:layout_height="190dp"/>
+
+
+
+    <com.youth.banner.Banner
+
+        android:id="@+id/banner"
+        app:indicator_width="8dp"
+        app:indicator_height="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"/>
+
+
 
 
       <android.support.v7.widget.Toolbar

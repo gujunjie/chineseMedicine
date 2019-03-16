@@ -1,4 +1,4 @@
-package com.example.abc.chinesemedicine;
+package view;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -11,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.example.abc.chinesemedicine.R;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
@@ -24,10 +25,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.disposables.CompositeDisposable;
 import util.DataBaseUtil;
-import view.HomeFragment;
-import view.QuestionFragment;
-import view.StudyFragment;
-import view.UserFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -65,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         MyFragmentPageAdapter adapter = new MyFragmentPageAdapter(getSupportFragmentManager(), list);
-        vpMain.setOffscreenPageLimit(3);
+        //vpMain.setOffscreenPageLimit(3);
         vpMain.setAdapter(adapter);
 
         vpMain.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

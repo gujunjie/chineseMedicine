@@ -11,7 +11,7 @@ import org.greenrobot.greendao.annotation.Property;
 @Entity
 public class ChineseMedicine implements Parcelable{
 
-//中药类
+    //中药类
 
     @Id(autoincrement = true)
     private Long id;
@@ -23,6 +23,8 @@ public class ChineseMedicine implements Parcelable{
     private String sortType;
     
     private String data;
+
+
 
     @Generated(hash = 1800810230)
     public ChineseMedicine(Long id, String name, String medicineImageUrl,

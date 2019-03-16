@@ -14,16 +14,12 @@ import android.widget.TextView;
 
 import com.example.abc.chinesemedicine.GlideImageLoader;
 import com.example.abc.chinesemedicine.R;
-import com.example.abc.chinesemedicine.ScanningActivity;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.Unbinder;
 import customview.TuiJianView;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
@@ -114,13 +110,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1544430961&di=54b013cc19fbf79fd0b8c1ecca026f71&imgtype=jpg&er=1&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F6d81800a19d8bc3e47599fde898ba61ea8d34555.jpg");
         list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1544430994&di=61afb9905da2c640a206fc044c678ae2&imgtype=jpg&er=1&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F503d269759ee3d6d29d11fdf48166d224f4ade8b.jpg");
         list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1544431043&di=e88cb4a835d9247a6d3f760defa13024&imgtype=jpg&er=1&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F6159252dd42a28341517241e50b5c9ea15cebf75.jpg");
-        banner.setImageLoader(new GlideImageLoader()).setBannerStyle(BannerConfig.NOT_INDICATOR).setImages(list).start();
+        banner.setImageLoader(new GlideImageLoader()).setBannerStyle(BannerConfig.NOT_INDICATOR).setDelayTime(2000).setImages(list).start();
     }
 
     public void initTuiJian() {
-        health_tuijian.setRecyclerViewData(getActivity(), "health", 2);
-        medicineDiet_tuijian.setRecyclerViewData(getActivity(), "medicineDiet", 2);
-        prescription_tuijian.setRecyclerViewData(getActivity(), "prescription", 2);
+        health_tuijian.setRecyclerViewData(getActivity(), "health", 3);
+        medicineDiet_tuijian.setRecyclerViewData(getActivity(), "medicineDiet", 3);
+        prescription_tuijian.setRecyclerViewData(getActivity(), "prescription", 3);
 
         health_tuijian.setTvMoreOnClickListener(getActivity(), 0);
         medicineDiet_tuijian.setTvMoreOnClickListener(getActivity(), 1);

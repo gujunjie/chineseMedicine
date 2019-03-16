@@ -25,9 +25,14 @@ public class DaoMaster extends AbstractDaoMaster {
         ChineseMedicineDao.createTable(db, ifNotExists);
         ChinesePatentDrugDao.createTable(db, ifNotExists);
         ChinesePatentDrugSecondCategoryDao.createTable(db, ifNotExists);
+        ExaminationDao.createTable(db, ifNotExists);
         HotSearchDao.createTable(db, ifNotExists);
+        LearningProgressDao.createTable(db, ifNotExists);
+        MedicalBookDao.createTable(db, ifNotExists);
+        NoteDao.createTable(db, ifNotExists);
         PrescriptionDao.createTable(db, ifNotExists);
         SearchHistoryDao.createTable(db, ifNotExists);
+        UserDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
@@ -36,9 +41,14 @@ public class DaoMaster extends AbstractDaoMaster {
         ChineseMedicineDao.dropTable(db, ifExists);
         ChinesePatentDrugDao.dropTable(db, ifExists);
         ChinesePatentDrugSecondCategoryDao.dropTable(db, ifExists);
+        ExaminationDao.dropTable(db, ifExists);
         HotSearchDao.dropTable(db, ifExists);
+        LearningProgressDao.dropTable(db, ifExists);
+        MedicalBookDao.dropTable(db, ifExists);
+        NoteDao.dropTable(db, ifExists);
         PrescriptionDao.dropTable(db, ifExists);
         SearchHistoryDao.dropTable(db, ifExists);
+        UserDao.dropTable(db, ifExists);
     }
 
     /**
@@ -61,9 +71,14 @@ public class DaoMaster extends AbstractDaoMaster {
         registerDaoClass(ChineseMedicineDao.class);
         registerDaoClass(ChinesePatentDrugDao.class);
         registerDaoClass(ChinesePatentDrugSecondCategoryDao.class);
+        registerDaoClass(ExaminationDao.class);
         registerDaoClass(HotSearchDao.class);
+        registerDaoClass(LearningProgressDao.class);
+        registerDaoClass(MedicalBookDao.class);
+        registerDaoClass(NoteDao.class);
         registerDaoClass(PrescriptionDao.class);
         registerDaoClass(SearchHistoryDao.class);
+        registerDaoClass(UserDao.class);
     }
 
     public DaoSession newSession() {

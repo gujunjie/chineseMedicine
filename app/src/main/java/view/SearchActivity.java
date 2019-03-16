@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import com.example.abc.chinesemedicine.MyApplication;
 import com.example.abc.chinesemedicine.R;
-import com.example.abc.chinesemedicine.ScanningActivity;
 import com.gyf.barlibrary.ImmersionBar;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
@@ -208,5 +207,11 @@ public class SearchActivity extends BaseActivity<SearchContract.SearchView, Sear
                 dialog.show();
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ImmersionBar.with(this).destroy();
     }
 }

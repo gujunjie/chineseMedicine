@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <customview.MyTitleBar
+        android:id="@+id/reward_titleBar"
+        app:title="捐赠支持"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="16sp"
+                android:layout_margin="10dp"
+                android:textColor="#000000"
+                android:text="本人致力于开发无广告，无推送，功能强大最纯粹的中医药学习应用。
+无任何盈利的应用很难开发维护下去。所以，如果你喜欢我们的应用，并且希望这个应用持续升级强大下去，便可以捐赠支持我们。
+捐赠的钱将用于日常开发，运营和服务器开销。你的支持与肯定是我们前进的动力！在这里向已经捐赠用户表示由衷的感谢！"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+                    <android.support.v7.widget.CardView
+                        android:layout_margin="10dp"
+                        app:cardElevation="4dp"
+                        app:cardCornerRadius="8dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/weixinpay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="200dp" />
+                    </android.support.v7.widget.CardView>
+
+
+
+
+
+                    <android.support.v7.widget.CardView
+                        android:layout_margin="10dp"
+                        app:cardElevation="4dp"
+                        app:cardCornerRadius="8dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/alipay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="200dp" />
+                    </android.support.v7.widget.CardView>
+
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_weiXinPay"
+                android:padding="10dp"
+                android:textColor="@color/colorWhite"
+                android:background="@drawable/login_button"
+                android:layout_margin="10dp"
+                android:text="使用微信支付"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_aliPay"
+                android:padding="10dp"
+                android:textColor="@color/colorWhite"
+                android:background="@drawable/login_button"
+                android:layout_margin="10dp"
+                android:text="使用支付宝支付"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+
+</LinearLayout>

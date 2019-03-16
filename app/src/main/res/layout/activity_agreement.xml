@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <customview.MyTitleBar
+        android:id="@+id/agreement_titleBar"
+        app:title="软件许可使用协议"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_margin="10dp"
+            android:text="  本协议是您与顾俊杰就您下载、 安装、 使用本软件所订立的协议。 本协议约定与您关于本软件使用许可方面的权利义务。"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+            <TextView
+                android:textColor="#000000"
+                android:layout_margin="10dp"
+                android:text="1、知识产权声明"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_margin="10dp"
+                android:text="本软件由顾俊杰开发或者由顾俊杰获得软件权利人（以下简称“许可人”）许可。 本软件的知识产权以及与本软件相关的所有信息内容，包括但不限于：文字表述及其组合、图标、图饰、图表、色彩、界面设计、版面框架、有关数据、印刷材料、 电子文档等，均受著作权法和国际著作权条约以及其他知识产权法律、法规的保护，其知识产权均归顾俊杰及其许可人所有。"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textColor="#000000"
+                android:layout_margin="10dp"
+                android:text="2、软件的许可"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_margin="10dp"
+                android:text="（1）本协议未明示授权的其他一切权利均归顾俊杰及其许可人所有，如果您需要使用本协议未授予的任何其他权利，须另行取得顾俊杰的书面同意。 （2）您通过本软件使用第三方的应用服务，应另行与该第三方签订服务协议。  （3）许可您在安卓手机上下载、安装、运行本软件。该许可是有限的、不可转让的、不可分许可的、可撤销的、非独占的、非排他的。 （4）您只能在一台安卓手机上下载、安装、运行本软件的一份副本。"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_margin="10dp"
+                android:textColor="#000000"
+                android:text="3、用户账户注册 "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_margin="10dp"
+                android:text="1）您承诺以真实身份注册成为本软件的用户，并保证所提供的个人身份资料信息真实、完整、有效，并对您所提供的信息承担相应的法律责任。   （2）您以其真实身份注册成为本软件用户后，需要修改所提供的个人身份资料信息的，我们将及时、有效地为其提供该项服务，但出于安全性和身份识别的考虑，你无法修改注册时提供的初始注册信息及其他验证信息。"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_margin="10dp"
+                android:textColor="#000000"
+                android:text="4、用户账号使用与保管"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_margin="10dp"
+                android:text="（1）我们有权审查您注册所提供的身份信息是否真实、有效，并将采取专业加密存储与传输方式等合理措施保障用户账号的安全、有效；您有义务妥善保管您的账号及密码，并正确、安全地使用您的账号及密码。任何一方未尽上述义务导致账号密码遗失、账号被盗等情形而给您和他人的民事权利造成损害的，应当承担由此产生的法律责任。        （2）您对登录后所持账号产生的行为依法享有权利和承担责任。        （3）如果您发现您的账号或密码被他人非法使用或有使用异常的情况的，应及时根据我们公布的处理方式通知我们，并有权通知我们采取措施暂停该账号的登录和使用。        （4）我们根据您的通知采取措施暂停您的账号的登录和使用的，将会要求您提供并核实与其注册身份信息相一致的个人有效身份信息。        （5）我们核实您所提供的个人有效身份信息与所注册的身份信息相一致的，将及时采取措施暂停您的账号的登录和使用。   （6）违反本条第一款项的约定，未及时采取措施暂停您的账号的登录和使用，因此而给您造成损失的，将承担其相应的法律责任。        （7）如果您没有提供其个人有效身份证件或者您提供的个人有效身份证件与所注册的身份信息不一致的，我们有权拒绝您的上述请求。        （8）当您为了维护您的合法权益，向我们提供与所注册的身份信息相一致的个人有效身份信息时，我们将为您提供账号注册人证明、原始注册信息等必要的协助和支持，并根据需要向有关行政机关和司法机关提供相关证据信息资料。"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_margin="10dp"
+                android:textColor="#000000"
+                android:text="5、使用限制"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_margin="10dp"
+                android:text="您在遵守国家法律、法规、政策及本协议的前提下，可依本协议使用本软件。您无权也不得实施包括但不限于下列行为：  （1）删除本软件中的任何版权申明或提示以及任何其他信息、内容。 （2）对本软件进行反向工程、反向汇编、反向编译等。  （3）在本协议规定的条款之外，使用、复制、修改、租赁或转让本软件或其中的任一部份。  （4）向第三人提供本软件，许可他人使用本软件或将本软件用于禁止的目的（如商业目的等）。 
+（5）对本软件的图像、文字等相关信息，擅自实施包括但不限于下列行为：使用、复制、修改、链接、转载、汇编、发表、出版、建立镜像站点、擅自借助本软件发展与之有关的衍生产品、作品及服务等。  （6）利用本软件储存、发表、传播违反国家法律、法规以及国家政策规定的内容。  （7）利用本软件储存、发表、传播侵害他人知识产权、 商业秘密等合法权利的内容。  （8）进行危害计算机网络安全的行为。"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

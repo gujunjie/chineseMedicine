@@ -16,6 +16,7 @@ import com.example.abc.chinesemedicine.R;
 import com.example.abc.chinesemedicine.greendao.AcuPointDao;
 import com.example.abc.chinesemedicine.greendao.ChineseMedicineDao;
 import com.example.abc.chinesemedicine.greendao.ChinesePatentDrugDao;
+import com.example.abc.chinesemedicine.greendao.MedicalBookDao;
 import com.example.abc.chinesemedicine.greendao.PrescriptionDao;
 
 import java.util.List;
@@ -23,6 +24,7 @@ import java.util.List;
 import bean.AcuPoint;
 import bean.ChineseMedicine;
 import bean.ChinesePatentDrug;
+import bean.MedicalBook;
 import bean.Prescription;
 import bean.SearchResult;
 import view.ChineseMedicineDataActivity;
@@ -99,6 +101,13 @@ public class SearchResultRecyclerViewAdapter extends RecyclerView.Adapter<Search
                         intent4.putExtra("object",prescriptionList.get(0));
                         context.startActivity(intent4);
                         break;
+                        default:
+                            List<MedicalBook> bookList=MyApplication.getDaoSession().getMedicalBookDao().queryBuilder().where(MedicalBookDao.Properties.Name.eq(result.getName())).list();
+                            Intent intent5=new Intent(context, ChineseMedicineDataActivity.class);
+                            intent5.putExtra("sortType","medicalBook");
+                            intent5.putExtra("object",bookList.get(0));
+                            context.startActivity(intent5);
+
                 }
             }
         });

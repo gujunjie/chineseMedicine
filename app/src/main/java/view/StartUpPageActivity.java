@@ -1,10 +1,11 @@
-package com.example.abc.chinesemedicine;
+package view;
 
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.abc.chinesemedicine.R;
 import com.gyf.barlibrary.ImmersionBar;
 
 public class StartUpPageActivity extends AppCompatActivity {
@@ -53,4 +54,10 @@ public class StartUpPageActivity extends AppCompatActivity {
 
 
     }//倒计时类
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ImmersionBar.with(this).destroy();
+    }
 }

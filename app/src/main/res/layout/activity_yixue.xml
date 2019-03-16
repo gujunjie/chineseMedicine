@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <customview.MyTitleBar
+        android:id="@+id/yixue_titleBar"
+        app:title="医学三字经"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_yixue_activity"
+                app:type="小引"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_yixue_activity"
+                app:number="(11章)"
+                app:type="卷之一"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_yixue_activity"
+                app:number="(13章)"
+                app:type="卷之二"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_yixue_activity"
+                app:number="(13章)"
+                app:type="卷之三"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_yixue_activity"
+                app:number="(11章)"
+                app:type="卷之四"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <customview.SortItemView
+                app:turnInactivity="medicalBook_yixue_activity"
+                app:number="(5章)"
+                app:type="附录"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -20,7 +20,46 @@
 
     </declare-styleable>
 
+    <declare-styleable name="StudyView">
 
+        <attr name="studyName" format="string"/>
+        <attr name="mainImage" format="reference"/>
+        <attr name="studyData" format="string"/>
+        <attr name="studyImage1" format="reference"/>
+        <attr name="studyImage2" format="reference"/>
+        <attr name="studyImage3" format="reference"/>
+        <attr name="studyImage4" format="reference"/>
+        <attr name="difficultyNumber" format="string"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="SettingItemView">
+
+        <attr name="itemIcon" format="reference"/>
+        <attr name="itemTitle" format="string"/>
+        <attr name="itemDescribe" format="string"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="IconView">
+
+        <attr name="icon" format="reference"/>
+        <attr name="name" format="string"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="MyTitleBarWhite">
+
+        <attr name="whiteTitle" format="string"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="SectionView">
+
+        <attr name="section" format="reference"/>
+        <attr name="sectionText" format="string"/>
+
+    </declare-styleable>
 
 
 </resources>
