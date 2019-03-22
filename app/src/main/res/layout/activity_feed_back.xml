@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical"
+    tools:context=".FeedBackActivity">
+
+    <customview.MyTitleBar
+        android:id="@+id/feedBack_titleBar"
+        app:title="意见反馈"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:textSize="17sp"
+        android:textColor="#000000"
+        android:layout_margin="10dp"
+        android:text="意见反馈类型"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/colorWhite"
+            android:padding="3dp"
+            android:background="@drawable/tuijian_sort_background"
+            android:text="产品建议"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/colorWhite"
+            android:padding="3dp"
+            android:background="@drawable/tuijian_sort_background"
+            android:text="程序错误"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/colorWhite"
+            android:padding="3dp"
+            android:background="@drawable/tuijian_sort_background"
+            android:text="缺少资料"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/colorWhite"
+            android:padding="3dp"
+            android:background="@drawable/tuijian_sort_background"
+            android:text="版权申诉"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+
+    <EditText
+        android:id="@+id/et_emailText"
+        android:padding="10dp"
+        android:textSize="18sp"
+        android:background="@color/colorWhite"
+        android:gravity="top"
+        android:layout_weight="1"
+        android:hint="中草药坊的每一个进步，都离不开你的意见和建议。"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_userEmailAddress"
+        android:padding="10dp"
+        android:textSize="18sp"
+        android:background="@color/colorWhite"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:hint="手机/QQ/邮箱"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_sendEmail"
+        android:textSize="16sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="40dp"
+        android:textColor="@color/colorWhite"
+        android:text="提交"
+        android:background="@drawable/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

@@ -10,8 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.abc.chinesemedicine.AboutActivity;
+import com.example.abc.chinesemedicine.FeedBackActivity;
 import com.example.abc.chinesemedicine.LoginActivity;
 import com.example.abc.chinesemedicine.R;
+import com.example.abc.chinesemedicine.UserDataActivity;
 
 import customview.SettingItemView;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -20,6 +22,10 @@ public class UserFragment extends Fragment {
 
 
     private SettingItemView siv_about;
+
+    private SettingItemView siv_feedBack;
+
+    private SettingItemView siv_userData;
 
     private CircleImageView userIcon;
 
@@ -37,6 +43,8 @@ public class UserFragment extends Fragment {
     {
         userIcon=(CircleImageView)view.findViewById(R.id.iv_userIcon);
         siv_about=(SettingItemView) view.findViewById(R.id.siv_about);
+        siv_feedBack=(SettingItemView) view.findViewById(R.id.siv_feedBack);
+        siv_userData=(SettingItemView) view.findViewById(R.id.siv_userData);
     }
 
     public void setListener()
@@ -54,6 +62,20 @@ public class UserFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getActivity(), AboutActivity.class);
+                startActivity(intent);
+            }
+        });
+        siv_feedBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(), FeedBackActivity.class);
+                startActivity(intent);
+            }
+        });
+        siv_userData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(), UserDataActivity.class);
                 startActivity(intent);
             }
         });

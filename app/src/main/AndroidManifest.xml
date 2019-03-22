@@ -20,7 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".AboutDetailsActivity"></activity>
+        <activity android:name=".UserDataActivity"></activity>
+        <activity android:name=".FeedBackActivity" />
+        <activity android:name=".AboutDetailsActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".ErrorExaminationActivity" />
         <activity android:name="view.ExamActivity" />
