@@ -41,38 +41,38 @@ public class ErrorExaminationActivity extends AppCompatActivity {
         ErrorExamSyllabus syllabus1 = new ErrorExamSyllabus();
         syllabus1.setSortType("中药学专业知识(一)");
         syllabus1.setIcon(R.drawable.number1);
-        syllabus1.setErrorNumber(7);
+        syllabus1.setErrorNumber(0);
 
 
         ErrorExamSyllabus syllabus2 = new ErrorExamSyllabus();
         syllabus2.setSortType("中药学专业知识(二)");
         syllabus2.setIcon(R.drawable.number2);
-        syllabus2.setErrorNumber(7);
+        syllabus2.setErrorNumber(0);
 
         ErrorExamSyllabus syllabus3 = new ErrorExamSyllabus();
         syllabus3.setSortType("中药学综合知识与技能");
         syllabus3.setIcon(R.drawable.number3);
-        syllabus3.setErrorNumber(7);
+        syllabus3.setErrorNumber(0);
 
         ErrorExamSyllabus syllabus4 = new ErrorExamSyllabus();
         syllabus4.setSortType("药学专业知识(一)");
         syllabus4.setIcon(R.drawable.number4);
-        syllabus4.setErrorNumber(7);
+        syllabus4.setErrorNumber(0);
 
         ErrorExamSyllabus syllabus5 = new ErrorExamSyllabus();
         syllabus5.setSortType("药学专业知识(二)");
         syllabus5.setIcon(R.drawable.number5);
-        syllabus5.setErrorNumber(7);
+        syllabus5.setErrorNumber(0);
 
         ErrorExamSyllabus syllabus6 = new ErrorExamSyllabus();
         syllabus6.setSortType("药学综合知识与技能");
         syllabus6.setIcon(R.drawable.number6);
-        syllabus6.setErrorNumber(7);
+        syllabus6.setErrorNumber(0);
 
         ErrorExamSyllabus syllabus7 = new ErrorExamSyllabus();
         syllabus7.setSortType("药事管理与法规");
         syllabus7.setIcon(R.drawable.number7);
-        syllabus7.setErrorNumber(7);
+        syllabus7.setErrorNumber(0);
 
         list.add(syllabus1);
         list.add(syllabus2);

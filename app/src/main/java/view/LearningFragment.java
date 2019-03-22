@@ -1,6 +1,7 @@
 package view;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.abc.chinesemedicine.EnlargePhotoActivity;
 import com.example.abc.chinesemedicine.R;
 
 import org.greenrobot.eventbus.EventBus;
@@ -21,7 +23,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import bean.MessageEvent;
 
 
-public class LearningFragment extends Fragment {
+public class LearningFragment extends Fragment implements View.OnClickListener {
 
     private ImageView iv_learningPicture;
 
@@ -49,6 +51,8 @@ public class LearningFragment extends Fragment {
     {
         Glide.with(getActivity()).load(imageUrl).placeholder(R.color.colorPlaceHolder).into(iv_learningPicture);
         tv_learningText.setText(data);
+
+        iv_learningPicture.setOnClickListener(this);//给图片加入时间侦听,放大事件
     }
 
 
@@ -94,11 +98,12 @@ public class LearningFragment extends Fragment {
        }
 
 
-
-
-
-
-
+    @Override
+    public void onClick(View view) {
+        Intent intent=new Intent(getActivity(), EnlargePhotoActivity.class);
+        intent.putExtra("imageUrl",imageUrl);
+        startActivity(intent);
+    }
 }
 
 

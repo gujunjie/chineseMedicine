@@ -8,6 +8,7 @@ public class MessageEvent {
 
     private boolean isCorrect;//用户是否答对
 
+
     public MessageEvent(int textSize) {
         this.textSize = textSize;
     }
@@ -28,6 +29,8 @@ public class MessageEvent {
 
 
 
+
 }
+
 
 

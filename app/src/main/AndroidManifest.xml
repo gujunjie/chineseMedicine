@@ -20,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".UserDataActivity"></activity>
+        <activity android:name=".EnlargePhotoActivity"></activity>
+        <activity android:name=".UserDataActivity" />
         <activity android:name=".FeedBackActivity" />
         <activity android:name=".AboutDetailsActivity" />
         <activity android:name=".AboutActivity" />

@@ -12239,6 +12239,287 @@ public class DataBaseUtil {
         examination5.setAnswer("本题考查历代本草代表作《本草纲目拾遗》的学术价值(新增药味数)。清代赵学敏的《本草纲目拾遗》创古代本草新增药物之冠，载药为921种，新增药就有716种。《本草经集注》730种，《新修本草》载药850种，《神农本草经》载药365种。");
         dao.insert(examination5);
 
+        Examination examination6=new Examination();
+        examination6.setTitle("不属于解表药使用注意的内容是");
+        examination6.setSortType("中药学专业知识(二)");
+        examination6.setSectionA("体虚汗多者忌服");
+        examination6.setSectionB("淋病者慎用");
+        examination6.setSectionC("热病津亏者忌服");
+        examination6.setSectionD("疮疡初起兼表证者忌服");
+        examination6.setSectionE("失血兼表证者慎服");
+        examination6.setCorrectSection("D");
+        examination6.setAnswer("本题考查解表药的使用注意。体虚汗多及热病津亏者忌服发汗力强的解表药；久患疮疡、淋病、失血兼表证者慎重使用发汗解表药；可用于疮疡初起兼表证者，故选D。");
+        dao.insert(examination6);
+
+        Examination examination7=new Examination();
+        examination7.setTitle("发散风寒药的性味是");
+        examination7.setSortType("中药学专业知识(二)");
+        examination7.setSectionA("苦寒");
+        examination7.setSectionB("苦温");
+        examination7.setSectionC("辛凉");
+        examination7.setSectionD("甘寒");
+        examination7.setSectionE("辛温");
+        examination7.setCorrectSection("E");
+        dao.insert(examination7);
+
+        Examination examination8=new Examination();
+        examination8.setTitle("发散风热药的性味是");
+        examination8.setSortType("中药学专业知识(二)");
+        examination8.setSectionA("辛温");
+        examination8.setSectionB("苦寒");
+        examination8.setSectionC("辛凉");
+        examination8.setSectionD("淡寒");
+        examination8.setSectionE("甘温");
+        examination8.setCorrectSection("C");
+        dao.insert(examination8);
+
+        Examination examination9=new Examination();
+        examination9.setTitle("生用解表，蜜炙平喘的药物是");
+        examination9.setSortType("中药学专业知识(二)");
+        examination9.setSectionA("桂枝");
+        examination9.setSectionB("麻黄");
+        examination9.setSectionC("紫苏");
+        examination9.setSectionD("荆芥");
+        examination9.setSectionE("羌活");
+        examination9.setCorrectSection("B");
+        dao.insert(examination9);
+
+        Examination examination10=new Examination();
+        examination10.setTitle("麻黄配石膏共同体现的功效是");
+        examination10.setSortType("中药学专业知识(二)");
+        examination10.setSectionA("发汗解表");
+        examination10.setSectionB("清热泻火");
+        examination10.setSectionC("利水消肿");
+        examination10.setSectionD("调和营卫");
+        examination10.setSectionE("清肺平喘");
+        examination10.setCorrectSection("E");
+        dao.insert(examination10);
+
+
+        Examination examination12=new Examination();
+        examination12.setTitle("中医学的指导思想是");
+        examination12.setSortType("中药学综合知识与技能");
+        examination12.setSectionA("阴阳学说");
+        examination12.setSectionB("五行学说五行学说");
+        examination12.setSectionC("精气学说");
+        examination12.setSectionD("整体观念");
+        examination12.setSectionE("辨证论治");
+        examination12.setCorrectSection("D");
+        examination12.setAnswer("本题考查对中医学独特理论体系中指导思想的认识。中医学是一个具有独特理论的医学体系，这一理论体系的各个方面都充分体现着整体认识的方法，因此说“整体观念”是其指导思想。");
+        dao.insert(examination12);
+
+        Examination examination13=new Examination();
+        examination13.setTitle("中医学认识疾病和治疗疾病的基本思路是");
+        examination13.setSortType("中药学综合知识与技能");
+        examination13.setSectionA("整体观念");
+        examination13.setSectionB("恒动观念");
+        examination13.setSectionC("同病异治");
+        examination13.setSectionD("异病同治");
+        examination13.setSectionE("辨证论治");
+        examination13.setCorrectSection("E");
+        examination13.setAnswer("本题考查对中医学独特理论体系中诊治特点的认识。中医学对疾病的理性认识过程就是“辨证”，治疗疾病的过程就是“论治”，所以说“辨证论治”是中医学认识疾病和治疗疾病的基本思路。");
+        dao.insert(examination13);
+
+        Examination examination14=new Examination();
+        examination14.setTitle("根据中NN论，“症”“证”“病”含义不同，下列表述中属于“证”的是");
+        examination14.setSortType("中药学综合知识与技能");
+        examination14.setSectionA("气虚血瘀");
+        examination14.setSectionB("心悸");
+        examination14.setSectionC("胸痹");
+        examination14.setSectionD("胸胁胀满");
+        examination14.setSectionE("胸痛彻背");
+        examination14.setCorrectSection("A");
+        examination14.setAnswer("本题考查“症”“证”“病”的定义。“气虚血瘀”属于证，“胸胁胀满”“胸痛彻背”属于症，“胸痹”属于病，至于“心悸”本身是一个症状，但同时在中医学的范围内也可属病名的范畴。");
+        dao.insert(examination14);
+
+        Examination examination15=new Examination();
+        examination15.setTitle("下列表述中属于证的是");
+        examination15.setSortType("中药学综合知识与技能");
+        examination15.setSectionA("水痘");
+        examination15.setSectionB("麻疹");
+        examination15.setSectionC("风寒犯肺");
+        examination15.setSectionD("头痛");
+        examination15.setSectionE("寒");
+        examination15.setCorrectSection("C");
+        examination15.setAnswer("本题主要考查对“症”“证”“病”含义的理解。水痘、麻疹属于病名，头痛、恶寒是具体的症状。");
+        dao.insert(examination15);
+
+        Examination examination16=new Examination();
+        examination16.setTitle("下列表述中属于症的是");
+        examination16.setSortType("中药学综合知识与技能");
+        examination16.setSectionA("消渴");
+        examination16.setSectionB("恶寒");
+        examination16.setSectionC("肺痈");
+        examination16.setSectionD("水肿");
+        examination16.setSectionE("咳嗽");
+        examination16.setCorrectSection("B");
+        examination16.setAnswer("恶寒是疾病发展过程中的临床表现，属“症”的范畴。消渴、肺痈、水肿、咳嗽具有特定的症状和体征，属“病”的范畴，因此，本题的答案为B。");
+        dao.insert(examination16);
+
+
+        Examination examination19=new Examination();
+        examination19.setTitle("下列表述药物剂型的重要性错误的是");
+        examination19.setSortType("药学专业知识(一)");
+        examination19.setSectionA("芳香水剂为液体剂型");
+        examination19.setSectionB("颗粒剂为固体剂型");
+        examination19.setSectionC("溶胶剂为半固体剂型");
+        examination19.setSectionD("气雾剂为气体分散型");
+        examination19.setSectionE("软膏剂为半固体剂型");
+        examination19.setCorrectSection("C");
+        examination19.setAnswer("溶胶剂属于胶体溶液。");
+        dao.insert(examination19);
+
+
+        Examination examination21=new Examination();
+        examination21.setTitle("下列表述药物剂型的重要性错误的是");
+        examination21.setSortType("药学专业知识(一)");
+        examination21.setSectionA("剂型可改变药物的作用性质");
+        examination21.setSectionB("剂型能改变药物的作用速度");
+        examination21.setSectionC("改变剂型可降低(或消除)药物的毒副作用");
+        examination21.setSectionD("剂型决定药物的治疗作用");
+        examination21.setSectionE("剂型可影响疗效");
+        examination21.setCorrectSection("D");
+        examination21.setAnswer("本题考查药物剂型的重要性，药物剂型与给药途径、临床治疗效果有着十分密切的关系，药物剂型必须与给药途径相适应，良好的剂型可以发挥出良好的药效，但不是决定药物的治疗作用。故本题答案应选D。");
+        dao.insert(examination21);
+
+        Examination examination22=new Examination();
+        examination22.setTitle("药物剂型进行分类的方法不包括");
+        examination22.setSortType("药学专业知识(一)");
+        examination22.setSectionA("按给药途径分类");
+        examination22.setSectionB("按分散系统分类");
+        examination22.setSectionC("按制法分类");
+        examination22.setSectionD("按形态分类");
+        examination22.setSectionE("按药物种类分类");
+        examination22.setCorrectSection("E");
+        examination22.setAnswer("本题考查药物剂型的五种分类方法，分别是按给药途径分类、按分散系统分类、按制法分类、按形态分类以及按作用时间分类。故本题答案应选E。");
+        dao.insert(examination22);
+
+        Examination examination23=new Examination();
+        examination23.setTitle("制剂中药物的化学降解途径不包括");
+        examination23.setSortType("药学专业知识(一)");
+        examination23.setSectionA("水解");
+        examination23.setSectionB("氧化");
+        examination23.setSectionC("结晶");
+        examination23.setSectionD("脱羧");
+        examination23.setSectionE("异构化");
+        examination23.setCorrectSection("C");
+        dao.insert(examination23);
+
+        Examination examination24=new Examination();
+        examination24.setTitle("地西泮的适应证不包括");
+        examination24.setSortType("药学专业知识(二)");
+        examination24.setSectionA("镇静催眠");
+        examination24.setSectionB("抗癫痫和抗惊厥");
+        examination24.setSectionC("紧张性头痛");
+        examination24.setSectionD("特发性震颤");
+        examination24.setSectionE("三叉神经痛");
+        examination24.setCorrectSection("E");
+        dao.insert(examination24);
+
+        Examination examination25=new Examination();
+        examination25.setTitle("老年人对苯二氮革类药较为敏感，用药后可致平衡功能失调，觉醒后可发生步履蹒跚、思维迟钝等症状，在临床上被称为");
+        examination25.setSortType("药学专业知识(二)");
+        examination25.setSectionA("震颤麻痹综合征");
+        examination25.setSectionB("老年期痴呆");
+        examination25.setSectionC("“宿醉”现象");
+        examination25.setSectionD("戒断综合征");
+        examination25.setSectionE("锥体外系反应");
+        examination25.setCorrectSection("C");
+        examination25.setAnswer("本题考查苯二氮棹类镇静催眠药的用药监护。关注老年人对苯二氮革类的敏感性和“宿醉”现象。(1)静脉注射——更易出现呼吸抑制、低血压、心动过缓甚至心跳停止。(2)老年人对苯二氮棹类药物较敏感——服药后可产生过度镇静、肌肉松弛作用，觉醒后可发生震颤、思维迟缓、运动障碍、认知功能障碍、步履蹒跚、肌无力等“宿醉”现象，极易跌倒和受伤。因此，必须告知患者晨起时宜小心，避免跌倒。故答案选C。 ");
+        dao.insert(examination25);
+
+        Examination examination26=new Examination();
+        examination26.setTitle("关于苯二氮革类镇静催眠药的叙述，不正确的是");
+        examination26.setSortType("药学专业知识(二)");
+        examination26.setSectionA("是目前最常用的镇静催眠药");
+        examination26.setSectionB("临床上用于治疗焦虑症");
+        examination26.setSectionC("可用于心脏电复律前给药");
+        examination26.setSectionD("可用于治疗小儿高热惊厥");
+        examination26.setSectionE("长期应用不会产生依赖性和成瘾性");
+        examination26.setCorrectSection("E");
+        dao.insert(examination26);
+
+        Examination examination27=new Examination();
+        examination27.setTitle("地西泮的药理作用不包括");
+        examination27.setSortType("药学专业知识(二)");
+        examination27.setSectionA("抗精神分裂症作用");
+        examination27.setSectionB("抗惊厥作用");
+        examination27.setSectionC("抗癫痫作用");
+        examination27.setSectionD("中枢性肌松作用");
+        examination27.setSectionE("抗焦虑作用");
+        examination27.setCorrectSection("A");
+        dao.insert(examination27);
+
+        Examination examination28=new Examination();
+        examination28.setTitle("关于地西泮作用特点的描述，不正确的是");
+        examination28.setSortType("药学专业知识(二)");
+        examination28.setSectionA("小于镇静剂量时即有抗焦虑作用");
+        examination28.setSectionB("剂量加大可引起麻醉");
+        examination28.setSectionC("镇静催眠作用强");
+        examination28.setSectionD("可引起暂时性记忆缺失");
+        examination28.setSectionE("有良好的抗癫痫作用");
+        examination28.setCorrectSection("B");
+        dao.insert(examination28);
+
+        Examination examination29=new Examination();
+        examination29.setTitle("有关药学服务(PS)的目的，以下说法最正确的是");
+        examination29.setSortType("药学综合知识与技能");
+        examination29.setSectionA("提高患者用药的方便性");
+        examination29.setSectionB("提高患者用药的有效性");
+        examination29.setSectionC("提高患者用药的经济性");
+        examination29.setSectionD("提高患者用药的安全性");
+        examination29.setSectionE("改善和提高人类生活质量");
+        examination29.setCorrectSection("E");
+        dao.insert(examination29);
+
+        Examination examination30=new Examination();
+        examination30.setTitle("有关药学服务的“基本要素”，以下说法最正确的是");
+        examination30.setSortType("药学综合知识与技能");
+        examination30.setSectionA("为公众服务");
+        examination30.setSectionB("提供药学专业知识");
+        examination30.setSectionC("“与药物有关”的服务");
+        examination30.setSectionD("提供药物信息和知识");
+        examination30.setSectionE("以提供信息和知识的形式服务");
+        examination30.setCorrectSection("C");
+        examination30.setAnswer("本题考查药学服务的“基本要素”。依据药学服务的含义“药师应用药学专业知识向公众提供直接的、负责任的、与药物应用有关的服．务，以期提高药物治疗的安全、有效、经济和适宜性”可知，药学服务的“基本要素”是“与药物有关”的服务(C)。本题的“陷阱”是其余备选答案都包括“知识”、“服务”等貌似可选择的关键词。");
+        dao.insert(examination30);
+
+        Examination examination31=new Examination();
+        examination31.setTitle("药学服务的对象是");
+        examination31.setSortType("药学综合知识与技能");
+        examination31.setSectionA("患者");
+        examination31.setSectionB("患者家属");
+        examination31.setSectionC("医务人员");
+        examination31.setSectionD("广大公众");
+        examination31.setSectionE("护理人员");
+        examination31.setCorrectSection("D");
+        dao.insert(examination31);
+
+        Examination examination32=new Examination();
+        examination32.setTitle("“药学服务具有很强的社会属性”，其中的含义指“药学服务的对象”是");
+        examination32.setSortType("药学综合知识与技能");
+        examination32.setSectionA("住院患者");
+        examination32.setSectionB("门诊患者");
+        examination32.setSectionC("家庭患者");
+        examination32.setSectionD("社区患者");
+        examination32.setSectionE("全社会所有用药的患者");
+        examination32.setCorrectSection("E");
+        dao.insert(examination32);
+
+        Examination examination33=new Examination();
+        examination33.setTitle("药学服务是药师对患者的关怀和责任。下列人员中，属于药学服务重要人群的是");
+        examination33.setSortType("药学综合知识与技能");
+        examination33.setSectionA("门诊患者");
+        examination33.setSectionB("社区患者");
+        examination33.setSectionC("住院患者");
+        examination33.setSectionD("过敏体质者");
+        examination33.setSectionE("药品消费者");
+        examination33.setCorrectSection("D");
+        examination33.setAnswer("本题考查药学服务的重要人群。备选答案的“陷阱”是混淆药学服务的对象(广大公众)与“重要人群”。在“门诊患者”、“社区患者”、“住院患者”、“药品消费者”中，都会包含药学服务的“重要人群”，但却不都是“重要人群”。而“过敏体质者”(D)则都是药学服务的重要人群。");
+        dao.insert(examination33);
+
+
+
     }
 
 }
