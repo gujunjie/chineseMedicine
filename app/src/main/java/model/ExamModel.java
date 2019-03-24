@@ -1,13 +1,19 @@
 package model;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.abc.chinesemedicine.MyApplication;
+import com.example.abc.chinesemedicine.greendao.ErrorExaminationDao;
 import com.example.abc.chinesemedicine.greendao.ExaminationDao;
 
 import java.util.List;
 
+import bean.ErrorExamination;
 import bean.Examination;
+import bean.User;
 import contract.ExamContract;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -16,10 +22,12 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import util.DataBaseUtil;
+import util.SharePreferenceUtil;
 
 public class ExamModel implements ExamContract.ExamModel {
 
-    private boolean isSaveBefore;//之前是否存过相同的题目
+    private boolean isSaveBefore=false;//之前是否存过相同的题目
 
 
     @Override
@@ -64,8 +72,62 @@ public class ExamModel implements ExamContract.ExamModel {
     public void saveErrorExamination(Examination examination, Context context) {
 
 
+        User user= DataBaseUtil.getUser(context);
 
+        ErrorExaminationDao dao=MyApplication.getDaoSession().getErrorExaminationDao();
+
+        List<ErrorExamination> errorExaminationList=dao.queryBuilder().where(ErrorExaminationDao.Properties.UserId.eq(user.getId())).list();
+
+
+
+        if(errorExaminationList.size()==0)
+        {
+            saveErrorExamInDataBase(examination,user,dao);
+            //Toast.makeText(context,"保存成功",Toast.LENGTH_SHORT).show();
+        }else
+        {
+            for(int i=0;i<errorExaminationList.size();i++)
+            {
+                if(errorExaminationList.get(i).getExamId().longValue()==examination.getId().longValue())
+                {
+                    isSaveBefore=true;
+                    //Toast.makeText(context,"重复保存",Toast.LENGTH_SHORT).show();
+                    break;
+                }
+            }
+            if(!isSaveBefore)
+            {
+                saveErrorExamInDataBase(examination,user,dao);
+                //Toast.makeText(context,"保存成功",Toast.LENGTH_SHORT).show();
+            }
+
+        }
     }
+
+
+    public void saveErrorExamInDataBase(Examination examination,User user,ErrorExaminationDao dao)
+    {
+        ErrorExamination errorExamination=new ErrorExamination();
+        errorExamination.setTitle(examination.getTitle());
+        errorExamination.setSortType(examination.getSortType());
+        errorExamination.setSectionA(examination.getSectionA());
+        errorExamination.setSectionB(examination.getSectionB());
+        errorExamination.setSectionC(examination.getSectionC());
+        errorExamination.setSectionD(examination.getSectionD());
+        errorExamination.setSectionE(examination.getSectionE());
+        errorExamination.setCorrectSection(examination.getCorrectSection());
+        if(examination.getAnswer()!=null) {
+            errorExamination.setAnswer(examination.getAnswer());
+        }
+        errorExamination.setExamId(examination.getId());
+        errorExamination.setUserId(user.getId());
+
+        dao.insert(errorExamination);
+    }
+
+
+
+
 
 
 }

@@ -1,6 +1,7 @@
 package view;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -17,6 +18,7 @@ import com.example.abc.chinesemedicine.R;
 import com.example.abc.chinesemedicine.greendao.AcuPointDao;
 import com.example.abc.chinesemedicine.greendao.ChineseMedicineDao;
 import com.example.abc.chinesemedicine.greendao.ChinesePatentDrugDao;
+import com.example.abc.chinesemedicine.greendao.ExaminationDao;
 import com.example.abc.chinesemedicine.greendao.MedicalBookDao;
 import com.example.abc.chinesemedicine.greendao.PrescriptionDao;
 import com.gyf.barlibrary.ImmersionBar;
@@ -28,6 +30,7 @@ import adapter.SearchResultRecyclerViewAdapter;
 import bean.AcuPoint;
 import bean.ChineseMedicine;
 import bean.ChinesePatentDrug;
+import bean.Examination;
 import bean.MedicalBook;
 import bean.Prescription;
 import bean.SearchResult;
@@ -98,7 +101,13 @@ public class SearchResultActivity extends AppCompatActivity {
                     autoCompleteTextView.clearFocus();//移除焦点
                 }else
                 {
-                    Toast.makeText(SearchResultActivity.this,"搜索内容不能为空",Toast.LENGTH_SHORT).show();
+                    Snackbar.make(tvShowResultCount,"搜索内容不能为空",Snackbar.LENGTH_SHORT).setAction("好的", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    }).show();
+
                 }
                 return true;
             }
@@ -172,6 +181,17 @@ public class SearchResultActivity extends AppCompatActivity {
                         result.setName(bookList.get(i).getName());
                         result.setImageUrl(bookList.get(i).getImageUrl());
                         result.setSortType(bookList.get(i).getBookName());
+                        resultList.add(result);
+                    }
+                }
+
+                List<Examination> examinationList=MyApplication.getDaoSession().getExaminationDao().queryBuilder().where(ExaminationDao.Properties.Title.like("%" + searchKeyWord + "%")).list();
+                if (examinationList.size() != 0) {
+                    for (int i = 0; i < examinationList.size(); i++) {
+                        SearchResult result = new SearchResult();
+                        result.setName(examinationList.get(i).getTitle());
+                        result.setImageUrl(examinationList.get(i).getImageUrl());
+                        result.setSortType(examinationList.get(i).getSortType());
                         resultList.add(result);
                     }
                 }

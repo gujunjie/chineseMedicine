@@ -20,12 +20,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".EnlargePhotoActivity"></activity>
+        <activity android:name=".ExamSearchResultActivity"></activity>
+        <activity android:name=".ErrorExaminationActivity" />
+        <activity android:name=".EnlargePhotoActivity" />
         <activity android:name=".UserDataActivity" />
         <activity android:name=".FeedBackActivity" />
         <activity android:name=".AboutDetailsActivity" />
         <activity android:name=".AboutActivity" />
-        <activity android:name=".ErrorExaminationActivity" />
+        <activity android:name=".ErrorExaminationListActivity" />
         <activity android:name="view.ExamActivity" />
         <activity android:name=".ExamListActivity" />
         <activity android:name=".EditNoteActivity" />

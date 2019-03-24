@@ -14,13 +14,12 @@ import com.example.abc.chinesemedicine.R;
 
 import org.greenrobot.eventbus.EventBus;
 
+import bean.ErrorExamination;
 import bean.Examination;
 import bean.MessageEvent;
 import customview.SectionView;
 
-public class ExamFragment extends Fragment {
-
-
+public class ErrorExamFragment extends Fragment {
 
     private TextView tv_title;
 
@@ -37,7 +36,7 @@ public class ExamFragment extends Fragment {
     private TextView tv_answerText;
 
 
-    private Examination examination;
+    private ErrorExamination errorExamination;
 
 
 
@@ -49,7 +48,7 @@ public class ExamFragment extends Fragment {
         initFindViewById(view);
 
         initUI();
-        setOnclickListener(examination);
+        setOnclickListener(errorExamination);
 
 
         return view;
@@ -71,62 +70,62 @@ public class ExamFragment extends Fragment {
 
     public void initUI()
     {
-        tv_title.setText(examination.getTitle());
-        sv_a.setSectionText(examination.getSectionA());
-        sv_b.setSectionText(examination.getSectionB());
-        sv_c.setSectionText(examination.getSectionC());
-        sv_d.setSectionText(examination.getSectionD());
-        sv_e.setSectionText(examination.getSectionE());
+        tv_title.setText(errorExamination.getTitle());
+        sv_a.setSectionText(errorExamination.getSectionA());
+        sv_b.setSectionText(errorExamination.getSectionB());
+        sv_c.setSectionText(errorExamination.getSectionC());
+        sv_d.setSectionText(errorExamination.getSectionD());
+        sv_e.setSectionText(errorExamination.getSectionE());
 
     }
 
-    public void setData(Examination examination)
+    public void setData(ErrorExamination errorExamination)
     {
-        this.examination=examination;
+        this.errorExamination=errorExamination;
     }
 
 
-    public void setOnclickListener(final Examination examination)
+    public void setOnclickListener(final ErrorExamination errorExamination)
     {
         sv_a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-               compareToAnswer("A",examination);
+                compareToAnswer("A",errorExamination);
             }
         });
         sv_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                compareToAnswer("B",examination);
+                compareToAnswer("B",errorExamination);
             }
         });
         sv_c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                compareToAnswer("C",examination);
+                compareToAnswer("C",errorExamination);
             }
         });
         sv_d.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                compareToAnswer("D",examination);
+                compareToAnswer("D",errorExamination);
             }
         });
         sv_e.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                compareToAnswer("E",examination);
+                compareToAnswer("E",errorExamination);
             }
         });
     }//给选项加事件侦听
 
-    public void compareToAnswer(String choice,Examination examination)
+    public void compareToAnswer(String choice,ErrorExamination errorExamination)
     {
-        if(choice.equals(examination.getCorrectSection()))
+        if(choice.equals(errorExamination.getCorrectSection()))
         {
             //答对就显示正确
             switch (choice)
@@ -159,7 +158,7 @@ public class ExamFragment extends Fragment {
         }else {
 
             //答错就显示正确答案，并且提示错误，以及显示解析
-            switch (examination.getCorrectSection())
+            switch (errorExamination.getCorrectSection())
             {
                 case "A":
                     sv_a.setSectionIcon(R.drawable.correct);
@@ -208,13 +207,13 @@ public class ExamFragment extends Fragment {
             EventBus.getDefault().post(new MessageEvent(false));//用户答错，发送给activity更新UI
 
             ll_answer.setVisibility(View.VISIBLE);
-            tv_correctSection.setText("答案 "+examination.getCorrectSection());
-            if(examination.getAnswer()==null)
+            tv_correctSection.setText("答案 "+errorExamination.getCorrectSection());
+            if(errorExamination.getAnswer()==null)
             {
 
             }else
             {
-                tv_answerText.setText(examination.getAnswer());
+                tv_answerText.setText(errorExamination.getAnswer());
             }//显示正确答案与解析
 
 
@@ -226,6 +225,5 @@ public class ExamFragment extends Fragment {
         sv_d.setOnClickListener(null);
         sv_e.setOnClickListener(null);//解除选项的事件侦听
     }//对比答案
-
 
 }

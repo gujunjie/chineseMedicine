@@ -1,6 +1,7 @@
 package view;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -137,6 +138,23 @@ public class ExamActivity extends BaseActivity<ExamContract.ExamView, ExamPresen
         if (event.getIsCorrect()) {
             correntNumber++;
             tvCorrectNumber.setText(correntNumber + "");
+            if(currentPosition==examinationList.size()-1)
+            {
+
+            }else
+            {
+                //用户答对且当前不为最后一题，延时一秒自动跳转下一题
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        vpExam.setCurrentItem(currentPosition+1,true);
+                    }
+                },500);
+
+
+
+            }
+
         } else {
             errorNumber++;
             tvErrorNumber.setText(errorNumber + "");

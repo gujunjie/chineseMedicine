@@ -12191,6 +12191,7 @@ public class DataBaseUtil {
         examination1.setSectionD("《本草纲目拾遗》");
         examination1.setSectionE("《证类本草》");
         examination1.setCorrectSection("C");
+        examination1.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552055016&di=2c7b680cffa6e3ecb84c6d85f93b5e2c&src=http://bpic.ooopic.com/16/55/21/16552143-470fb7379ff8294e7d5f97f4b4a96cde-0.jpg");
         dao.insert(examination1);
 
         Examination examination2=new Examination();
@@ -12202,6 +12203,7 @@ public class DataBaseUtil {
         examination2.setSectionD("《证类本草》");
         examination2.setSectionE("《新修本草》");
         examination2.setCorrectSection("B");
+        examination2.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552055016&di=2c7b680cffa6e3ecb84c6d85f93b5e2c&src=http://bpic.ooopic.com/16/55/21/16552143-470fb7379ff8294e7d5f97f4b4a96cde-0.jpg");
         dao.insert(examination2);
 
         Examination examination3=new Examination();
@@ -12213,6 +12215,7 @@ public class DataBaseUtil {
         examination3.setSectionD("《新修本草》");
         examination3.setSectionE("《证类本草》");
         examination3.setCorrectSection("C");
+        examination3.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552055016&di=2c7b680cffa6e3ecb84c6d85f93b5e2c&src=http://bpic.ooopic.com/16/55/21/16552143-470fb7379ff8294e7d5f97f4b4a96cde-0.jpg");
         dao.insert(examination3);
 
         Examination examination4=new Examination();
@@ -12224,6 +12227,7 @@ public class DataBaseUtil {
         examination4.setSectionD("《新修本草》");
         examination4.setSectionE("《本草拾遗》");
         examination4.setCorrectSection("B");
+        examination4.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552055016&di=2c7b680cffa6e3ecb84c6d85f93b5e2c&src=http://bpic.ooopic.com/16/55/21/16552143-470fb7379ff8294e7d5f97f4b4a96cde-0.jpg");
         examination4.setAnswer("本题考查历代本草代表作《本草经集注》的学术价值(分类)。按药物自然属性分类的本草著作有《本草经集注》、《新修本草》、《本草纲目》等，但作为首创该种分类法的是南北朝时期，梁代陶弘景撰著的《本草经集注》。注意“首创”关键词。");
         dao.insert(examination4);
 
@@ -12236,6 +12240,7 @@ public class DataBaseUtil {
         examination5.setSectionD("850种");
         examination5.setSectionE("365种");
         examination5.setCorrectSection("C");
+        examination5.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552055016&di=2c7b680cffa6e3ecb84c6d85f93b5e2c&src=http://bpic.ooopic.com/16/55/21/16552143-470fb7379ff8294e7d5f97f4b4a96cde-0.jpg");
         examination5.setAnswer("本题考查历代本草代表作《本草纲目拾遗》的学术价值(新增药味数)。清代赵学敏的《本草纲目拾遗》创古代本草新增药物之冠，载药为921种，新增药就有716种。《本草经集注》730种，《新修本草》载药850种，《神农本草经》载药365种。");
         dao.insert(examination5);
 
@@ -12248,6 +12253,7 @@ public class DataBaseUtil {
         examination6.setSectionD("疮疡初起兼表证者忌服");
         examination6.setSectionE("失血兼表证者慎服");
         examination6.setCorrectSection("D");
+        examination6.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552055876&di=c4b6bf5b49884a990c7a906d50274769&src=http://bpic.ooopic.com/16/57/92/16579278-713c0dfb7a5b91547b2068b932eaf2c9-0.jpg");
         examination6.setAnswer("本题考查解表药的使用注意。体虚汗多及热病津亏者忌服发汗力强的解表药；久患疮疡、淋病、失血兼表证者慎重使用发汗解表药；可用于疮疡初起兼表证者，故选D。");
         dao.insert(examination6);
 
@@ -12260,6 +12266,7 @@ public class DataBaseUtil {
         examination7.setSectionD("甘寒");
         examination7.setSectionE("辛温");
         examination7.setCorrectSection("E");
+        examination7.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552055876&di=c4b6bf5b49884a990c7a906d50274769&src=http://bpic.ooopic.com/16/57/92/16579278-713c0dfb7a5b91547b2068b932eaf2c9-0.jpg");
         dao.insert(examination7);
 
         Examination examination8=new Examination();
@@ -12271,6 +12278,7 @@ public class DataBaseUtil {
         examination8.setSectionD("淡寒");
         examination8.setSectionE("甘温");
         examination8.setCorrectSection("C");
+        examination8.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552055876&di=c4b6bf5b49884a990c7a906d50274769&src=http://bpic.ooopic.com/16/57/92/16579278-713c0dfb7a5b91547b2068b932eaf2c9-0.jpg");
         dao.insert(examination8);
 
         Examination examination9=new Examination();
@@ -12282,6 +12290,7 @@ public class DataBaseUtil {
         examination9.setSectionD("荆芥");
         examination9.setSectionE("羌活");
         examination9.setCorrectSection("B");
+        examination9.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552055876&di=c4b6bf5b49884a990c7a906d50274769&src=http://bpic.ooopic.com/16/57/92/16579278-713c0dfb7a5b91547b2068b932eaf2c9-0.jpg");
         dao.insert(examination9);
 
         Examination examination10=new Examination();
@@ -12293,6 +12302,7 @@ public class DataBaseUtil {
         examination10.setSectionD("调和营卫");
         examination10.setSectionE("清肺平喘");
         examination10.setCorrectSection("E");
+        examination10.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552055876&di=c4b6bf5b49884a990c7a906d50274769&src=http://bpic.ooopic.com/16/57/92/16579278-713c0dfb7a5b91547b2068b932eaf2c9-0.jpg");
         dao.insert(examination10);
 
 
@@ -12305,6 +12315,7 @@ public class DataBaseUtil {
         examination12.setSectionD("整体观念");
         examination12.setSectionE("辨证论治");
         examination12.setCorrectSection("D");
+        examination12.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552660712&di=07431c1801a15eca7773235c8e182944&imgtype=jpg&er=1&src=http%3A%2F%2Fbpic.ooopic.com%2F16%2F45%2F66%2F16456673-9282f3922b55348647dc8e9015f05eaf-0.jpg");
         examination12.setAnswer("本题考查对中医学独特理论体系中指导思想的认识。中医学是一个具有独特理论的医学体系，这一理论体系的各个方面都充分体现着整体认识的方法，因此说“整体观念”是其指导思想。");
         dao.insert(examination12);
 
@@ -12317,6 +12328,7 @@ public class DataBaseUtil {
         examination13.setSectionD("异病同治");
         examination13.setSectionE("辨证论治");
         examination13.setCorrectSection("E");
+        examination13.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552660712&di=07431c1801a15eca7773235c8e182944&imgtype=jpg&er=1&src=http%3A%2F%2Fbpic.ooopic.com%2F16%2F45%2F66%2F16456673-9282f3922b55348647dc8e9015f05eaf-0.jpg");
         examination13.setAnswer("本题考查对中医学独特理论体系中诊治特点的认识。中医学对疾病的理性认识过程就是“辨证”，治疗疾病的过程就是“论治”，所以说“辨证论治”是中医学认识疾病和治疗疾病的基本思路。");
         dao.insert(examination13);
 
@@ -12329,6 +12341,7 @@ public class DataBaseUtil {
         examination14.setSectionD("胸胁胀满");
         examination14.setSectionE("胸痛彻背");
         examination14.setCorrectSection("A");
+        examination14.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552660712&di=07431c1801a15eca7773235c8e182944&imgtype=jpg&er=1&src=http%3A%2F%2Fbpic.ooopic.com%2F16%2F45%2F66%2F16456673-9282f3922b55348647dc8e9015f05eaf-0.jpg");
         examination14.setAnswer("本题考查“症”“证”“病”的定义。“气虚血瘀”属于证，“胸胁胀满”“胸痛彻背”属于症，“胸痹”属于病，至于“心悸”本身是一个症状，但同时在中医学的范围内也可属病名的范畴。");
         dao.insert(examination14);
 
@@ -12341,6 +12354,7 @@ public class DataBaseUtil {
         examination15.setSectionD("头痛");
         examination15.setSectionE("寒");
         examination15.setCorrectSection("C");
+        examination15.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552660712&di=07431c1801a15eca7773235c8e182944&imgtype=jpg&er=1&src=http%3A%2F%2Fbpic.ooopic.com%2F16%2F45%2F66%2F16456673-9282f3922b55348647dc8e9015f05eaf-0.jpg");
         examination15.setAnswer("本题主要考查对“症”“证”“病”含义的理解。水痘、麻疹属于病名，头痛、恶寒是具体的症状。");
         dao.insert(examination15);
 
@@ -12353,6 +12367,7 @@ public class DataBaseUtil {
         examination16.setSectionD("水肿");
         examination16.setSectionE("咳嗽");
         examination16.setCorrectSection("B");
+        examination16.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552660712&di=07431c1801a15eca7773235c8e182944&imgtype=jpg&er=1&src=http%3A%2F%2Fbpic.ooopic.com%2F16%2F45%2F66%2F16456673-9282f3922b55348647dc8e9015f05eaf-0.jpg");
         examination16.setAnswer("恶寒是疾病发展过程中的临床表现，属“症”的范畴。消渴、肺痈、水肿、咳嗽具有特定的症状和体征，属“病”的范畴，因此，本题的答案为B。");
         dao.insert(examination16);
 
@@ -12366,6 +12381,7 @@ public class DataBaseUtil {
         examination19.setSectionD("气雾剂为气体分散型");
         examination19.setSectionE("软膏剂为半固体剂型");
         examination19.setCorrectSection("C");
+        examination19.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552055978&di=e61fe890ba217c88826a7e0b8f9c2454&src=http://homesitetask.zbjimg.com/homesite/task/a2cc7cd98d1001e97fc80a06b20e7bec55e797c6.jpg/origine/feed4f31-794f-4d82-92fa-c3ae7d8a50f8");
         examination19.setAnswer("溶胶剂属于胶体溶液。");
         dao.insert(examination19);
 
@@ -12379,6 +12395,7 @@ public class DataBaseUtil {
         examination21.setSectionD("剂型决定药物的治疗作用");
         examination21.setSectionE("剂型可影响疗效");
         examination21.setCorrectSection("D");
+        examination21.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552055978&di=e61fe890ba217c88826a7e0b8f9c2454&src=http://homesitetask.zbjimg.com/homesite/task/a2cc7cd98d1001e97fc80a06b20e7bec55e797c6.jpg/origine/feed4f31-794f-4d82-92fa-c3ae7d8a50f8");
         examination21.setAnswer("本题考查药物剂型的重要性，药物剂型与给药途径、临床治疗效果有着十分密切的关系，药物剂型必须与给药途径相适应，良好的剂型可以发挥出良好的药效，但不是决定药物的治疗作用。故本题答案应选D。");
         dao.insert(examination21);
 
@@ -12391,6 +12408,7 @@ public class DataBaseUtil {
         examination22.setSectionD("按形态分类");
         examination22.setSectionE("按药物种类分类");
         examination22.setCorrectSection("E");
+        examination22.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552055978&di=e61fe890ba217c88826a7e0b8f9c2454&src=http://homesitetask.zbjimg.com/homesite/task/a2cc7cd98d1001e97fc80a06b20e7bec55e797c6.jpg/origine/feed4f31-794f-4d82-92fa-c3ae7d8a50f8");
         examination22.setAnswer("本题考查药物剂型的五种分类方法，分别是按给药途径分类、按分散系统分类、按制法分类、按形态分类以及按作用时间分类。故本题答案应选E。");
         dao.insert(examination22);
 
@@ -12402,6 +12420,7 @@ public class DataBaseUtil {
         examination23.setSectionC("结晶");
         examination23.setSectionD("脱羧");
         examination23.setSectionE("异构化");
+        examination23.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552055978&di=e61fe890ba217c88826a7e0b8f9c2454&src=http://homesitetask.zbjimg.com/homesite/task/a2cc7cd98d1001e97fc80a06b20e7bec55e797c6.jpg/origine/feed4f31-794f-4d82-92fa-c3ae7d8a50f8");
         examination23.setCorrectSection("C");
         dao.insert(examination23);
 
@@ -12414,6 +12433,7 @@ public class DataBaseUtil {
         examination24.setSectionD("特发性震颤");
         examination24.setSectionE("三叉神经痛");
         examination24.setCorrectSection("E");
+        examination24.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552056036&di=ef914f9ce47bc2463001c063128ff181&src=http://imgsrc.baidu.com/imgad/pic/item/730e0cf3d7ca7bcbbe59760bb4096b63f624a8f0.jpg");
         dao.insert(examination24);
 
         Examination examination25=new Examination();
@@ -12425,6 +12445,7 @@ public class DataBaseUtil {
         examination25.setSectionD("戒断综合征");
         examination25.setSectionE("锥体外系反应");
         examination25.setCorrectSection("C");
+        examination25.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552056036&di=ef914f9ce47bc2463001c063128ff181&src=http://imgsrc.baidu.com/imgad/pic/item/730e0cf3d7ca7bcbbe59760bb4096b63f624a8f0.jpg");
         examination25.setAnswer("本题考查苯二氮棹类镇静催眠药的用药监护。关注老年人对苯二氮革类的敏感性和“宿醉”现象。(1)静脉注射——更易出现呼吸抑制、低血压、心动过缓甚至心跳停止。(2)老年人对苯二氮棹类药物较敏感——服药后可产生过度镇静、肌肉松弛作用，觉醒后可发生震颤、思维迟缓、运动障碍、认知功能障碍、步履蹒跚、肌无力等“宿醉”现象，极易跌倒和受伤。因此，必须告知患者晨起时宜小心，避免跌倒。故答案选C。 ");
         dao.insert(examination25);
 
@@ -12437,6 +12458,7 @@ public class DataBaseUtil {
         examination26.setSectionD("可用于治疗小儿高热惊厥");
         examination26.setSectionE("长期应用不会产生依赖性和成瘾性");
         examination26.setCorrectSection("E");
+        examination26.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552056036&di=ef914f9ce47bc2463001c063128ff181&src=http://imgsrc.baidu.com/imgad/pic/item/730e0cf3d7ca7bcbbe59760bb4096b63f624a8f0.jpg");
         dao.insert(examination26);
 
         Examination examination27=new Examination();
@@ -12448,6 +12470,7 @@ public class DataBaseUtil {
         examination27.setSectionD("中枢性肌松作用");
         examination27.setSectionE("抗焦虑作用");
         examination27.setCorrectSection("A");
+        examination27.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552056036&di=ef914f9ce47bc2463001c063128ff181&src=http://imgsrc.baidu.com/imgad/pic/item/730e0cf3d7ca7bcbbe59760bb4096b63f624a8f0.jpg");
         dao.insert(examination27);
 
         Examination examination28=new Examination();
@@ -12459,6 +12482,7 @@ public class DataBaseUtil {
         examination28.setSectionD("可引起暂时性记忆缺失");
         examination28.setSectionE("有良好的抗癫痫作用");
         examination28.setCorrectSection("B");
+        examination28.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552056036&di=ef914f9ce47bc2463001c063128ff181&src=http://imgsrc.baidu.com/imgad/pic/item/730e0cf3d7ca7bcbbe59760bb4096b63f624a8f0.jpg");
         dao.insert(examination28);
 
         Examination examination29=new Examination();
@@ -12470,6 +12494,7 @@ public class DataBaseUtil {
         examination29.setSectionD("提高患者用药的安全性");
         examination29.setSectionE("改善和提高人类生活质量");
         examination29.setCorrectSection("E");
+        examination29.setImageUrl("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=656020695,2085191856&fm=27&gp=0.jpg");
         dao.insert(examination29);
 
         Examination examination30=new Examination();
@@ -12481,6 +12506,7 @@ public class DataBaseUtil {
         examination30.setSectionD("提供药物信息和知识");
         examination30.setSectionE("以提供信息和知识的形式服务");
         examination30.setCorrectSection("C");
+        examination30.setImageUrl("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=656020695,2085191856&fm=27&gp=0.jpg");
         examination30.setAnswer("本题考查药学服务的“基本要素”。依据药学服务的含义“药师应用药学专业知识向公众提供直接的、负责任的、与药物应用有关的服．务，以期提高药物治疗的安全、有效、经济和适宜性”可知，药学服务的“基本要素”是“与药物有关”的服务(C)。本题的“陷阱”是其余备选答案都包括“知识”、“服务”等貌似可选择的关键词。");
         dao.insert(examination30);
 
@@ -12493,6 +12519,7 @@ public class DataBaseUtil {
         examination31.setSectionD("广大公众");
         examination31.setSectionE("护理人员");
         examination31.setCorrectSection("D");
+        examination31.setImageUrl("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=656020695,2085191856&fm=27&gp=0.jpg");
         dao.insert(examination31);
 
         Examination examination32=new Examination();
@@ -12504,6 +12531,7 @@ public class DataBaseUtil {
         examination32.setSectionD("社区患者");
         examination32.setSectionE("全社会所有用药的患者");
         examination32.setCorrectSection("E");
+        examination32.setImageUrl("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=656020695,2085191856&fm=27&gp=0.jpg");
         dao.insert(examination32);
 
         Examination examination33=new Examination();
@@ -12515,6 +12543,7 @@ public class DataBaseUtil {
         examination33.setSectionD("过敏体质者");
         examination33.setSectionE("药品消费者");
         examination33.setCorrectSection("D");
+        examination33.setImageUrl("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=656020695,2085191856&fm=27&gp=0.jpg");
         examination33.setAnswer("本题考查药学服务的重要人群。备选答案的“陷阱”是混淆药学服务的对象(广大公众)与“重要人群”。在“门诊患者”、“社区患者”、“住院患者”、“药品消费者”中，都会包含药学服务的“重要人群”，但却不都是“重要人群”。而“过敏体质者”(D)则都是药学服务的重要人群。");
         dao.insert(examination33);
 

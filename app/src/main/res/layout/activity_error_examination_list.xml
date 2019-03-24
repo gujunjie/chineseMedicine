@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical"
+    tools:context=".ErrorExaminationListActivity">
+
+    <LinearLayout
+        android:background="@color/colorBackground"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <customview.MyTitleBar
+            android:id="@+id/errorExam_titleBar"
+            app:title="我的错题"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <RelativeLayout
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:id="@+id/tv_errorNumber"
+                android:layout_centerInParent="true"
+                android:textColor="@color/colorWhite"
+                android:text="0"
+                android:textSize="50sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:layout_toStartOf="@+id/tv_errorNumber"
+                android:layout_alignBottom="@+id/tv_errorNumber"
+                android:textColor="@color/colorWhite"
+                android:text="共"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_toEndOf="@+id/tv_errorNumber"
+                android:layout_alignBottom="@+id/tv_errorNumber"
+                android:textColor="@color/colorWhite"
+                android:text="题"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_margin="10dp"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:text="按章节练习"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_remove"
+                android:background="@drawable/section_selector"
+                android:padding="10dp"
+                android:text="移除"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_errorExamination"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_mask"
+        android:visibility="gone"
+        android:background="#80000000"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:background="@color/colorWhite"
+        android:id="@+id/ll_bottomSheet"
+        app:behavior_peekHeight="0dp"
+        app:behavior_hideable="true"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+            <TextView
+                android:textColor="#696969"
+                android:textSize="17sp"
+                android:layout_margin="10dp"
+                android:text="设置连续做对几次，自动移除"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+                    <TextView
+                        android:id="@+id/tv_never"
+                        android:textSize="15sp"
+                        android:background="@drawable/normal_selector"
+                        android:padding="15dp"
+                        android:gravity="center"
+                        android:text="不移除"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <View
+                        android:background="@color/colorLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"/>
+                    <TextView
+                        android:background="@drawable/normal_selector"
+                        android:id="@+id/tv_five"
+                        android:textSize="15sp"
+                        android:padding="15dp"
+                        android:gravity="center"
+                        android:text="5次"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <View
+                        android:background="@color/colorLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"/>
+                    <TextView
+                        android:background="@drawable/normal_selector"
+                        android:id="@+id/tv_six"
+                        android:textSize="15sp"
+                        android:padding="15dp"
+                        android:gravity="center"
+                        android:text="6次"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <View
+                        android:background="@color/colorLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"/>
+                    <TextView
+                        android:background="@drawable/normal_selector"
+                        android:id="@+id/tv_seven"
+                        android:textSize="15sp"
+                        android:padding="15dp"
+                        android:gravity="center"
+                        android:text="7次"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <View
+                        android:background="@color/colorLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"/>
+
+                    <TextView
+                        android:background="@drawable/normal_selector"
+                        android:id="@+id/tv_eight"
+                        android:textSize="15sp"
+                        android:padding="15dp"
+                        android:gravity="center"
+                        android:text="8次"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+        <View
+            android:background="@color/colorLine"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <TextView
+            android:background="@drawable/normal_selector"
+            android:id="@+id/tv_nine"
+            android:textSize="15sp"
+            android:padding="15dp"
+            android:gravity="center"
+            android:text="9次"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <View
+            android:background="@color/colorLine"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <TextView
+            android:background="@drawable/normal_selector"
+            android:id="@+id/tv_ten"
+            android:textSize="15sp"
+            android:padding="15dp"
+            android:gravity="center"
+            android:text="10次"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+
+
+</android.support.design.widget.CoordinatorLayout>

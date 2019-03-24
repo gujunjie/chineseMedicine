@@ -80,20 +80,20 @@
 
                     <customview.SettingItemView
                         android:id="@+id/siv_userData"
-                        android:background="@drawable/section_selector"
+                        android:background="@drawable/normal_selector"
                         app:itemIcon="@mipmap/user_red"
                         app:itemTitle="我的资料"
                         app:itemDescribe="未登录"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                     <customview.SettingItemView
-                        android:background="@drawable/section_selector"
+                        android:background="@drawable/normal_selector"
                         app:itemIcon="@mipmap/trajectory"
                         app:itemTitle="学习轨迹"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                     <customview.SettingItemView
-                        android:background="@drawable/section_selector"
+                        android:background="@drawable/normal_selector"
                         app:itemIcon="@mipmap/share"
                         app:itemTitle="分享好友"
                         android:layout_width="match_parent"
@@ -117,21 +117,21 @@
                     android:layout_height="wrap_content">
 
                     <customview.SettingItemView
-                        android:background="@drawable/section_selector"
+                        android:background="@drawable/normal_selector"
                         app:itemIcon="@mipmap/setting_blue"
                         app:itemTitle="系统设置"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                     <customview.SettingItemView
                         android:id="@+id/siv_feedBack"
-                        android:background="@drawable/section_selector"
+                        android:background="@drawable/normal_selector"
                         app:itemIcon="@mipmap/feedback"
                         app:itemTitle="反馈建议"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                     <customview.SettingItemView
                         android:id="@+id/siv_about"
-                        android:background="@drawable/section_selector"
+                        android:background="@drawable/normal_selector"
                         app:itemDescribe="v1.0.0"
                         app:itemIcon="@mipmap/about"
                         app:itemTitle="关于中草药坊"

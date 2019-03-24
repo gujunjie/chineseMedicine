@@ -28,8 +28,9 @@ public class UserDao extends AbstractDao<User, Long> {
         public final static Property Name = new Property(1, String.class, "name", false, "NAME");
         public final static Property UserIconPath = new Property(2, String.class, "userIconPath", false, "USER_ICON_PATH");
         public final static Property Motto = new Property(3, String.class, "motto", false, "MOTTO");
-        public final static Property LastestLearningSubject = new Property(4, String.class, "lastestLearningSubject", false, "LASTEST_LEARNING_SUBJECT");
-        public final static Property LastestLearningItem = new Property(5, String.class, "lastestLearningItem", false, "LASTEST_LEARNING_ITEM");
+        public final static Property RightTimesForRemove = new Property(4, int.class, "rightTimesForRemove", false, "RIGHT_TIMES_FOR_REMOVE");
+        public final static Property LastestLearningSubject = new Property(5, String.class, "lastestLearningSubject", false, "LASTEST_LEARNING_SUBJECT");
+        public final static Property LastestLearningItem = new Property(6, String.class, "lastestLearningItem", false, "LASTEST_LEARNING_ITEM");
     }
 
     private DaoSession daoSession;
@@ -52,8 +53,9 @@ public class UserDao extends AbstractDao<User, Long> {
                 "\"NAME\" TEXT," + // 1: name
                 "\"USER_ICON_PATH\" TEXT," + // 2: userIconPath
                 "\"MOTTO\" TEXT," + // 3: motto
-                "\"LASTEST_LEARNING_SUBJECT\" TEXT," + // 4: lastestLearningSubject
-                "\"LASTEST_LEARNING_ITEM\" TEXT);"); // 5: lastestLearningItem
+                "\"RIGHT_TIMES_FOR_REMOVE\" INTEGER NOT NULL ," + // 4: rightTimesForRemove
+                "\"LASTEST_LEARNING_SUBJECT\" TEXT," + // 5: lastestLearningSubject
+                "\"LASTEST_LEARNING_ITEM\" TEXT);"); // 6: lastestLearningItem
     }
 
     /** Drops the underlying database table. */
@@ -85,15 +87,16 @@ public class UserDao extends AbstractDao<User, Long> {
         if (motto != null) {
             stmt.bindString(4, motto);
         }
+        stmt.bindLong(5, entity.getRightTimesForRemove());
  
         String lastestLearningSubject = entity.getLastestLearningSubject();
         if (lastestLearningSubject != null) {
-            stmt.bindString(5, lastestLearningSubject);
+            stmt.bindString(6, lastestLearningSubject);
         }
  
         String lastestLearningItem = entity.getLastestLearningItem();
         if (lastestLearningItem != null) {
-            stmt.bindString(6, lastestLearningItem);
+            stmt.bindString(7, lastestLearningItem);
         }
     }
 
@@ -120,15 +123,16 @@ public class UserDao extends AbstractDao<User, Long> {
         if (motto != null) {
             stmt.bindString(4, motto);
         }
+        stmt.bindLong(5, entity.getRightTimesForRemove());
  
         String lastestLearningSubject = entity.getLastestLearningSubject();
         if (lastestLearningSubject != null) {
-            stmt.bindString(5, lastestLearningSubject);
+            stmt.bindString(6, lastestLearningSubject);
         }
  
         String lastestLearningItem = entity.getLastestLearningItem();
         if (lastestLearningItem != null) {
-            stmt.bindString(6, lastestLearningItem);
+            stmt.bindString(7, lastestLearningItem);
         }
     }
 
@@ -150,8 +154,9 @@ public class UserDao extends AbstractDao<User, Long> {
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // name
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // userIconPath
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // motto
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // lastestLearningSubject
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5) // lastestLearningItem
+            cursor.getInt(offset + 4), // rightTimesForRemove
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // lastestLearningSubject
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6) // lastestLearningItem
         );
         return entity;
     }
@@ -162,8 +167,9 @@ public class UserDao extends AbstractDao<User, Long> {
         entity.setName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setUserIconPath(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setMotto(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setLastestLearningSubject(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setLastestLearningItem(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setRightTimesForRemove(cursor.getInt(offset + 4));
+        entity.setLastestLearningSubject(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setLastestLearningItem(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
      }
     
     @Override

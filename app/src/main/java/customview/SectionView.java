@@ -31,11 +31,11 @@ public class SectionView extends LinearLayout {
         ButterKnife.bind(this);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SectionView);
         int section = typedArray.getResourceId(R.styleable.SectionView_section, 0);
-        setSection(section);
+        setSectionIcon(section);
         typedArray.recycle();
     }
 
-    public void setSection(int section) {
+    public void setSectionIcon(int section) {
         if (section != 0) {
             ivSection.setImageResource(section);
         }

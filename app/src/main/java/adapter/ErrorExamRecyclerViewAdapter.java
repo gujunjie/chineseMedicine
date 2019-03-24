@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.abc.chinesemedicine.ErrorExaminationActivity;
 import com.example.abc.chinesemedicine.R;
 
 import java.util.List;
@@ -39,7 +40,9 @@ public class ErrorExamRecyclerViewAdapter extends RecyclerView.Adapter<ErrorExam
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                   Intent intent=new Intent(context, ErrorExaminationActivity.class);
+                   intent.putExtra("sortType",list.get(holder.getAdapterPosition()).getSortType());
+                   context.startActivity(intent);
             }
         });
         return holder;

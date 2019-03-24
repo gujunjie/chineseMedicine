@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.abc.chinesemedicine.ErrorExaminationActivity;
+import com.example.abc.chinesemedicine.ErrorExaminationListActivity;
 import com.example.abc.chinesemedicine.ExamListActivity;
 import com.example.abc.chinesemedicine.GlideImageLoader;
 import com.example.abc.chinesemedicine.MyApplication;
@@ -51,6 +51,8 @@ public class QuestionFragment extends Fragment {
 
     private LinearLayout ll_errorExam;
 
+    private LinearLayout ll_searchExam;
+
     private TextView tv_lastestLearningData;
 
     private String lastLearningSubject;
@@ -76,6 +78,7 @@ public class QuestionFragment extends Fragment {
         ll_myNote=(LinearLayout) view.findViewById(R.id.ll_myNote);
         ll_exam=(LinearLayout) view.findViewById(R.id.ll_exam);
         ll_errorExam=(LinearLayout) view.findViewById(R.id.ll_errorExam);
+        ll_searchExam=(LinearLayout) view.findViewById(R.id.ll_searchExam);
         tv_lastestLearningData=(TextView) view.findViewById(R.id.tv_lastestLearningData);
 
     }
@@ -249,7 +252,15 @@ public class QuestionFragment extends Fragment {
         ll_errorExam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getActivity(), ErrorExaminationActivity.class);
+                Intent intent=new Intent(getActivity(), ErrorExaminationListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ll_searchExam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(), SearchActivity.class);
                 startActivity(intent);
             }
         });

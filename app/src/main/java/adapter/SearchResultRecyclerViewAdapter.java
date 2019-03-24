@@ -11,11 +11,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.abc.chinesemedicine.ExamSearchResultActivity;
 import com.example.abc.chinesemedicine.MyApplication;
 import com.example.abc.chinesemedicine.R;
 import com.example.abc.chinesemedicine.greendao.AcuPointDao;
 import com.example.abc.chinesemedicine.greendao.ChineseMedicineDao;
 import com.example.abc.chinesemedicine.greendao.ChinesePatentDrugDao;
+import com.example.abc.chinesemedicine.greendao.ExaminationDao;
 import com.example.abc.chinesemedicine.greendao.MedicalBookDao;
 import com.example.abc.chinesemedicine.greendao.PrescriptionDao;
 
@@ -24,6 +26,7 @@ import java.util.List;
 import bean.AcuPoint;
 import bean.ChineseMedicine;
 import bean.ChinesePatentDrug;
+import bean.Examination;
 import bean.MedicalBook;
 import bean.Prescription;
 import bean.SearchResult;
@@ -101,6 +104,27 @@ public class SearchResultRecyclerViewAdapter extends RecyclerView.Adapter<Search
                         intent4.putExtra("object",prescriptionList.get(0));
                         context.startActivity(intent4);
                         break;
+                    case "中药学专业知识(一)":
+                        turnInExamSearchResultActivity(result);
+                        break;
+                    case "中药学专业知识(二)":
+                        turnInExamSearchResultActivity(result);
+                        break;
+                    case "中药学综合知识与技能":
+                        turnInExamSearchResultActivity(result);
+                        break;
+                    case "药学专业知识(一)":
+                        turnInExamSearchResultActivity(result);
+                        break;
+                    case "药学专业知识(二)":
+                        turnInExamSearchResultActivity(result);
+                        break;
+                    case "药学综合知识与技能":
+                        turnInExamSearchResultActivity(result);
+                        break;
+                    case "药事管理与法规":
+                        turnInExamSearchResultActivity(result);
+                        break;
                         default:
                             List<MedicalBook> bookList=MyApplication.getDaoSession().getMedicalBookDao().queryBuilder().where(MedicalBookDao.Properties.Name.eq(result.getName())).list();
                             Intent intent5=new Intent(context, ChineseMedicineDataActivity.class);
@@ -127,6 +151,15 @@ public class SearchResultRecyclerViewAdapter extends RecyclerView.Adapter<Search
     public int getItemCount() {
         return list.size();
     }
+
+    public void turnInExamSearchResultActivity(SearchResult result)
+    {
+        List<Examination> examinationList=MyApplication.getDaoSession().getExaminationDao().queryBuilder().where(ExaminationDao.Properties.Title.eq(result.getName())).list();
+        Intent intent=new Intent(context, ExamSearchResultActivity.class);
+        intent.putExtra("exam",examinationList.get(0));
+        context.startActivity(intent);
+    }
+
 
 
 }

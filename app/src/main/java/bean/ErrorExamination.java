@@ -1,15 +1,12 @@
 package bean;
 
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
 
 @Entity
-public class Examination implements Parcelable {
+public class ErrorExamination {
 
 
     @Id(autoincrement = true)
@@ -24,11 +21,16 @@ public class Examination implements Parcelable {
     private String sectionE;
     private String correctSection;
     private String answer;
-    private String imageUrl;
-    @Generated(hash = 248051520)
-    public Examination(Long id, String sortType, String title, String sectionA,
+    private Long examId;
+    private Long userId;
+
+    private int rightTimes;
+
+    @Generated(hash = 1449813913)
+    public ErrorExamination(Long id, String sortType, String title, String sectionA,
             String sectionB, String sectionC, String sectionD, String sectionE,
-            String correctSection, String answer, String imageUrl) {
+            String correctSection, String answer, Long examId, Long userId,
+            int rightTimes) {
         this.id = id;
         this.sortType = sortType;
         this.title = title;
@@ -39,42 +41,13 @@ public class Examination implements Parcelable {
         this.sectionE = sectionE;
         this.correctSection = correctSection;
         this.answer = answer;
-        this.imageUrl = imageUrl;
+        this.examId = examId;
+        this.userId = userId;
+        this.rightTimes = rightTimes;
     }
-    @Generated(hash = 1518633012)
-    public Examination() {
+    @Generated(hash = 2065370453)
+    public ErrorExamination() {
     }
-
-    protected Examination(Parcel in) {
-        if (in.readByte() == 0) {
-            id = null;
-        } else {
-            id = in.readLong();
-        }
-        sortType = in.readString();
-        title = in.readString();
-        sectionA = in.readString();
-        sectionB = in.readString();
-        sectionC = in.readString();
-        sectionD = in.readString();
-        sectionE = in.readString();
-        correctSection = in.readString();
-        answer = in.readString();
-        imageUrl = in.readString();
-    }
-
-    public static final Creator<Examination> CREATOR = new Creator<Examination>() {
-        @Override
-        public Examination createFromParcel(Parcel in) {
-            return new Examination(in);
-        }
-
-        @Override
-        public Examination[] newArray(int size) {
-            return new Examination[size];
-        }
-    };
-
     public Long getId() {
         return this.id;
     }
@@ -135,36 +108,24 @@ public class Examination implements Parcelable {
     public void setAnswer(String answer) {
         this.answer = answer;
     }
-    public String getImageUrl() {
-        return this.imageUrl;
+    public Long getUserId() {
+        return this.userId;
     }
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+    public Long getExamId() {
+        return this.examId;
+    }
+    public void setExamId(Long examId) {
+        this.examId = examId;
+    }
+    public int getRightTimes() {
+        return this.rightTimes;
+    }
+    public void setRightTimes(int rightTimes) {
+        this.rightTimes = rightTimes;
     }
 
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        if (id == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeLong(id);
-        }
-        dest.writeString(sortType);
-        dest.writeString(title);
-        dest.writeString(sectionA);
-        dest.writeString(sectionB);
-        dest.writeString(sectionC);
-        dest.writeString(sectionD);
-        dest.writeString(sectionE);
-        dest.writeString(correctSection);
-        dest.writeString(answer);
-        dest.writeString(imageUrl);
-    }
 }

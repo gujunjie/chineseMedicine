@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -86,7 +87,12 @@ public class SearchActivity extends BaseActivity<SearchContract.SearchView, Sear
                     DataBaseUtil.saveHistorySearch(input);
                     turnInSearchResultActivity(input);
                 } else {
-                    Toast.makeText(SearchActivity.this, "搜索内容不能为空", Toast.LENGTH_SHORT).show();
+                    Snackbar.make(autoCompleteTextView,"搜索内容不能为空",Snackbar.LENGTH_SHORT).setAction("好的", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    }).show();
                 }
                 return true;
             }

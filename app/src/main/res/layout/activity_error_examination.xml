@@ -1,83 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
-    android:orientation="vertical"
+    android:id="@+id/slidingUpPanel"
+    android:gravity="bottom"
+    app:umanoPanelHeight="40dp"
+    app:umanoShadowHeight="0dp"
     tools:context=".ErrorExaminationActivity">
 
-    <customview.MyTitleBar
-        android:id="@+id/errorExam_titleBar"
-        app:title="我的错题"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-
-
-    <RelativeLayout
-        android:background="@color/colorAccent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="15dp"
-            android:id="@+id/tv_errorNumber"
-            android:layout_centerInParent="true"
-            android:textColor="@color/colorWhite"
-            android:text="0"
-            android:textSize="50sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-
-        <TextView
-            android:layout_toStartOf="@+id/tv_errorNumber"
-            android:layout_alignBottom="@+id/tv_errorNumber"
-            android:textColor="@color/colorWhite"
-            android:text="共"
-            android:textSize="15sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_toEndOf="@+id/tv_errorNumber"
-            android:layout_alignBottom="@+id/tv_errorNumber"
-            android:textColor="@color/colorWhite"
-            android:text="题"
-            android:textSize="15sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </RelativeLayout>
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-      <TextView
-          android:layout_margin="10dp"
-          android:textSize="18sp"
-          android:textColor="#000000"
-          android:text="按章节练习"
-          android:layout_weight="1"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content" />
+        <customview.MyTitleBarWhite
+            android:id="@+id/errorExam_titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-        <TextView
-            android:layout_margin="10dp"
-            android:text="移除"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_errorExam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+
+
 
     </LinearLayout>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_errorExamination"
+
+    <LinearLayout
+
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="400dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:background="#a9a9a9"
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+
+            <Button
+                android:layout_above="@+id/line"
+                android:background="@mipmap/collection_normal"
+                android:id="@+id/btn_collect"
+                android:layout_margin="10dp"
+                android:layout_centerVertical="true"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+            <TextView
+                android:id="@+id/tv_collectionText"
+                android:layout_marginTop="20dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/btn_collect"
+                android:text="收藏"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_centerVertical="true"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/correct"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+
+                <TextView
+                    android:id="@+id/tv_correctNumber"
+                    android:layout_marginStart="10dp"
+                    android:text="0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/error"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+
+                <TextView
+                    android:id="@+id/tv_errorNumber"
+                    android:layout_marginStart="10dp"
+                    android:text="0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
 
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/tv_allNumber"
+                android:layout_marginEnd="10dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:text="/245"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textColor="#000000"
+                android:layout_marginStart="5dp"
+                android:id="@+id/tv_currentNumber"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/tv_allNumber"
+                android:text="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/tv_currentNumber"
+                android:src="@mipmap/all"
+                android:layout_width="15dp"
+                android:layout_height="15dp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:textColor="#000000"
+            android:padding="8dp"
+            android:background="@color/colorBackground"
+            android:text="所有内容"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
+
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                app:max_select="1"
+                android:id="@+id/tfl_allItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </ScrollView>
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>

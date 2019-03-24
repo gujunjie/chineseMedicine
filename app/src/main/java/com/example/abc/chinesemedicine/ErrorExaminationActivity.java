@@ -1,28 +1,69 @@
 package com.example.abc.chinesemedicine;
 
+import android.database.DatabaseUtils;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.TextView;
+
+import com.example.abc.chinesemedicine.greendao.ErrorExaminationDao;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
+import com.zhy.view.flowlayout.FlowLayout;
+import com.zhy.view.flowlayout.TagAdapter;
+import com.zhy.view.flowlayout.TagFlowLayout;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import adapter.ErrorExamRecyclerViewAdapter;
-import bean.ErrorExamSyllabus;
+import adapter.MyFragmentPageAdapter;
+import bean.ErrorExamination;
+import bean.Examination;
+import bean.MessageEvent;
+import bean.User;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import customview.MyTitleBar;
+import customview.MyTitleBarWhite;
+import util.DataBaseUtil;
+import view.ErrorExamFragment;
+import view.ExamActivity;
+import view.ExamFragment;
 
 public class ErrorExaminationActivity extends AppCompatActivity {
 
+    @BindView(R.id.errorExam_titleBar)
+    MyTitleBarWhite errorExamTitleBar;
+    @BindView(R.id.vp_errorExam)
+    ViewPager vpErrorExam;
+    @BindView(R.id.tv_correctNumber)
+    TextView tvCorrectNumber;
     @BindView(R.id.tv_errorNumber)
     TextView tvErrorNumber;
-    @BindView(R.id.rv_errorExamination)
-    RecyclerView rvErrorExamination;
-    @BindView(R.id.errorExam_titleBar)
-    MyTitleBar errorExamTitleBar;
+    @BindView(R.id.tv_allNumber)
+    TextView tvAllNumber;
+    @BindView(R.id.tv_currentNumber)
+    TextView tvCurrentNumber;
+    @BindView(R.id.tfl_allItem)
+    TagFlowLayout tflAllItem;
+    @BindView(R.id.slidingUpPanel)
+    SlidingUpPanelLayout slidingUpPanel;
+
+    private String sortType;
+
+    private int correntNumber = 0;
+
+    private int errorNumber = 0;
+
+    private int currentPosition = 0;
+
+    private List<ErrorExamination> errorExaminationList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,63 +71,163 @@ public class ErrorExaminationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_error_examination);
         ButterKnife.bind(this);
 
-        errorExamTitleBar.getActivityForFinish(this);
-
         initUI();
+
+
     }
 
     public void initUI() {
+        errorExamTitleBar.getActivityForFinish(this);
+        sortType = getIntent().getStringExtra("sortType");
+        errorExamTitleBar.setTitle(sortType);
 
-        List<ErrorExamSyllabus> list = new ArrayList<>();
-        ErrorExamSyllabus syllabus1 = new ErrorExamSyllabus();
-        syllabus1.setSortType("中药学专业知识(一)");
-        syllabus1.setIcon(R.drawable.number1);
-        syllabus1.setErrorNumber(0);
+        User user= DataBaseUtil.getUser(this);
+
+        ErrorExaminationDao dao=MyApplication.getDaoSession().getErrorExaminationDao();
+
+        errorExaminationList=dao.queryBuilder().where(ErrorExaminationDao.Properties.UserId.eq(user.getId())).where(ErrorExaminationDao.Properties.SortType.eq(sortType)).list();
+
+        tvAllNumber.setText("/" + errorExaminationList.size());
+
+        List<Fragment> fragmentList = new ArrayList<>();
+        for (int i = 0; i < errorExaminationList.size(); i++) {
+            ErrorExamFragment fragment = new ErrorExamFragment();
+            fragment.setData(errorExaminationList.get(i));
+            fragmentList.add(fragment);
+        }
+
+        //优先将试题的数据传送到fragment类中用于初始化碎片的数据以及事件侦听，避免空指针异常
+
+        vpErrorExam.setAdapter(new MyFragmentPageAdapter(getSupportFragmentManager(), fragmentList));
+
+        vpErrorExam.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                currentPosition = position;
+                tvCurrentNumber.setText(position + 1 + "");
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        initAllItemFlowLayout(errorExaminationList.size());
+
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void updateCorrectOrErrorNumber(MessageEvent event) {
+        if (event.getIsCorrect()) {
+            correntNumber++;
+            tvCorrectNumber.setText(correntNumber + "");
+            updateRightTimes();//跟新做对次数
+            if(currentPosition==errorExaminationList.size()-1)
+            {
+
+            }else
+            {
 
 
-        ErrorExamSyllabus syllabus2 = new ErrorExamSyllabus();
-        syllabus2.setSortType("中药学专业知识(二)");
-        syllabus2.setIcon(R.drawable.number2);
-        syllabus2.setErrorNumber(0);
+                //用户答对且当前不为最后一题，延时一秒自动跳转下一题
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        vpErrorExam.setCurrentItem(currentPosition+1,true);
+                    }
+                },500);
 
-        ErrorExamSyllabus syllabus3 = new ErrorExamSyllabus();
-        syllabus3.setSortType("中药学综合知识与技能");
-        syllabus3.setIcon(R.drawable.number3);
-        syllabus3.setErrorNumber(0);
 
-        ErrorExamSyllabus syllabus4 = new ErrorExamSyllabus();
-        syllabus4.setSortType("药学专业知识(一)");
-        syllabus4.setIcon(R.drawable.number4);
-        syllabus4.setErrorNumber(0);
 
-        ErrorExamSyllabus syllabus5 = new ErrorExamSyllabus();
-        syllabus5.setSortType("药学专业知识(二)");
-        syllabus5.setIcon(R.drawable.number5);
-        syllabus5.setErrorNumber(0);
+            }
 
-        ErrorExamSyllabus syllabus6 = new ErrorExamSyllabus();
-        syllabus6.setSortType("药学综合知识与技能");
-        syllabus6.setIcon(R.drawable.number6);
-        syllabus6.setErrorNumber(0);
+        } else {
+            errorNumber++;
+            tvErrorNumber.setText(errorNumber + "");
 
-        ErrorExamSyllabus syllabus7 = new ErrorExamSyllabus();
-        syllabus7.setSortType("药事管理与法规");
-        syllabus7.setIcon(R.drawable.number7);
-        syllabus7.setErrorNumber(0);
+        }
+    }
 
-        list.add(syllabus1);
-        list.add(syllabus2);
-        list.add(syllabus3);
-        list.add(syllabus4);
-        list.add(syllabus5);
-        list.add(syllabus6);
-        list.add(syllabus7);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        EventBus.getDefault().register(this);
+    }
 
-        ErrorExamRecyclerViewAdapter adapter = new ErrorExamRecyclerViewAdapter(list, this);
+    @Override
+    protected void onPause() {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
+    }
 
-        rvErrorExamination.setLayoutManager(new LinearLayoutManager(this));
-        rvErrorExamination.setAdapter(adapter);
+    @SuppressWarnings("unchecked")
+    public void initAllItemFlowLayout(int itemNumber) {
+
+        final List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < itemNumber; i++) {
+            list.add(i + 1);
+        }
+
+
+        tflAllItem.setAdapter(new TagAdapter(list) {
+            @Override
+            public View getView(FlowLayout parent, int position, Object o) {
+                TextView tag = (TextView) LayoutInflater.from(ErrorExaminationActivity.this).inflate(R.layout.allitemtag_layout, tflAllItem, false);
+                tag.setText(o.toString());
+                return tag;
+            }
+        });
+
+        tflAllItem.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
+            @Override
+            public boolean onTagClick(View view, int position, FlowLayout parent) {
+                int tag = list.get(position);
+                vpErrorExam.setCurrentItem(tag - 1, true);
+                slidingUpPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                return true;
+            }
+        });
+
+
+    }//初始化上拉栏的数字流式布局
+
+    public void updateRightTimes()
+    {
+
+        ErrorExaminationDao errorExaminationDao=MyApplication.getDaoSession().getErrorExaminationDao();
+
+        ErrorExamination errorExamination=errorExaminationList.get(currentPosition);
+
+        int rightTimes=errorExamination.getRightTimes();
+
+        rightTimes++;//当前错题做对的次数
+
+        User user=DataBaseUtil.getUser(this);
+
+        int rightTimesForRemoveSetting=user.getRightTimesForRemove();//用户设置的错对删除次数
+
+
+        if(rightTimesForRemoveSetting!=-1)
+        {
+            if(rightTimes>=rightTimesForRemoveSetting)//删除
+            {
+                errorExaminationDao.delete(errorExamination);
+            }else
+            {
+                errorExamination.setRightTimes(rightTimes);
+                errorExaminationDao.update(errorExamination);
+            }//更新本题做对次数
+        }
+
 
 
     }
+
 }
