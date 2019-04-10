@@ -13,17 +13,17 @@ import butterknife.OnClick;
 
 public class EnlargePhotoActivity extends AppCompatActivity {
 
-    @BindView(R.id.photoView)
-    PhotoView photoView;
+        @BindView(R.id.photoView)
+        PhotoView photoView;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enlarge_photo);
-        ButterKnife.bind(this);
-        Glide.with(this).load(getIntent().getStringExtra("imageUrl")).crossFade(500).into(photoView);
-        ImmersionBar.with(this).init();
-    }
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_enlarge_photo);
+            ButterKnife.bind(this);
+            Glide.with(this).load(getIntent().getStringExtra("imageUrl")).crossFade(500).into(photoView);
+            ImmersionBar.with(this).init();
+        }
 
     @OnClick(R.id.photoView)
     public void onViewClicked() {

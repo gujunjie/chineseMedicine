@@ -12,6 +12,7 @@ import com.example.abc.chinesemedicine.greendao.DaoSession;
 import com.example.abc.chinesemedicine.greendao.LearningProgressDao;
 import com.example.abc.chinesemedicine.greendao.UserDao;
 import com.example.abc.chinesemedicine.greendao.ErrorExaminationDao;
+import com.example.abc.chinesemedicine.greendao.CollectionDao;
 
 @Entity
 public class User {
@@ -37,6 +38,9 @@ public class User {
 
     @ToMany(referencedJoinProperty = "userId")
     private List<ErrorExamination> errorExaminationList;//错题
+
+    @ToMany(referencedJoinProperty = "userId")
+    private List<Collection> collectionList;//收藏
 
     /** Used to resolve relations */
     @Generated(hash = 2040040024)
@@ -240,6 +244,36 @@ public class User {
 
     public void setRightTimesForRemove(int rightTimesForRemove) {
         this.rightTimesForRemove = rightTimesForRemove;
+    }
+
+
+    /**
+     * To-many relationship, resolved on first access (and after reset).
+     * Changes to to-many relations are not persisted, make changes to the target entity.
+     */
+    @Generated(hash = 1550220311)
+    public List<Collection> getCollectionList() {
+        if (collectionList == null) {
+            final DaoSession daoSession = this.daoSession;
+            if (daoSession == null) {
+                throw new DaoException("Entity is detached from DAO context");
+            }
+            CollectionDao targetDao = daoSession.getCollectionDao();
+            List<Collection> collectionListNew = targetDao._queryUser_CollectionList(id);
+            synchronized (this) {
+                if (collectionList == null) {
+                    collectionList = collectionListNew;
+                }
+            }
+        }
+        return collectionList;
+    }
+
+
+    /** Resets a to-many relationship, making the next get call to query for a fresh result. */
+    @Generated(hash = 1259317886)
+    public synchronized void resetCollectionList() {
+        collectionList = null;
     }
 
 

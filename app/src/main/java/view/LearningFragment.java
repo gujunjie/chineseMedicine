@@ -51,7 +51,6 @@ public class LearningFragment extends Fragment implements View.OnClickListener {
     {
         Glide.with(getActivity()).load(imageUrl).placeholder(R.color.colorPlaceHolder).into(iv_learningPicture);
         tv_learningText.setText(data);
-
         iv_learningPicture.setOnClickListener(this);//给图片加入时间侦听,放大事件
     }
 

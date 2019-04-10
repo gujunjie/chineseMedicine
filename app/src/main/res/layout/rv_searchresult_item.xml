@@ -15,7 +15,6 @@
         <ImageView
             android:scaleType="centerCrop"
             android:id="@+id/iv_image"
-            android:src="@mipmap/nothing"
             android:layout_width="match_parent"
             android:layout_height="120dp" />
 

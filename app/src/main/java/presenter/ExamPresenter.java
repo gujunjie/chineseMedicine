@@ -13,7 +13,7 @@ import contract.ExamContract;
 import model.ExamModel;
 
 
-public class ExamPresenter extends BasePresenter<ExamContract.ExamView> implements ExamContract.ExamPresenter,ExamContract.onGetExaminationListListener {
+public class ExamPresenter extends BasePresenter<ExamContract.ExamView> implements ExamContract.ExamPresenter,ExamContract.onGetExaminationListListener,ExamContract.onSaveCollectionListener {
 
     private ExamContract.ExamView examView;
 
@@ -37,7 +37,19 @@ public class ExamPresenter extends BasePresenter<ExamContract.ExamView> implemen
     }
 
     @Override
+    public void saveCollection(Examination examination, Context context) {
+        examModel.saveCollection(examination,context,this);
+    }
+
+    @Override
     public void onGetExaminationListSuccess(List<Examination> list) {
         examView.showExamination(list);
     }
+
+    @Override
+    public void onsaveCollectionSuccess(boolean isSaveBefore) {
+        examView.showSaveCollectionSuccessOrFailure(isSaveBefore);
+    }
+
+
 }

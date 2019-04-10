@@ -39,7 +39,6 @@ public class MoreActivity extends AppCompatActivity {
 
     public void initUI()
     {
-        ImmersionBar.with(this).fitsSystemWindows(true).statusBarColor(R.color.colorAccent).init();
 
         MoreFragment healthFragment=new MoreFragment();
         MoreFragment medicineDietFragment=new MoreFragment();

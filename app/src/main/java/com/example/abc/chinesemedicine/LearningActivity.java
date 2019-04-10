@@ -2,6 +2,7 @@ package com.example.abc.chinesemedicine;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
@@ -11,9 +12,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.abc.chinesemedicine.greendao.AcuPointDao;
+import com.example.abc.chinesemedicine.greendao.ChineseMedicineDao;
+import com.example.abc.chinesemedicine.greendao.ChinesePatentDrugDao;
+import com.example.abc.chinesemedicine.greendao.CollectionDao;
 import com.example.abc.chinesemedicine.greendao.LearningProgressDao;
+import com.example.abc.chinesemedicine.greendao.MedicalBookDao;
 import com.example.abc.chinesemedicine.greendao.NoteDao;
+import com.example.abc.chinesemedicine.greendao.PrescriptionDao;
 import com.example.abc.chinesemedicine.greendao.UserDao;
 import com.gyf.barlibrary.ImmersionBar;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
@@ -31,11 +39,13 @@ import adapter.MyFragmentPageAdapter;
 import bean.AcuPoint;
 import bean.ChineseMedicine;
 import bean.ChinesePatentDrug;
+import bean.Collection;
 import bean.LearningProgress;
 import bean.MedicalBook;
 import bean.MessageEvent;
 import bean.Note;
 import bean.Prescription;
+import bean.SearchResult;
 import bean.User;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -75,12 +85,12 @@ public class LearningActivity extends AppCompatActivity {
     SlidingUpPanelLayout slidingUpPanel;
 
 
-
     private String sortType;//学习分类
 
+    private boolean isSaveBefore = false;
 
+    private Long id;//当前章节的id
 
-    private boolean isCollected = false;//是否收藏
 
     private List<ChineseMedicine> medicineList;
 
@@ -96,14 +106,13 @@ public class LearningActivity extends AppCompatActivity {
 
     private float currentLearningPercent = 0;//当前学习的百分比
 
-    private String noteText="";//笔记内容
+    private String noteText = "";//笔记内容
 
-    private String noteTitle="";//笔记标题
+    private String noteTitle = "";//笔记标题
 
     private EditText et_noteText;//笔记文字输入控件
 
     private EditText et_NoteTitle;//笔记标题输入控件
-
 
 
     @Override
@@ -156,7 +165,6 @@ public class LearningActivity extends AppCompatActivity {
 
         sortType = getIntent().getStringExtra("sortType");
 
-
         switch (sortType) {
             case "中药学":
                 handleChineseMedicine();
@@ -176,21 +184,84 @@ public class LearningActivity extends AppCompatActivity {
                 break;
             case "经典医书":
                 handleMedicalBook();
-
                 break;
+            case "我的收藏":
+              handleCollection();
+                break;
+
+
         }
 
 
     }
 
+    public void handleCollection()
+    {
+
+        final List<SearchResult> value=getIntent().getParcelableArrayListExtra("learningCollectionList");
+
+        int position=getIntent().getIntExtra("position",0);
+        tvTitle.setText(value.get(position).getName());
+
+        List<Fragment> list = new ArrayList<>();
+
+        for (int i = 0; i < value.size(); i++) {
+            LearningFragment fragment = new LearningFragment();
+            fragment.setData(value.get(i).getImageUrl(), value.get(i).getData());
+            list.add(fragment);
+        }
+
+        vpLearning.setAdapter(new MyFragmentPageAdapter(getSupportFragmentManager(), list));
+        tvAllNumber.setText("/" + value.size());
+        currentLearningPercent = (float) (position + 1) / value.size() * 100;
+        DecimalFormat df = new DecimalFormat("0.0");//格式化数值，返回String类型,保留一位小数
+        tvProgress.setText("进度：" + df.format(currentLearningPercent) + " %");
+        tvCurrentNumber.setText(position+1+"");
+        initAllItemFlowLayout(value.size());
+
+        vpLearning.setCurrentItem(position);
+
+        vpLearning.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                tvTitle.setText(value.get(position).getName());
+                tvCurrentNumber.setText(position + 1 + "");
+                currentLearningPercent = (float) (position + 1) / value.size() * 100;
+                DecimalFormat df = new DecimalFormat("0.0");//格式化数值，返回String类型,保留一位小数
+                tvProgress.setText("进度：" + df.format(currentLearningPercent) + " %");
+                currentLearningPosition = position;
+                btnCollect.setBackgroundResource(R.mipmap.collection_normal);
+                tvCollectionText.setText("收藏");
+                if (noteText.equals("")) {
+                    noteTitle="";
+                } else {
+                    showTipSaveLastItemNoteDialog();
+                }
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
 
     public void handleChineseMedicine() {
 
         Observable.create(new ObservableOnSubscribe<List<ChineseMedicine>>() {
             @Override
             public void subscribe(ObservableEmitter<List<ChineseMedicine>> e) {
-                List<ChineseMedicine> list = MyApplication.getDaoSession().getChineseMedicineDao().loadAll();
-                e.onNext(list);
+
+                    List<ChineseMedicine> list = MyApplication.getDaoSession().getChineseMedicineDao().loadAll();
+                    e.onNext(list);
+
+
             }
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -217,7 +288,9 @@ public class LearningActivity extends AppCompatActivity {
 
                         vpLearning.setAdapter(new MyFragmentPageAdapter(getSupportFragmentManager(), list));
                         tvAllNumber.setText("/" + value.size());
+
                         loadLastLearningData();
+
                         initAllItemFlowLayout(value.size());
                     }
 
@@ -246,11 +319,11 @@ public class LearningActivity extends AppCompatActivity {
                 DecimalFormat df = new DecimalFormat("0.0");//格式化数值，返回String类型,保留一位小数
                 tvProgress.setText("进度：" + df.format(currentLearningPercent) + " %");
                 currentLearningPosition = position;
-                if(noteText.equals(""))
-                {
-
-                }else
-                {
+                btnCollect.setBackgroundResource(R.mipmap.collection_normal);
+                tvCollectionText.setText("收藏");
+                if (noteText.equals("")) {
+                    noteTitle="";
+                } else {
                     showTipSaveLastItemNoteDialog();
                 }
 
@@ -268,8 +341,11 @@ public class LearningActivity extends AppCompatActivity {
         Observable.create(new ObservableOnSubscribe<List<Prescription>>() {
             @Override
             public void subscribe(ObservableEmitter<List<Prescription>> e) {
-                List<Prescription> list = MyApplication.getDaoSession().getPrescriptionDao().loadAll();
-                e.onNext(list);
+
+                    List<Prescription> list = MyApplication.getDaoSession().getPrescriptionDao().loadAll();
+                    e.onNext(list);
+
+
             }
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -296,7 +372,9 @@ public class LearningActivity extends AppCompatActivity {
 
                         vpLearning.setAdapter(new MyFragmentPageAdapter(getSupportFragmentManager(), list));
                         tvAllNumber.setText("/" + value.size());
+
                         loadLastLearningData();
+
                         initAllItemFlowLayout(value.size());
                     }
 
@@ -325,11 +403,11 @@ public class LearningActivity extends AppCompatActivity {
                 DecimalFormat df = new DecimalFormat("0.0");//格式化数值，返回String类型,保留一位小数
                 tvProgress.setText("进度：" + df.format(currentLearningPercent) + " %");
                 currentLearningPosition = position;
-                if(noteText.equals(""))
-                {
-
-                }else
-                {
+                btnCollect.setBackgroundResource(R.mipmap.collection_normal);
+                tvCollectionText.setText("收藏");
+                if (noteText.equals("")) {
+                    noteTitle="";
+                } else {
                     showTipSaveLastItemNoteDialog();
                 }
 
@@ -346,8 +424,11 @@ public class LearningActivity extends AppCompatActivity {
         Observable.create(new ObservableOnSubscribe<List<ChinesePatentDrug>>() {
             @Override
             public void subscribe(ObservableEmitter<List<ChinesePatentDrug>> e) {
-                List<ChinesePatentDrug> list = MyApplication.getDaoSession().getChinesePatentDrugDao().loadAll();
-                e.onNext(list);
+
+                    List<ChinesePatentDrug> list = MyApplication.getDaoSession().getChinesePatentDrugDao().loadAll();
+                    e.onNext(list);
+
+
             }
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -374,7 +455,9 @@ public class LearningActivity extends AppCompatActivity {
 
                         vpLearning.setAdapter(new MyFragmentPageAdapter(getSupportFragmentManager(), list));
                         tvAllNumber.setText("/" + value.size());
+
                         loadLastLearningData();
+
                         initAllItemFlowLayout(value.size());
                     }
 
@@ -403,11 +486,11 @@ public class LearningActivity extends AppCompatActivity {
                 DecimalFormat df = new DecimalFormat("0.0");//格式化数值，返回String类型,保留一位小数
                 tvProgress.setText("进度：" + df.format(currentLearningPercent) + " %");
                 currentLearningPosition = position;
-                if(noteText.equals(""))
-                {
-
-                }else
-                {
+                btnCollect.setBackgroundResource(R.mipmap.collection_normal);
+                tvCollectionText.setText("收藏");
+                if (noteText.equals("")) {
+                    noteTitle="";
+                } else {
                     showTipSaveLastItemNoteDialog();
                 }
 
@@ -424,8 +507,11 @@ public class LearningActivity extends AppCompatActivity {
         Observable.create(new ObservableOnSubscribe<List<AcuPoint>>() {
             @Override
             public void subscribe(ObservableEmitter<List<AcuPoint>> e) {
-                List<AcuPoint> list = MyApplication.getDaoSession().getAcuPointDao().loadAll();
-                e.onNext(list);
+
+                    List<AcuPoint> list = MyApplication.getDaoSession().getAcuPointDao().loadAll();
+                    e.onNext(list);
+
+
             }
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -452,7 +538,9 @@ public class LearningActivity extends AppCompatActivity {
 
                         vpLearning.setAdapter(new MyFragmentPageAdapter(getSupportFragmentManager(), list));
                         tvAllNumber.setText("/" + value.size());
+
                         loadLastLearningData();
+
                         initAllItemFlowLayout(value.size());
                     }
 
@@ -481,12 +569,11 @@ public class LearningActivity extends AppCompatActivity {
                 DecimalFormat df = new DecimalFormat("0.0");//格式化数值，返回String类型,保留一位小数
                 tvProgress.setText("进度：" + df.format(currentLearningPercent) + " %");
                 currentLearningPosition = position;
-
-                if(noteText.equals(""))
-                {
-
-                }else
-                {
+                btnCollect.setBackgroundResource(R.mipmap.collection_normal);
+                tvCollectionText.setText("收藏");
+                if (noteText.equals("")) {
+                    noteTitle="";
+                } else {
                     showTipSaveLastItemNoteDialog();
                 }
             }
@@ -503,10 +590,11 @@ public class LearningActivity extends AppCompatActivity {
             @Override
             public void subscribe(ObservableEmitter<List<MedicalBook>> e) {
 
-                List<MedicalBook> list = MyApplication.getDaoSession().getMedicalBookDao().loadAll();
+                    List<MedicalBook> list = MyApplication.getDaoSession().getMedicalBookDao().loadAll();
+                    e.onNext(list);
 
 
-                e.onNext(list);
+
             }
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -533,7 +621,9 @@ public class LearningActivity extends AppCompatActivity {
 
                         vpLearning.setAdapter(new MyFragmentPageAdapter(getSupportFragmentManager(), list));
                         tvAllNumber.setText("/" + value.size());
+
                         loadLastLearningData();
+
                         initAllItemFlowLayout(value.size());
                     }
 
@@ -562,11 +652,11 @@ public class LearningActivity extends AppCompatActivity {
                 DecimalFormat df = new DecimalFormat("0.0");//格式化数值，返回String类型,保留一位小数
                 tvProgress.setText("进度：" + df.format(currentLearningPercent) + " %");
                 currentLearningPosition = position;
-                if(noteText.equals(""))
-                {
-
-                }else
-                {
+                btnCollect.setBackgroundResource(R.mipmap.collection_normal);
+                tvCollectionText.setText("收藏");
+                if (noteText.equals("")) {
+                    noteTitle="";
+                } else {
                     showTipSaveLastItemNoteDialog();
                 }
 
@@ -624,13 +714,14 @@ public class LearningActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        saveLastLearningData();//保存数据
+        if(!sortType.equals("我的收藏"))
+        {
+            saveLastLearningData();//保存数据
+        }
 
-        if(noteText.equals(""))
-        {
+        if (noteText.equals("")) {
             finish();
-        }else
-        {
+        } else {
             showTipSaveNoteDialog();
         }
 
@@ -644,17 +735,18 @@ public class LearningActivity extends AppCompatActivity {
         EventBus.getDefault().unregister(this);
     }
 
-    @OnClick({R.id.btn_back, R.id.btn_ChangeTextSize, R.id.btn_takeNote, R.id.btn_collect, R.id.tv_collectionText, R.id.rl_titleBar})
+    @OnClick({R.id.btn_back, R.id.btn_ChangeTextSize, R.id.btn_takeNote, R.id.btn_collect, R.id.tv_collectionText, R.id.rl_titleBar,R.id.ll_collect})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_back:
-                saveLastLearningData();//保存数据
+                if(!sortType.equals("我的收藏"))
+                {
+                    saveLastLearningData();//保存数据
+                }
 
-                if(noteText.equals(""))
-                {
+                if (noteText.equals("")) {
                     finish();
-                }else
-                {
+                } else {
                     showTipSaveNoteDialog();
                 }
                 break;
@@ -667,27 +759,127 @@ public class LearningActivity extends AppCompatActivity {
 
                 break;
             case R.id.btn_collect:
-                if (!isCollected) {
-                    isCollected = true;
-                    btnCollect.setBackgroundResource(R.mipmap.collection_pressed);
-                    tvCollectionText.setText("已收藏");
-                } else {
-                    isCollected = false;
-                    btnCollect.setBackgroundResource(R.mipmap.collection_normal);
-                    tvCollectionText.setText("收藏");
+                if(sortType.equals("我的收藏"))
+                {
+                    Snackbar.make(tvAllNumber, "您已经收藏过本章节", Snackbar.LENGTH_SHORT).setAction("知道了", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    }).show();
+                }else
+                {
+                    Observable.create(new ObservableOnSubscribe<Boolean>() {
+                        @Override
+                        public void subscribe(ObservableEmitter<Boolean> e) {
+                            saveCollection();
+                            e.onNext(isSaveBefore);
+                        }
+                    }).subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(new Observer<Boolean>() {
+                                @Override
+                                public void onSubscribe(Disposable d) {
+
+                                }
+
+                                @Override
+                                public void onNext(Boolean value) {
+                                    //isSaveBefore true之前存过  false没有
+                                    if (value) {
+                                        Snackbar.make(tvAllNumber, "您已经收藏过本章节", Snackbar.LENGTH_SHORT).setAction("知道了", new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+
+                                            }
+                                        }).show();
+                                        isSaveBefore=false;
+                                    } else {
+                                        btnCollect.setBackgroundResource(R.mipmap.collection_pressed);
+                                        tvCollectionText.setText("已收藏");
+                                        Snackbar.make(tvAllNumber, "收藏成功！", Snackbar.LENGTH_SHORT).setAction("好的", new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+
+                                            }
+                                        }).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onError(Throwable e) {
+
+                                }
+
+                                @Override
+                                public void onComplete() {
+
+                                }
+                            });
                 }
+
                 break;
             case R.id.tv_collectionText:
-                if (!isCollected) {
-                    isCollected = true;
-                    btnCollect.setBackgroundResource(R.mipmap.collection_pressed);
-                    tvCollectionText.setText("已收藏");
-                } else {
-                    isCollected = false;
-                    btnCollect.setBackgroundResource(R.mipmap.collection_normal);
-                    tvCollectionText.setText("收藏");
+                if(sortType.equals("我的收藏"))
+                {
+                    Snackbar.make(tvAllNumber, "您已经收藏过本章节", Snackbar.LENGTH_SHORT).setAction("知道了", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    }).show();
+                }else
+                {
+                    Observable.create(new ObservableOnSubscribe<Boolean>() {
+                        @Override
+                        public void subscribe(ObservableEmitter<Boolean> e) {
+                            saveCollection();
+                            e.onNext(isSaveBefore);
+                        }
+                    }).subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(new Observer<Boolean>() {
+                                @Override
+                                public void onSubscribe(Disposable d) {
+
+                                }
+
+                                @Override
+                                public void onNext(Boolean value) {
+                                    //isSaveBefore true之前存过  false没有
+                                    if (value) {
+                                        Snackbar.make(tvAllNumber, "您已经收藏过本章节", Snackbar.LENGTH_SHORT).setAction("知道了", new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+
+                                            }
+                                        }).show();
+                                        isSaveBefore=false;
+                                    } else {
+                                        btnCollect.setBackgroundResource(R.mipmap.collection_pressed);
+                                        tvCollectionText.setText("已收藏");
+                                        Snackbar.make(tvAllNumber, "收藏成功！", Snackbar.LENGTH_SHORT).setAction("好的", new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+
+                                            }
+                                        }).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onError(Throwable e) {
+
+                                }
+
+                                @Override
+                                public void onComplete() {
+
+                                }
+                            });
                 }
                 break;
+
             case R.id.rl_titleBar:
                 slidingUpPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                 break;
@@ -719,11 +911,9 @@ public class LearningActivity extends AppCompatActivity {
         et_noteText.setText(noteText);//加载草稿
 
         et_NoteTitle = (EditText) dialogView.findViewById(R.id.et_NoteTitle);
-        if(noteTitle.equals(""))
-        {
+        if (noteTitle.equals("")) {
             et_NoteTitle.setText(tvTitle.getText().toString());
-        }else
-        {
+        } else {
             et_NoteTitle.setText(noteTitle);
         }
 
@@ -731,8 +921,8 @@ public class LearningActivity extends AppCompatActivity {
         customizeDialog.setPositiveButton("保存", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                noteText=et_noteText.getText().toString().trim();
-                noteTitle=et_NoteTitle.getText().toString().trim();
+                noteText = et_noteText.getText().toString().trim();
+                noteTitle = et_NoteTitle.getText().toString().trim();
                 if (noteText.equals("")) {
 
                     new SweetAlertDialog(LearningActivity.this, SweetAlertDialog.ERROR_TYPE)
@@ -740,7 +930,7 @@ public class LearningActivity extends AppCompatActivity {
                             .setContentText("写点笔记再保存吧！")
                             .setConfirmText("好的")
                             .show();
-                } else if(noteTitle.equals("")){
+                } else if (noteTitle.equals("")) {
 
                     new SweetAlertDialog(LearningActivity.this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("标题不可为空哦")
@@ -749,8 +939,7 @@ public class LearningActivity extends AppCompatActivity {
                             .show();
 
 
-                }else
-                {
+                } else {
                     saveNote();
 
                     new SweetAlertDialog(LearningActivity.this, SweetAlertDialog.SUCCESS_TYPE)
@@ -768,7 +957,7 @@ public class LearningActivity extends AppCompatActivity {
 
                 noteText = et_noteText.getText().toString().trim();//保存草稿
 
-                noteTitle=et_NoteTitle.getText().toString().trim();
+                noteTitle = et_NoteTitle.getText().toString().trim();
 
 
             }
@@ -777,15 +966,14 @@ public class LearningActivity extends AppCompatActivity {
         customizeDialog.show();
     }
 
-    public void showTipSaveLastItemNoteDialog()
-    {
-        SweetAlertDialog sweetAlertDialog=new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE);
+    public void showTipSaveLastItemNoteDialog() {
+        SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE);
 
         sweetAlertDialog.setTitleText("温馨提示")
-        .setContentText("是否保存上个章节的笔记？")
-        .setConfirmText("保存")
-        .setCancelText("取消")
-        .setConfirmButton("保存", new SweetAlertDialog.OnSweetClickListener() {
+                .setContentText("是否保存上个章节的笔记？")
+                .setConfirmText("保存")
+                .setCancelText("取消")
+                .setConfirmButton("保存", new SweetAlertDialog.OnSweetClickListener() {
                     @Override
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
                         sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
@@ -802,8 +990,8 @@ public class LearningActivity extends AppCompatActivity {
                     @Override
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
                         sweetAlertDialog.cancel();
-                        noteText="";//清空笔记
-                        noteTitle="";
+                        noteText = "";//清空笔记
+                        noteTitle = "";
                     }
                 })
 
@@ -811,9 +999,8 @@ public class LearningActivity extends AppCompatActivity {
     }
 
 
-    public void showTipSaveNoteDialog()
-    {
-        SweetAlertDialog sweetAlertDialog=new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE);
+    public void showTipSaveNoteDialog() {
+        SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE);
 
         sweetAlertDialog.setTitleText("温馨提示")
                 .setContentText("是否保存当前页面笔记？")
@@ -836,8 +1023,8 @@ public class LearningActivity extends AppCompatActivity {
                     @Override
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
                         sweetAlertDialog.cancel();
-                        noteText="";//清空笔记
-                        noteTitle="";
+                        noteText = "";//清空笔记
+                        noteTitle = "";
                     }
                 })
 
@@ -845,8 +1032,7 @@ public class LearningActivity extends AppCompatActivity {
     }
 
 
-    public void saveNote()
-    {
+    public void saveNote() {
         NoteDao dao = MyApplication.getDaoSession().getNoteDao();
         Note note = new Note();
         note.setNoteText(noteText);
@@ -855,10 +1041,63 @@ public class LearningActivity extends AppCompatActivity {
         note.setUserName(SharePreferenceUtil.getLoginAccount(LearningActivity.this));
         note.setTime(TimeUtil.getSystemTime());
         dao.insert(note);
-        noteText="";//笔记清空
-        noteTitle="";
+        noteText = "";//笔记清空
+        noteTitle = "";
     }
 
+    public void saveCollection() {
+
+        switch (sortType) {
+            case "中药学":
+                id = medicineList.get(currentLearningPosition).getId();
+                break;
+            case "方剂学":
+                id = prescriptionList.get(currentLearningPosition).getId();
+                break;
+            case "中成药":
+                id = chinesePatentDrugList.get(currentLearningPosition).getId();
+                break;
+            case "经典医书":
+                id = medicalBookList.get(currentLearningPosition).getId();
+                break;
+            case "针灸学":
+                id = acuPointList.get(currentLearningPosition).getId();
+                break;
+
+        }
+        User user = DataBaseUtil.getUser(this);
+
+        CollectionDao collectionDao = MyApplication.getDaoSession().getCollectionDao();
+        List<Collection> collectionList = collectionDao.queryBuilder().where(CollectionDao.Properties.UserId.eq(user.getId())).list();
+
+
+        if (collectionList.size() == 0) {
+            saveCollectionInDataBase(collectionDao, user, id);
+        } else {
+            for (int i = 0; i < collectionList.size(); i++) {
+                if (collectionList.get(i).getOriginId().longValue() == id.longValue() && collectionList.get(i).getSortType().equals(sortType)) {
+                    //分类以及id都相同的就是收藏过的
+                    isSaveBefore = true;
+                    break;
+                }
+            }
+
+            if (!isSaveBefore) {
+                saveCollectionInDataBase(collectionDao, user, id);
+            }
+        }
+
+
+    }
+
+    public void saveCollectionInDataBase(CollectionDao collectionDao, User user, Long id) {
+        Collection collection = new Collection();
+        collection.setLearningOrExam("learning");
+        collection.setSortType(sortType);
+        collection.setOriginId(id);
+        collection.setUserId(user.getId());
+        collectionDao.insert(collection);
+    }
 
 
 

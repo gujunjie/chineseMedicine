@@ -1,18 +1,23 @@
 package view;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.text.SpannableString;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.abc.chinesemedicine.CacheInterceptor;
+import com.example.abc.chinesemedicine.CollectionListActivity;
 import com.example.abc.chinesemedicine.ErrorExaminationListActivity;
 import com.example.abc.chinesemedicine.ExamListActivity;
 import com.example.abc.chinesemedicine.GlideImageLoader;
@@ -27,13 +32,27 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
+import com.youth.banner.listener.OnBannerListener;
 
+import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import adapter.TuiJianRecyclerViewAdapter;
 import bean.LearningProgress;
+import bean.TuiJian;
 import bean.User;
+import contract.TuiJianClient;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+import okhttp3.Cache;
+import okhttp3.OkHttpClient;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 import util.DataBaseUtil;
 import util.SharePreferenceUtil;
 
@@ -53,6 +72,8 @@ public class QuestionFragment extends Fragment {
 
     private LinearLayout ll_searchExam;
 
+    private LinearLayout ll_collection;
+
     private TextView tv_lastestLearningData;
 
     private String lastLearningSubject;
@@ -64,7 +85,7 @@ public class QuestionFragment extends Fragment {
 
         initFindViewById(view);//获取控件实例
 
-        initBanner();//初始化轮播图
+        initBanner(getActivity());//初始化轮播图
 
         initButton();//初始化按钮
 
@@ -79,6 +100,7 @@ public class QuestionFragment extends Fragment {
         ll_exam=(LinearLayout) view.findViewById(R.id.ll_exam);
         ll_errorExam=(LinearLayout) view.findViewById(R.id.ll_errorExam);
         ll_searchExam=(LinearLayout) view.findViewById(R.id.ll_searchExam);
+        ll_collection=(LinearLayout) view.findViewById(R.id.ll_collection);
         tv_lastestLearningData=(TextView) view.findViewById(R.id.tv_lastestLearningData);
 
     }
@@ -114,13 +136,86 @@ public class QuestionFragment extends Fragment {
         initPieChart();//初始化学习进度饼图
     }
 
-    public void initBanner()
+    public void initBanner(final Context context)
     {
-        List<String> list=new ArrayList<>();
-        list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548858163&di=a565eee8a44c26f1601bd04b3acbea8a&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.orsoon.com%2F180323%2F180323_34%2F1qJhbgW5Lu_small.jpg");
-        list.add("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2790209824,4284414563&fm=200&gp=0.jpg");
-        list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548264246865&di=4bb859d9f4de9d2a9448f21f37600fef&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Ffaedab64034f78f04938817c73310a55b3191c09.jpg");
-        banner.setImageLoader(new GlideImageLoader()).setIndicatorGravity(BannerConfig.RIGHT).setDelayTime(2000).setImages(list).start();
+        File cachFile=new File(context.getExternalCacheDir().toString(),"okCache");
+
+        int cacheSize=10*1024*1024;
+
+        Cache cache=new Cache(cachFile,cacheSize);
+        OkHttpClient client=new OkHttpClient.Builder()
+                .addInterceptor(new CacheInterceptor(context))
+                .addNetworkInterceptor(new CacheInterceptor(context))
+                .cache(cache)
+                .build();
+
+        Retrofit retrofit=new Retrofit.Builder()
+                .baseUrl("https://gitee.com/gujunjie/jsonServer/raw/master/")
+                .client(client)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        TuiJianClient tuiJianClient=retrofit.create(TuiJianClient.class);
+
+        tuiJianClient.getEncyclopediaJson().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<TuiJian>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(TuiJian value) {
+                         List<TuiJian.TuiJianBean> list=value.getTuiJian();
+                        //图片
+                        List<String> imageList=new ArrayList<>();
+                        //标题
+                        List<String> titleList=new ArrayList<>();
+                        //HTML
+                        final List<String> htmlList=new ArrayList<>();
+                        for(int i=0;i<list.size();i++)
+                        {
+                            imageList.add(list.get(i).getImageUrl());
+                            titleList.add(list.get(i).getTitle());
+                            htmlList.add(list.get(i).getHtml());
+                        }
+                        //轮播图基本参数设置
+                        banner.setImageLoader(new GlideImageLoader())
+                                .setBannerStyle(BannerConfig.NUM_INDICATOR_TITLE)
+                                .setIndicatorGravity(BannerConfig.RIGHT)
+                                .setDelayTime(2500)
+                                .setImages(imageList)
+                                .setBannerTitles(titleList)
+                                .start();
+                        //点击事件
+                        banner.setOnBannerListener(new OnBannerListener() {
+                            @Override
+                            public void OnBannerClick(int position) {
+                                String html=htmlList.get(position);
+                                Intent intent=new Intent(context, TuiJianWebViewActivity.class);
+                                intent.putExtra("html",html);
+                                context.startActivity(intent);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+
+
+
+
 
     }
 
@@ -261,6 +356,14 @@ public class QuestionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ll_collection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(), CollectionListActivity.class);
                 startActivity(intent);
             }
         });

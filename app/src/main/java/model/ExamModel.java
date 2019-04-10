@@ -6,11 +6,13 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.abc.chinesemedicine.MyApplication;
+import com.example.abc.chinesemedicine.greendao.CollectionDao;
 import com.example.abc.chinesemedicine.greendao.ErrorExaminationDao;
 import com.example.abc.chinesemedicine.greendao.ExaminationDao;
 
 import java.util.List;
 
+import bean.Collection;
 import bean.ErrorExamination;
 import bean.Examination;
 import bean.User;
@@ -19,6 +21,7 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
+import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -105,6 +108,7 @@ public class ExamModel implements ExamContract.ExamModel {
     }
 
 
+
     public void saveErrorExamInDataBase(Examination examination,User user,ErrorExaminationDao dao)
     {
         ErrorExamination errorExamination=new ErrorExamination();
@@ -126,6 +130,84 @@ public class ExamModel implements ExamContract.ExamModel {
     }
 
 
+    @Override
+    public void saveCollection(final Examination examination, final Context context, final ExamContract.onSaveCollectionListener listener) {
+
+
+        Observable.create(new ObservableOnSubscribe<Boolean>() {
+            @Override
+            public void subscribe(ObservableEmitter<Boolean> e) {
+
+                boolean isSave=false;
+                Long id=examination.getId();
+
+                String sortType=examination.getSortType();
+
+                User user = DataBaseUtil.getUser(context);
+
+                CollectionDao collectionDao = MyApplication.getDaoSession().getCollectionDao();
+                List<Collection> collectionList = collectionDao.queryBuilder().where(CollectionDao.Properties.UserId.eq(user.getId())).list();
+
+                if(collectionList.size()==0)
+                {
+                   saveCollectionInDataBase(collectionDao,user,id,sortType);
+                   isSave=false;
+                   e.onNext(isSave);
+                }else
+                {
+                    for(int i=0;i<collectionList.size();i++)
+                    {
+                        if(collectionList.get(i).getSortType().equals(sortType)&&collectionList.get(i).getOriginId().longValue()==id.longValue())
+                        {
+                            isSave=true;
+                            e.onNext(isSave);
+                            break;
+                        }
+                    }
+                    if(!isSave)
+                    {
+                        saveCollectionInDataBase(collectionDao,user,id,sortType);
+                        e.onNext(false);
+                    }
+
+
+                }
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Boolean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Boolean value) {
+                        listener.onsaveCollectionSuccess(value);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+
+    }
+
+    public void saveCollectionInDataBase(CollectionDao collectionDao, User user, Long id,String sortType) {
+        Collection collection = new Collection();
+        collection.setLearningOrExam("exam");
+        collection.setSortType(sortType);
+        collection.setOriginId(id);
+        collection.setUserId(user.getId());
+        collectionDao.insert(collection);
+    }
 
 
 

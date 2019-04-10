@@ -2,12 +2,13 @@ package view;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.abc.chinesemedicine.R;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
@@ -28,6 +29,7 @@ import bean.Examination;
 import bean.MessageEvent;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import contract.ExamContract;
 import customview.MyTitleBarWhite;
 import presenter.ExamPresenter;
@@ -50,6 +52,10 @@ public class ExamActivity extends BaseActivity<ExamContract.ExamView, ExamPresen
     TagFlowLayout tflAllItem;
     @BindView(R.id.slidingUpPanel)
     SlidingUpPanelLayout slidingUpPanel;
+    @BindView(R.id.btn_collect)
+    Button btnCollect;
+    @BindView(R.id.tv_collectionText)
+    TextView tvCollectionText;
 
     private ExamPresenter presenter;
 
@@ -77,8 +83,17 @@ public class ExamActivity extends BaseActivity<ExamContract.ExamView, ExamPresen
     public void initUI() {
         examTitleBar.getActivityForFinish(this);
         sortType = getIntent().getStringExtra("sortType");
-        examTitleBar.setTitle(sortType);
-        getExaminationList(sortType);
+        if(sortType.equals("我的收藏"))
+        {
+            examTitleBar.setTitle(sortType);
+            showExamination(getIntent().<Examination>getParcelableArrayListExtra("examCollectionList"));
+            vpExam.setCurrentItem(getIntent().getIntExtra("position",0));
+        }else
+        {
+            examTitleBar.setTitle(sortType);
+            getExaminationList(sortType);
+        }
+
     }
 
     public void getExaminationList(String sortType) {
@@ -87,7 +102,7 @@ public class ExamActivity extends BaseActivity<ExamContract.ExamView, ExamPresen
 
     @Override
     public void showExamination(List<Examination> list) {
-         examinationList=list;
+        examinationList = list;
         tvAllNumber.setText("/" + list.size());
 
         List<Fragment> fragmentList = new ArrayList<>();
@@ -111,7 +126,8 @@ public class ExamActivity extends BaseActivity<ExamContract.ExamView, ExamPresen
             public void onPageSelected(int position) {
                 currentPosition = position;
                 tvCurrentNumber.setText(position + 1 + "");
-
+                btnCollect.setBackgroundResource(R.mipmap.collection_normal);
+                tvCollectionText.setText("收藏");
             }
 
             @Override
@@ -123,6 +139,28 @@ public class ExamActivity extends BaseActivity<ExamContract.ExamView, ExamPresen
         initAllItemFlowLayout(list.size());//数字流式布局
 
 
+    }
+
+    @Override
+    public void showSaveCollectionSuccessOrFailure(boolean isSave) {
+        if (isSave) {
+            Snackbar.make(tvAllNumber, "您已经收藏过本章节", Snackbar.LENGTH_SHORT).setAction("知道了", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            }).show();
+
+        } else {
+            btnCollect.setBackgroundResource(R.mipmap.collection_pressed);
+            tvCollectionText.setText("已收藏");
+            Snackbar.make(tvAllNumber, "收藏成功！", Snackbar.LENGTH_SHORT).setAction("好的", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            }).show();
+        }
     }
 
 
@@ -138,19 +176,16 @@ public class ExamActivity extends BaseActivity<ExamContract.ExamView, ExamPresen
         if (event.getIsCorrect()) {
             correntNumber++;
             tvCorrectNumber.setText(correntNumber + "");
-            if(currentPosition==examinationList.size()-1)
-            {
+            if (currentPosition == examinationList.size() - 1) {
 
-            }else
-            {
+            } else {
                 //用户答对且当前不为最后一题，延时一秒自动跳转下一题
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        vpExam.setCurrentItem(currentPosition+1,true);
+                        vpExam.setCurrentItem(currentPosition + 1, true);
                     }
-                },500);
-
+                }, 500);
 
 
             }
@@ -158,7 +193,7 @@ public class ExamActivity extends BaseActivity<ExamContract.ExamView, ExamPresen
         } else {
             errorNumber++;
             tvErrorNumber.setText(errorNumber + "");
-            presenter.saveErrorExamination(examinationList.get(currentPosition),this);//记录错题
+            presenter.saveErrorExamination(examinationList.get(currentPosition), this);//记录错题
 
         }
     }
@@ -207,4 +242,15 @@ public class ExamActivity extends BaseActivity<ExamContract.ExamView, ExamPresen
     }//初始化上拉栏的数字流式布局
 
 
+    @OnClick({R.id.btn_collect, R.id.tv_collectionText})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_collect:
+                presenter.saveCollection(examinationList.get(currentPosition), this);
+                break;
+            case R.id.tv_collectionText:
+                presenter.saveCollection(examinationList.get(currentPosition), this);
+                break;
+        }
+    }
 }

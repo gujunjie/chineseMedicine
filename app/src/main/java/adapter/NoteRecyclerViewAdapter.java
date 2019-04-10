@@ -133,6 +133,9 @@ public class NoteRecyclerViewAdapter extends RecyclerView.Adapter<NoteRecyclerVi
                   case "针灸学":
                       Glide.with(context).load(R.mipmap.noteitembackground_acupoint).into(holder.iv_noteItemIcon);
                       break;
+                  case "我的收藏":
+                      Glide.with(context).load(R.mipmap.noteitembackground_collection).into(holder.iv_noteItemIcon);
+                      break;
               }
 
 

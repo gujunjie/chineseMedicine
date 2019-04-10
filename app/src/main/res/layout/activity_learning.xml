@@ -88,22 +88,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="1px"/>
 
-            <Button
-                android:layout_above="@+id/line"
-                android:background="@mipmap/collection_normal"
-                android:id="@+id/btn_collect"
-                android:layout_margin="10dp"
-                android:layout_centerVertical="true"
-                android:layout_width="20dp"
-                android:layout_height="20dp" />
-            <TextView
-                android:id="@+id/tv_collectionText"
-                android:layout_marginTop="20dp"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@+id/btn_collect"
-                android:text="收藏"
+            <LinearLayout
+                android:id="@+id/ll_collect"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:background="@mipmap/collection_normal"
+                    android:id="@+id/btn_collect"
+                    android:layout_margin="10dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+                <TextView
+                    android:layout_gravity="center"
+                    android:id="@+id/tv_collectionText"
+                    android:text="收藏"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
 
             <TextView
                 android:id="@+id/tv_progress"

@@ -14,4 +14,7 @@ public interface TuiJianClient {
 
         @GET("prescription.json")
         Observable<TuiJian> getprescriptionJson();
+
+        @GET("encyclopedia.json")
+        Observable<TuiJian> getEncyclopediaJson();
 }

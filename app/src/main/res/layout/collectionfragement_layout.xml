@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/colorBackground"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="全部收藏(0)"
+        android:padding="10dp"
+        android:id="@+id/tv_collectionNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/tv_collectionNumber"
+        android:id="@+id/rv_collection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:drawablePadding="5dp"
+        android:visibility="gone"
+        android:id="@+id/tv_showNothing"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:drawableTop="@mipmap/nothing"
+        android:text="您还没有任何收藏QAQ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
