@@ -22,6 +22,7 @@ import com.example.abc.chinesemedicine.greendao.LearningProgressDao;
 import com.example.abc.chinesemedicine.greendao.MedicalBookDao;
 import com.example.abc.chinesemedicine.greendao.NoteDao;
 import com.example.abc.chinesemedicine.greendao.PrescriptionDao;
+import com.example.abc.chinesemedicine.greendao.StudyTimeLineDao;
 import com.example.abc.chinesemedicine.greendao.UserDao;
 import com.gyf.barlibrary.ImmersionBar;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
@@ -46,6 +47,7 @@ import bean.MessageEvent;
 import bean.Note;
 import bean.Prescription;
 import bean.SearchResult;
+import bean.StudyTimeLine;
 import bean.User;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -693,6 +695,15 @@ public class LearningActivity extends AppCompatActivity {
 
         dao1.update(progress);
         dao.update(user);
+
+        StudyTimeLineDao dao2=MyApplication.getDaoSession().getStudyTimeLineDao();
+
+        StudyTimeLine timeLine=new StudyTimeLine();
+        timeLine.setUserId(user.getId());
+        timeLine.setTime(TimeUtil.getSystemTime());
+        timeLine.setActivityText(sortType+" - - "+tvTitle.getText().toString().trim());
+
+        dao2.insert(timeLine);
 
 
     }//保存最近学习数据

@@ -87,6 +87,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                     <customview.SettingItemView
+                        android:id="@+id/siv_studyTimeLine"
                         android:background="@drawable/normal_selector"
                         app:itemIcon="@mipmap/trajectory"
                         app:itemTitle="学习轨迹"

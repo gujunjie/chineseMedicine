@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:id="@+id/iv_circle"
+        android:src="@drawable/circle_normal"
+        android:layout_width="10dp"
+        android:layout_height="10dp" />
+
+    <View
+        android:layout_marginStart="15dp"
+        android:layout_below="@+id/iv_circle"
+        android:background="#707070"
+        android:layout_width="1px"
+        android:layout_height="50dp"/>
+
+    <TextView
+        android:layout_alignTop="@+id/iv_circle"
+        android:id="@+id/tv_time"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toEndOf="@+id/iv_circle"
+        android:text="2019.4.10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginBottom="10dp"
+        android:id="@+id/tv_activityText"
+        android:layout_marginEnd="10dp"
+        android:text="uhvahkvghkdhvkhgkhvkhakhvkdhvk"
+        android:layout_alignStart="@+id/tv_time"
+        android:layout_below="@+id/tv_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:background="@color/colorLine"
+        android:layout_marginEnd="10dp"
+        android:layout_below="@+id/tv_activityText"
+        android:layout_alignStart="@+id/tv_time"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+
+</RelativeLayout>

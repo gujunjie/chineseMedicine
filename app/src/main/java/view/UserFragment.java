@@ -13,6 +13,7 @@ import com.example.abc.chinesemedicine.AboutActivity;
 import com.example.abc.chinesemedicine.FeedBackActivity;
 import com.example.abc.chinesemedicine.LoginActivity;
 import com.example.abc.chinesemedicine.R;
+import com.example.abc.chinesemedicine.StudyTimeLineActivity;
 import com.example.abc.chinesemedicine.UserDataActivity;
 
 import customview.SettingItemView;
@@ -26,6 +27,8 @@ public class UserFragment extends Fragment {
     private SettingItemView siv_feedBack;
 
     private SettingItemView siv_userData;
+
+    private SettingItemView siv_studyTimeLine;
 
     private CircleImageView userIcon;
 
@@ -45,6 +48,7 @@ public class UserFragment extends Fragment {
         siv_about=(SettingItemView) view.findViewById(R.id.siv_about);
         siv_feedBack=(SettingItemView) view.findViewById(R.id.siv_feedBack);
         siv_userData=(SettingItemView) view.findViewById(R.id.siv_userData);
+        siv_studyTimeLine=(SettingItemView) view.findViewById(R.id.siv_studyTimeLine);
     }
 
     public void setListener()
@@ -76,6 +80,13 @@ public class UserFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getActivity(), UserDataActivity.class);
+                startActivity(intent);
+            }
+        });
+        siv_studyTimeLine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(), StudyTimeLineActivity.class);
                 startActivity(intent);
             }
         });

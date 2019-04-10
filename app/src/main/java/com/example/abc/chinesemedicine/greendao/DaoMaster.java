@@ -25,6 +25,8 @@ public class DaoMaster extends AbstractDaoMaster {
         ChineseMedicineDao.createTable(db, ifNotExists);
         ChinesePatentDrugDao.createTable(db, ifNotExists);
         ChinesePatentDrugSecondCategoryDao.createTable(db, ifNotExists);
+        CollectionDao.createTable(db, ifNotExists);
+        ErrorExaminationDao.createTable(db, ifNotExists);
         ExaminationDao.createTable(db, ifNotExists);
         HotSearchDao.createTable(db, ifNotExists);
         LearningProgressDao.createTable(db, ifNotExists);
@@ -33,8 +35,7 @@ public class DaoMaster extends AbstractDaoMaster {
         PrescriptionDao.createTable(db, ifNotExists);
         SearchHistoryDao.createTable(db, ifNotExists);
         UserDao.createTable(db, ifNotExists);
-        ErrorExaminationDao.createTable(db, ifNotExists);
-        CollectionDao.createTable(db, ifNotExists);
+        StudyTimeLineDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
@@ -43,6 +44,8 @@ public class DaoMaster extends AbstractDaoMaster {
         ChineseMedicineDao.dropTable(db, ifExists);
         ChinesePatentDrugDao.dropTable(db, ifExists);
         ChinesePatentDrugSecondCategoryDao.dropTable(db, ifExists);
+        CollectionDao.dropTable(db, ifExists);
+        ErrorExaminationDao.dropTable(db, ifExists);
         ExaminationDao.dropTable(db, ifExists);
         HotSearchDao.dropTable(db, ifExists);
         LearningProgressDao.dropTable(db, ifExists);
@@ -51,8 +54,7 @@ public class DaoMaster extends AbstractDaoMaster {
         PrescriptionDao.dropTable(db, ifExists);
         SearchHistoryDao.dropTable(db, ifExists);
         UserDao.dropTable(db, ifExists);
-        ErrorExaminationDao.dropTable(db, ifExists);
-        CollectionDao.dropTable(db, ifExists);
+        StudyTimeLineDao.dropTable(db, ifExists);
     }
 
     /**
@@ -75,6 +77,8 @@ public class DaoMaster extends AbstractDaoMaster {
         registerDaoClass(ChineseMedicineDao.class);
         registerDaoClass(ChinesePatentDrugDao.class);
         registerDaoClass(ChinesePatentDrugSecondCategoryDao.class);
+        registerDaoClass(CollectionDao.class);
+        registerDaoClass(ErrorExaminationDao.class);
         registerDaoClass(ExaminationDao.class);
         registerDaoClass(HotSearchDao.class);
         registerDaoClass(LearningProgressDao.class);
@@ -83,8 +87,7 @@ public class DaoMaster extends AbstractDaoMaster {
         registerDaoClass(PrescriptionDao.class);
         registerDaoClass(SearchHistoryDao.class);
         registerDaoClass(UserDao.class);
-        registerDaoClass(ErrorExaminationDao.class);
-        registerDaoClass(CollectionDao.class);
+        registerDaoClass(StudyTimeLineDao.class);
     }
 
     public DaoSession newSession() {
