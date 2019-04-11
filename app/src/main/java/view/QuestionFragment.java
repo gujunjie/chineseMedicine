@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.abc.chinesemedicine.CacheInterceptor;
+import com.example.abc.chinesemedicine.ChartDataActivity;
 import com.example.abc.chinesemedicine.CollectionListActivity;
 import com.example.abc.chinesemedicine.ErrorExaminationListActivity;
 import com.example.abc.chinesemedicine.ExamListActivity;
@@ -74,6 +75,8 @@ public class QuestionFragment extends Fragment {
 
     private LinearLayout ll_collection;
 
+    private LinearLayout ll_chartData;
+
     private TextView tv_lastestLearningData;
 
     private String lastLearningSubject;
@@ -101,6 +104,7 @@ public class QuestionFragment extends Fragment {
         ll_errorExam=(LinearLayout) view.findViewById(R.id.ll_errorExam);
         ll_searchExam=(LinearLayout) view.findViewById(R.id.ll_searchExam);
         ll_collection=(LinearLayout) view.findViewById(R.id.ll_collection);
+        ll_chartData=(LinearLayout) view.findViewById(R.id.ll_chartData);
         tv_lastestLearningData=(TextView) view.findViewById(R.id.tv_lastestLearningData);
 
     }
@@ -364,6 +368,14 @@ public class QuestionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getActivity(), CollectionListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ll_chartData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(), ChartDataActivity.class);
                 startActivity(intent);
             }
         });

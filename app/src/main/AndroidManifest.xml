@@ -20,7 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".StudyTimeLineActivity"></activity>
+        <activity android:name=".SettingActivity"></activity>
+        <activity android:name=".ChartDataActivity" />
+        <activity android:name=".StudyTimeLineActivity" />
         <activity android:name=".CollectionListActivity" />
         <activity android:name=".ExamSearchResultActivity" />
         <activity android:name=".ErrorExaminationActivity" />

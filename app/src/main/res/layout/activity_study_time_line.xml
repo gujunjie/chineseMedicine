@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,10 +15,47 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <LinearLayout
+        android:id="@+id/ll_toolBar"
+        android:layout_below="@+id/studyTimeLine_titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/tv_allRecordNumber"
+            android:padding="10dp"
+            android:text="全部记录(0)"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/iv_deleteAllRecord"
+            android:src="@drawable/delete"
+            android:layout_margin="10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+    </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
-        android:layout_marginTop="10dp"
+        android:layout_below="@+id/ll_toolBar"
         android:id="@+id/rv_studyTimeLine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tv_showNothing"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:drawableTop="@mipmap/nothing"
+        android:textSize="15sp"
+        android:drawablePadding="10dp"
+        android:text="这个人懒死了，什么学习记录都木有T - T"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+</RelativeLayout>

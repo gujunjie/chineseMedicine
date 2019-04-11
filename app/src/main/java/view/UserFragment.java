@@ -8,11 +8,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.abc.chinesemedicine.AboutActivity;
 import com.example.abc.chinesemedicine.FeedBackActivity;
 import com.example.abc.chinesemedicine.LoginActivity;
 import com.example.abc.chinesemedicine.R;
+import com.example.abc.chinesemedicine.SettingActivity;
 import com.example.abc.chinesemedicine.StudyTimeLineActivity;
 import com.example.abc.chinesemedicine.UserDataActivity;
 
@@ -30,7 +32,11 @@ public class UserFragment extends Fragment {
 
     private SettingItemView siv_studyTimeLine;
 
+    private SettingItemView siv_setting;
+
     private CircleImageView userIcon;
+
+    private Button btn_setting;
 
 
     @Nullable
@@ -49,6 +55,8 @@ public class UserFragment extends Fragment {
         siv_feedBack=(SettingItemView) view.findViewById(R.id.siv_feedBack);
         siv_userData=(SettingItemView) view.findViewById(R.id.siv_userData);
         siv_studyTimeLine=(SettingItemView) view.findViewById(R.id.siv_studyTimeLine);
+        siv_setting=(SettingItemView) view.findViewById(R.id.siv_setting);
+        btn_setting=(Button)view.findViewById(R.id.btn_setting);
     }
 
     public void setListener()
@@ -87,6 +95,22 @@ public class UserFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getActivity(), StudyTimeLineActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        siv_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(), SettingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(), SettingActivity.class);
                 startActivity(intent);
             }
         });
