@@ -9,9 +9,8 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.abc.chinesemedicine.LearningActivity;
+import view.LearningActivity;
 import com.example.abc.chinesemedicine.R;
 
 import butterknife.BindView;

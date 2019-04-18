@@ -1,4 +1,4 @@
-package com.example.abc.chinesemedicine;
+package view;
 
 import android.content.res.Configuration;
 import android.os.Bundle;

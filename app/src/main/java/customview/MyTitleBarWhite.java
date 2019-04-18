@@ -15,6 +15,7 @@ import com.example.abc.chinesemedicine.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import view.ExamActivity;
 
 public class MyTitleBarWhite extends LinearLayout {
 
@@ -23,6 +24,8 @@ public class MyTitleBarWhite extends LinearLayout {
     Button btnBack;
     @BindView(R.id.tv_title)
     TextView tvTitle;
+
+    private boolean needToSaveData;
 
     private Activity activity;
 
@@ -45,12 +48,19 @@ public class MyTitleBarWhite extends LinearLayout {
 
     }
 
-    public void getActivityForFinish(Activity activity) {
+    public void getActivityForFinish(Activity activity,boolean needToSaveData) {
         this.activity = activity;
+        this.needToSaveData=needToSaveData;
+
     }
 
     @OnClick(R.id.btn_back)
     public void onViewClicked() {
         activity.finish();
+        if(needToSaveData)
+        {
+            ExamActivity examActivity=(ExamActivity)activity;
+            examActivity.saveLastExamData();
+        }
     }
 }

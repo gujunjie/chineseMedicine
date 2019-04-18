@@ -8,6 +8,7 @@ import bean.AcuPoint;
 import bean.ChineseMedicine;
 import bean.ChinesePatentDrug;
 import bean.ChinesePatentDrugSecondCategory;
+import bean.ExamProgress;
 import bean.Examination;
 import bean.HotSearch;
 import bean.LearningProgress;
@@ -28,6 +29,7 @@ import com.example.abc.chinesemedicine.greendao.AcuPointDao;
 import com.example.abc.chinesemedicine.greendao.ChineseMedicineDao;
 import com.example.abc.chinesemedicine.greendao.ChinesePatentDrugDao;
 import com.example.abc.chinesemedicine.greendao.ChinesePatentDrugSecondCategoryDao;
+import com.example.abc.chinesemedicine.greendao.ExamProgressDao;
 import com.example.abc.chinesemedicine.greendao.ExaminationDao;
 import com.example.abc.chinesemedicine.greendao.HotSearchDao;
 import com.example.abc.chinesemedicine.greendao.LearningProgressDao;
@@ -12158,7 +12160,56 @@ public class DataBaseUtil {
         progress4.setLastLearningPercent(0);
         dao1.insert(progress4);
 
+        ExamProgressDao dao2=MyApplication.getDaoSession().getExamProgressDao();
 
+        ExamProgress examProgress1=new ExamProgress();
+        examProgress1.setUserId(defaultUser.getId());
+        examProgress1.setExamSubject("中药学专业知识(一)");
+        examProgress1.setLastExamPosition(0);
+        examProgress1.setLastExamPercent(0);
+        dao2.insert(examProgress1);
+
+        ExamProgress examProgress2=new ExamProgress();
+        examProgress2.setUserId(defaultUser.getId());
+        examProgress2.setExamSubject("中药学专业知识(二)");
+        examProgress2.setLastExamPosition(0);
+        examProgress2.setLastExamPercent(0);
+        dao2.insert(examProgress2);
+
+        ExamProgress examProgress3=new ExamProgress();
+        examProgress3.setUserId(defaultUser.getId());
+        examProgress3.setExamSubject("中药学综合知识与技能");
+        examProgress3.setLastExamPosition(0);
+        examProgress3.setLastExamPercent(0);
+        dao2.insert(examProgress3);
+
+        ExamProgress examProgress4=new ExamProgress();
+        examProgress4.setUserId(defaultUser.getId());
+        examProgress4.setExamSubject("药学专业知识(一)");
+        examProgress4.setLastExamPosition(0);
+        examProgress4.setLastExamPercent(0);
+        dao2.insert(examProgress4);
+
+        ExamProgress examProgress5=new ExamProgress();
+        examProgress5.setUserId(defaultUser.getId());
+        examProgress5.setExamSubject("药学专业知识(二)");
+        examProgress5.setLastExamPosition(0);
+        examProgress5.setLastExamPercent(0);
+        dao2.insert(examProgress5);
+
+        ExamProgress examProgress6=new ExamProgress();
+        examProgress6.setUserId(defaultUser.getId());
+        examProgress6.setExamSubject("药学综合知识与技能");
+        examProgress6.setLastExamPosition(0);
+        examProgress6.setLastExamPercent(0);
+        dao2.insert(examProgress6);
+
+        ExamProgress examProgress7=new ExamProgress();
+        examProgress7.setUserId(defaultUser.getId());
+        examProgress7.setExamSubject("药事管理与法规");
+        examProgress7.setLastExamPosition(0);
+        examProgress7.setLastExamPercent(0);
+        dao2.insert(examProgress7);
 
     }
 
@@ -12167,6 +12218,10 @@ public class DataBaseUtil {
         return getUser(context).getList();
     }
 
+    public static List<ExamProgress> getExamProgressList(Context context)
+    {
+        return getUser(context).getList2();
+    }
 
 
     public static User getUser(Context context)
@@ -12547,7 +12602,70 @@ public class DataBaseUtil {
         examination33.setAnswer("本题考查药学服务的重要人群。备选答案的“陷阱”是混淆药学服务的对象(广大公众)与“重要人群”。在“门诊患者”、“社区患者”、“住院患者”、“药品消费者”中，都会包含药学服务的“重要人群”，但却不都是“重要人群”。而“过敏体质者”(D)则都是药学服务的重要人群。");
         dao.insert(examination33);
 
+        Examination examination34=new Examination();
+        examination34.setTitle("关于执业药师资格考试和注册管理的说法，正确的是");
+        examination34.setSortType("药事管理与法规");
+        examination34.setSectionA("香港、澳门、台湾居民，按照规定的程序和报名条件，可以报名参加国家执业药师资格考试");
+        examination34.setSectionB("不在中国就业的外国人，符合规定的学历条件，可以报名参加国家执业药师资格考试");
+        examination34.setSectionC("执业药师执业单位包括医药院校、科研单位、药品检验机构");
+        examination34.setSectionD("在香港、澳门注册的药剂师可以直接递交注册申请资料办理执业药师注册");
+        examination34.setSectionE("以上的说法都对");
+        examination34.setCorrectSection("A");
+        examination34.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552056036&di=7b1a12ccbf03177113d8e4b0cad5d19e&src=http://pic.9ht.com/up/2017-7/15009783652403333.jpg");
+        examination34.setAnswer("(1)港澳台居民按照规定的程序和报名条件，可报名参加国家执业药师资格考试。故A正确。法律上没有规定外国人可以参加国家执业药师资格考试。故B错误。港澳台居民申请执业药师注册的要求：①提交注册申请资料；②出具《台港澳人员就业证》(用人单位与执业单位一致)；③出具香港药剂师执照或澳门药剂师执照原件，并同时提交复印件。故D错误。建议考生运用口诀“港澳台可考试；注执照就业证”准确记忆。 (2)执业药师的执业范围为药品生产、药品经营、药品使用；机关、院校、科研单位、药品检验机构不予注册，故C错误。");
+        dao.insert(examination34);
 
+        Examination examination35=new Examination();
+        examination35.setTitle("执业药师资格考试合格者取得的《执业药师资格证书》");
+        examination35.setSortType("药事管理与法规");
+        examination35.setSectionA("在颁发地省内有效");
+        examination35.setSectionB("在全国范围内有效");
+        examination35.setSectionC("在取得者的居住地有效");
+        examination35.setSectionD("在取得者的工作所在地有效");
+        examination35.setSectionE("以上的说法都对");
+        examination35.setCorrectSection("B");
+        examination35.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552056036&di=7b1a12ccbf03177113d8e4b0cad5d19e&src=http://pic.9ht.com/up/2017-7/15009783652403333.jpg");
+        examination35.setAnswer("《执业药师资格证书》在全国范围内有效，故选B。");
+        dao.insert(examination35);
+
+        Examination examination36=new Examination();
+        examination36.setTitle("执业药师注册机构为");
+        examination36.setSortType("药事管理与法规");
+        examination36.setSectionA("国家药品监督管理部门");
+        examination36.setSectionB("国家人力资源和社会保障部门");
+        examination36.setSectionC("省级药品监督管理部门");
+        examination36.setSectionD("省级人力资源和社会保障部门");
+        examination36.setSectionE("以上的说法都不对");
+        examination36.setCorrectSection("C");
+        examination36.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552056036&di=7b1a12ccbf03177113d8e4b0cad5d19e&src=http://pic.9ht.com/up/2017-7/15009783652403333.jpg");
+        examination36.setAnswer("各省级药品监督管理部门为本辖区执业药师注册机构。故选C。");
+        dao.insert(examination36);
+
+        Examination examination37=new Examination();
+        examination37.setTitle("张某考试合格取得《执业药师资格证书》后，张某可以");
+        examination37.setSortType("药事管理与法规");
+        examination37.setSectionA("直接在所在省、市的药品零售企业以执业药师身份执业");
+        examination37.setSectionB("直接在所在省、市的药品批发企业以执业药师身份执业");
+        examination37.setSectionC("直接在跨省、市的药品零售连锁企业以执业药师身份执业");
+        examination37.setSectionD("经注册后，在注册所在省、市以执业药师身份执业");
+        examination37.setSectionE("以上的说法都不对");
+        examination37.setCorrectSection("D");
+        examination37.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552056036&di=7b1a12ccbf03177113d8e4b0cad5d19e&src=http://pic.9ht.com/up/2017-7/15009783652403333.jpg");
+        examination37.setAnswer("取得《执业药师资格证书》的药学人员，经执业单位同意，到执业单位所在地省级执业药师注册机构办理注册手续并取得《执业药师注册证》后，方可以执业药师身份执业。执业药师只能在一个执业药师注册机构注册，在一个执业单位按照注册的执业类别、执业范围执业。故选D。");
+        dao.insert(examination37);
+
+        Examination examination38=new Examination();
+        examination38.setTitle("执业药师欲变更执业地区，应当");
+        examination38.setSortType("药事管理与法规");
+        examination38.setSectionA("直接到新地区执业，不需办理注册手续");
+        examination38.setSectionB("办理变更注册手续");
+        examination38.setSectionC("办理注销注册手续");
+        examination38.setSectionD("办理再注册手续");
+        examination38.setSectionE("以上的说法都不对");
+        examination38.setCorrectSection("B");
+        examination38.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1552056036&di=7b1a12ccbf03177113d8e4b0cad5d19e&src=http://pic.9ht.com/up/2017-7/15009783652403333.jpg");
+        examination38.setAnswer("执业药师变更执业地区、执业单位、执业范围应及时办理变更注册手续。故选B。");
+        dao.insert(examination38);
 
     }
 

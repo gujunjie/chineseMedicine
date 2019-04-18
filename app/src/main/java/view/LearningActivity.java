@@ -1,4 +1,4 @@
-package com.example.abc.chinesemedicine;
+package view;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -12,16 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.abc.chinesemedicine.greendao.AcuPointDao;
-import com.example.abc.chinesemedicine.greendao.ChineseMedicineDao;
-import com.example.abc.chinesemedicine.greendao.ChinesePatentDrugDao;
+import com.example.abc.chinesemedicine.MyApplication;
+import com.example.abc.chinesemedicine.R;
 import com.example.abc.chinesemedicine.greendao.CollectionDao;
 import com.example.abc.chinesemedicine.greendao.LearningProgressDao;
-import com.example.abc.chinesemedicine.greendao.MedicalBookDao;
 import com.example.abc.chinesemedicine.greendao.NoteDao;
-import com.example.abc.chinesemedicine.greendao.PrescriptionDao;
 import com.example.abc.chinesemedicine.greendao.StudyTimeLineDao;
 import com.example.abc.chinesemedicine.greendao.UserDao;
 import com.gyf.barlibrary.ImmersionBar;
@@ -63,7 +59,6 @@ import io.reactivex.schedulers.Schedulers;
 import util.DataBaseUtil;
 import util.SharePreferenceUtil;
 import util.TimeUtil;
-import view.LearningFragment;
 
 public class LearningActivity extends AppCompatActivity {
 
@@ -923,11 +918,15 @@ public class LearningActivity extends AppCompatActivity {
 
         et_NoteTitle = (EditText) dialogView.findViewById(R.id.et_NoteTitle);
         if (noteTitle.equals("")) {
+            //标题草稿为空加载默认标题
             et_NoteTitle.setText(tvTitle.getText().toString());
         } else {
+            //不为空就加载草稿
             et_NoteTitle.setText(noteTitle);
         }
 
+
+        //保存按钮事件
         customizeDialog.setView(dialogView);
         customizeDialog.setPositiveButton("保存", new DialogInterface.OnClickListener() {
             @Override
@@ -951,7 +950,7 @@ public class LearningActivity extends AppCompatActivity {
 
 
                 } else {
-                    saveNote();
+                    saveNote();//保存
 
                     new SweetAlertDialog(LearningActivity.this, SweetAlertDialog.SUCCESS_TYPE)
                             .setTitleText("保存成功!")
@@ -962,6 +961,8 @@ public class LearningActivity extends AppCompatActivity {
 
             }
         });
+
+        //取消按钮事件
         customizeDialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -1044,11 +1045,13 @@ public class LearningActivity extends AppCompatActivity {
 
 
     public void saveNote() {
+
+        //保存当前笔记
         NoteDao dao = MyApplication.getDaoSession().getNoteDao();
         Note note = new Note();
-        note.setNoteText(noteText);
-        note.setSubject(sortType);
-        note.setTitle(noteTitle);
+        note.setNoteText(noteText);//正文
+        note.setSubject(sortType);//分类科目
+        note.setTitle(noteTitle);//标题
         note.setUserName(SharePreferenceUtil.getLoginAccount(LearningActivity.this));
         note.setTime(TimeUtil.getSystemTime());
         dao.insert(note);
@@ -1079,12 +1082,15 @@ public class LearningActivity extends AppCompatActivity {
         User user = DataBaseUtil.getUser(this);
 
         CollectionDao collectionDao = MyApplication.getDaoSession().getCollectionDao();
+
+        //获取用户的收藏列表
         List<Collection> collectionList = collectionDao.queryBuilder().where(CollectionDao.Properties.UserId.eq(user.getId())).list();
 
-
+        //列表为空说明还没收藏任何东西，直接收藏
         if (collectionList.size() == 0) {
             saveCollectionInDataBase(collectionDao, user, id);
         } else {
+            //否则进行收藏查重
             for (int i = 0; i < collectionList.size(); i++) {
                 if (collectionList.get(i).getOriginId().longValue() == id.longValue() && collectionList.get(i).getSortType().equals(sortType)) {
                     //分类以及id都相同的就是收藏过的

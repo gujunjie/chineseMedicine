@@ -1,10 +1,11 @@
-package com.example.abc.chinesemedicine;
+package view;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.example.abc.chinesemedicine.R;
 import com.gyf.barlibrary.ImmersionBar;
 
 import butterknife.ButterKnife;

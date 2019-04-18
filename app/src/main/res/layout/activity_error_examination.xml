@@ -8,7 +8,7 @@
     android:gravity="bottom"
     app:umanoPanelHeight="40dp"
     app:umanoShadowHeight="0dp"
-    tools:context=".ErrorExaminationActivity">
+    tools:context="view.ErrorExaminationActivity">
 
     <LinearLayout
         android:orientation="vertical"

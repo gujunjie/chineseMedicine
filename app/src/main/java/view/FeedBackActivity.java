@@ -1,4 +1,4 @@
-package com.example.abc.chinesemedicine;
+package view;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -7,6 +7,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+
+import com.example.abc.chinesemedicine.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

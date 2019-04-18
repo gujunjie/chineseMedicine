@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.abc.chinesemedicine.ExamSearchResultActivity;
+import view.ExamSearchResultActivity;
 import com.example.abc.chinesemedicine.MyApplication;
 import com.example.abc.chinesemedicine.R;
 import com.example.abc.chinesemedicine.greendao.AcuPointDao;

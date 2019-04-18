@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ExamListActivity">
+    tools:context="view.ExamListActivity">
 
     <customview.MyTitleBarWhite
         app:whiteTitle="执业药师题库"

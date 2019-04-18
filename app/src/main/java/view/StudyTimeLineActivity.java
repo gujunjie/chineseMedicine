@@ -1,4 +1,4 @@
-package com.example.abc.chinesemedicine;
+package view;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.abc.chinesemedicine.MyApplication;
+import com.example.abc.chinesemedicine.R;
 import com.example.abc.chinesemedicine.greendao.StudyTimeLineDao;
 
 import java.util.Collections;

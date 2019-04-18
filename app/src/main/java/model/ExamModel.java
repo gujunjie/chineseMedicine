@@ -79,29 +79,30 @@ public class ExamModel implements ExamContract.ExamModel {
 
         ErrorExaminationDao dao=MyApplication.getDaoSession().getErrorExaminationDao();
 
+        //获取用户错题列表
         List<ErrorExamination> errorExaminationList=dao.queryBuilder().where(ErrorExaminationDao.Properties.UserId.eq(user.getId())).list();
 
 
-
+        //错题列表为空直接存
         if(errorExaminationList.size()==0)
         {
             saveErrorExamInDataBase(examination,user,dao);
-            //Toast.makeText(context,"保存成功",Toast.LENGTH_SHORT).show();
+
         }else
         {
+
+            //不为空进行查重
             for(int i=0;i<errorExaminationList.size();i++)
             {
                 if(errorExaminationList.get(i).getExamId().longValue()==examination.getId().longValue())
                 {
                     isSaveBefore=true;
-                    //Toast.makeText(context,"重复保存",Toast.LENGTH_SHORT).show();
                     break;
                 }
             }
             if(!isSaveBefore)
             {
                 saveErrorExamInDataBase(examination,user,dao);
-                //Toast.makeText(context,"保存成功",Toast.LENGTH_SHORT).show();
             }
 
         }

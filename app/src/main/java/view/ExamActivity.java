@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.abc.chinesemedicine.MyApplication;
 import com.example.abc.chinesemedicine.R;
+import com.example.abc.chinesemedicine.greendao.ExamProgressDao;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
@@ -25,7 +27,9 @@ import java.util.List;
 
 import adapter.MyFragmentPageAdapter;
 import base.BaseActivity;
+import bean.ExamProgress;
 import bean.Examination;
+import bean.LearningProgress;
 import bean.MessageEvent;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,6 +37,7 @@ import butterknife.OnClick;
 import contract.ExamContract;
 import customview.MyTitleBarWhite;
 import presenter.ExamPresenter;
+import util.DataBaseUtil;
 
 public class ExamActivity extends BaseActivity<ExamContract.ExamView, ExamPresenter> implements ExamContract.ExamView {
 
@@ -81,15 +86,16 @@ public class ExamActivity extends BaseActivity<ExamContract.ExamView, ExamPresen
 
 
     public void initUI() {
-        examTitleBar.getActivityForFinish(this);
+
         sortType = getIntent().getStringExtra("sortType");
+
         if(sortType.equals("我的收藏"))
-        {
+        {   examTitleBar.getActivityForFinish(this,false);
             examTitleBar.setTitle(sortType);
             showExamination(getIntent().<Examination>getParcelableArrayListExtra("examCollectionList"));
             vpExam.setCurrentItem(getIntent().getIntExtra("position",0));
         }else
-        {
+        {   examTitleBar.getActivityForFinish(this,true);
             examTitleBar.setTitle(sortType);
             getExaminationList(sortType);
         }
@@ -135,6 +141,11 @@ public class ExamActivity extends BaseActivity<ExamContract.ExamView, ExamPresen
 
             }
         });
+
+        if(!sortType.equals("我的收藏"))
+        {
+            loadLastExamData();
+        }
 
         initAllItemFlowLayout(list.size());//数字流式布局
 
@@ -253,4 +264,46 @@ public class ExamActivity extends BaseActivity<ExamContract.ExamView, ExamPresen
                 break;
         }
     }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(!sortType.equals("我的收藏"))
+        {
+            saveLastExamData();
+        }
+    }
+
+    public void saveLastExamData()
+    {
+        ExamProgressDao dao= MyApplication.getDaoSession().getExamProgressDao();
+
+        List<ExamProgress> progressList= DataBaseUtil.getExamProgressList(this);
+
+        ExamProgress progress = null;
+        for (int i = 0; i < progressList.size(); i++) {
+            if (progressList.get(i).getExamSubject().equals(sortType)) {
+                progress = progressList.get(i);
+                break;
+            }
+        }
+
+        progress.setLastExamPosition(currentPosition);
+        progress.setLastExamPercent((float) (currentPosition + 1) / examinationList.size() * 100);
+        dao.update(progress);
+    }
+
+    public void loadLastExamData()
+    {
+        List<ExamProgress> progressList = DataBaseUtil.getExamProgressList(this);
+        for (int i = 0; i < progressList.size(); i++) {
+            if (progressList.get(i).getExamSubject().equals(sortType)) {
+                ExamProgress progress = progressList.get(i);
+                vpExam.setCurrentItem(progress.getLastExamPosition());
+                break;
+            }
+        }
+    }
+
 }

@@ -1,9 +1,10 @@
-package com.example.abc.chinesemedicine;
+package view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.abc.chinesemedicine.R;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.gyf.barlibrary.ImmersionBar;
 

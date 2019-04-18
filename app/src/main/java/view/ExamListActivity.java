@@ -1,9 +1,11 @@
-package com.example.abc.chinesemedicine;
+package view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
+import com.example.abc.chinesemedicine.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +30,7 @@ public class ExamListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_exam_list);
         ButterKnife.bind(this);
 
-        examListTitleBar.getActivityForFinish(this);
+        examListTitleBar.getActivityForFinish(this,false);
         initUI();
     }
 

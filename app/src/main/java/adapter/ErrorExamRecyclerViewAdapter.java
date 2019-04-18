@@ -11,14 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.abc.chinesemedicine.ErrorExaminationActivity;
+import view.ErrorExaminationActivity;
 import com.example.abc.chinesemedicine.R;
 
 import java.util.List;
 
 import bean.ErrorExamSyllabus;
-import bean.ExamSyllabus;
-import view.ExamActivity;
 
 public class ErrorExamRecyclerViewAdapter extends RecyclerView.Adapter<ErrorExamRecyclerViewAdapter.ViewHolder> {
 

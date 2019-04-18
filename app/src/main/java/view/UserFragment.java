@@ -10,13 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.abc.chinesemedicine.AboutActivity;
-import com.example.abc.chinesemedicine.FeedBackActivity;
-import com.example.abc.chinesemedicine.LoginActivity;
 import com.example.abc.chinesemedicine.R;
-import com.example.abc.chinesemedicine.SettingActivity;
-import com.example.abc.chinesemedicine.StudyTimeLineActivity;
-import com.example.abc.chinesemedicine.UserDataActivity;
 
 import customview.SettingItemView;
 import de.hdodenhof.circleimageview.CircleImageView;

@@ -60,10 +60,14 @@ public class TuiJianView extends RelativeLayout {
 
     public void setRecyclerViewData(final Context context, String sortType, final int itemCount)
     {
+
+        //新建缓存文件
         File cachFile=new File(context.getExternalCacheDir().toString(),"okCache");
 
-        int cacheSize=10*1024*1024;
+        //10M大小
+        int cacheSize=10*1024*1024;//m kb b
 
+        //新建httpclient
         Cache cache=new Cache(cachFile,cacheSize);
         OkHttpClient client=new OkHttpClient.Builder()
                 .addInterceptor(new CacheInterceptor(context))
@@ -71,6 +75,7 @@ public class TuiJianView extends RelativeLayout {
                 .cache(cache)
                 .build();
 
+        //新建retrofit对象，配置基本参数
         Retrofit retrofit=new Retrofit.Builder()
                 .baseUrl("https://gitee.com/gujunjie/jsonServer/raw/master/")
                 .client(client)
@@ -83,6 +88,7 @@ public class TuiJianView extends RelativeLayout {
         switch (sortType)
         {
             case "health":
+                //养生类推文，获取json数据并解析json实体类
                 tuiJianClient.gethealthJson().subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new Observer<TuiJian>() {
@@ -93,9 +99,14 @@ public class TuiJianView extends RelativeLayout {
 
                             @Override
                             public void onNext(TuiJian value) {
+
+                                //将解析好的json类对象数据链接到适配器显示出来
                                 TuiJianRecyclerViewAdapter adapter=new TuiJianRecyclerViewAdapter(context,value.getTuiJian(),itemCount);
                                 LinearLayoutManager manager=new LinearLayoutManager(context);
+                                //recyclerview嵌套scrollview滑动冲突问题，加入下面两行代码解决
+                                //保证滑动时自身大小不变
                                 rvTuijian.setHasFixedSize(true);
+                                //移除自身滑动特性
                                 rvTuijian.setNestedScrollingEnabled(false);
                                 rvTuijian.setLayoutManager(manager);
                                 rvTuijian.setAdapter(adapter);
@@ -115,6 +126,7 @@ public class TuiJianView extends RelativeLayout {
                 break;
 
             case "medicineDiet":
+                //药膳类推文，获取json数据并解析json实体类
                 tuiJianClient.getmedicineDietJson().subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new Observer<TuiJian>() {
@@ -146,6 +158,7 @@ public class TuiJianView extends RelativeLayout {
                         });
                 break;
             case "prescription":
+                //药方类推文，获取json数据并解析json实体类
                 tuiJianClient.getprescriptionJson().subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new Observer<TuiJian>() {

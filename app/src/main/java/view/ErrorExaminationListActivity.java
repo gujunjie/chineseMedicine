@@ -1,4 +1,4 @@
-package com.example.abc.chinesemedicine;
+package view;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.abc.chinesemedicine.MyApplication;
+import com.example.abc.chinesemedicine.R;
 import com.example.abc.chinesemedicine.greendao.ErrorExaminationDao;
 import com.example.abc.chinesemedicine.greendao.UserDao;
 
@@ -55,13 +57,19 @@ public class ErrorExaminationListActivity extends AppCompatActivity {
     public void initUI() {
         errorExamTitleBar.getActivityForFinish(this);
 
+
+        //获取当前登录的user
         User user = DataBaseUtil.getUser(this);
         ErrorExaminationDao dao = MyApplication.getDaoSession().getErrorExaminationDao();
+
+        //获取当前用户的所有错题列表
         List<ErrorExamination> errorExaminationList = dao.queryBuilder().where(ErrorExaminationDao.Properties.UserId.eq(user.getId())).list();
 
+        //显示所有错题个数
         tvErrorNumber.setText(errorExaminationList.size() + "");
 
 
+        //配置中药1错题类型的基本信息
         List<ErrorExamSyllabus> list = new ArrayList<>();
         ErrorExamSyllabus syllabus1 = new ErrorExamSyllabus();
         syllabus1.setSortType("中药学专业知识(一)");
@@ -107,11 +115,14 @@ public class ErrorExaminationListActivity extends AppCompatActivity {
         list.add(syllabus6);
         list.add(syllabus7);
 
+
+        //所有错题信息recyclerview显示
         ErrorExamRecyclerViewAdapter adapter = new ErrorExamRecyclerViewAdapter(list, this);
 
         rvErrorExamination.setLayoutManager(new LinearLayoutManager(this));
         rvErrorExamination.setAdapter(adapter);
 
+        //配置底部上拉视图
         bottomSheetBehavior = BottomSheetBehavior.from(llBottomSheet);
         bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
@@ -135,6 +146,7 @@ public class ErrorExaminationListActivity extends AppCompatActivity {
     public int getEverySortTypeErrorExamNumber(List<ErrorExamination> list, String sortType) {
         int number = 0;
 
+        //匹配到相同类型就数字加1
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getSortType().equals(sortType)) {
                 number++;
@@ -187,10 +199,11 @@ public class ErrorExaminationListActivity extends AppCompatActivity {
 
       User user=DataBaseUtil.getUser(this);
 
-      user.setRightTimesForRemove(number);
+      user.setRightTimesForRemove(number);//设置用户设定的连续做对自动删除次数
 
       dao.update(user);
 
+      //为-1就永不删除
       if(number==-1)
       {
           Snackbar.make(tvErrorNumber,"已设置不删除",Snackbar.LENGTH_LONG).setAction("好的", new View.OnClickListener() {
@@ -207,10 +220,10 @@ public class ErrorExaminationListActivity extends AppCompatActivity {
 
               }
           }).show();
-      }
+      }//其他情况按数字决定
 
       bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-      tvMask.setVisibility(View.GONE);
+      tvMask.setVisibility(View.GONE);//选择完成后底部视图还原归位
 
   }
 

@@ -1,10 +1,11 @@
-package com.example.abc.chinesemedicine;
+package view;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.abc.chinesemedicine.R;
 import com.flyco.tablayout.SlidingTabLayout;
 
 import java.util.ArrayList;

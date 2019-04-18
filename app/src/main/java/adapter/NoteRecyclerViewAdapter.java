@@ -9,22 +9,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.abc.chinesemedicine.EditNoteActivity;
+import view.EditNoteActivity;
 import com.example.abc.chinesemedicine.MyApplication;
 import com.example.abc.chinesemedicine.R;
 import com.example.abc.chinesemedicine.greendao.NoteDao;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import bean.Note;
 

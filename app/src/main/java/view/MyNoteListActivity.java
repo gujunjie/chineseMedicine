@@ -1,4 +1,4 @@
-package com.example.abc.chinesemedicine;
+package view;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.abc.chinesemedicine.MyApplication;
+import com.example.abc.chinesemedicine.R;
 import com.example.abc.chinesemedicine.greendao.NoteDao;
 import com.gyf.barlibrary.ImmersionBar;
 

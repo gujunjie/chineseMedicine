@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
     android:orientation="vertical"
-    tools:context=".AboutActivity">
+    tools:context="view.AboutActivity">
 
     <customview.MyTitleBar
         android:id="@+id/about_titleBar"

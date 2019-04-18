@@ -7,23 +7,16 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.text.SpannableString;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.abc.chinesemedicine.CacheInterceptor;
-import com.example.abc.chinesemedicine.ChartDataActivity;
-import com.example.abc.chinesemedicine.CollectionListActivity;
-import com.example.abc.chinesemedicine.ErrorExaminationListActivity;
-import com.example.abc.chinesemedicine.ExamListActivity;
 import com.example.abc.chinesemedicine.GlideImageLoader;
 import com.example.abc.chinesemedicine.MyApplication;
-import com.example.abc.chinesemedicine.MyNoteListActivity;
 import com.example.abc.chinesemedicine.R;
 import com.example.abc.chinesemedicine.greendao.UserDao;
 import com.github.mikephil.charting.charts.PieChart;
@@ -40,7 +33,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import adapter.TuiJianRecyclerViewAdapter;
 import bean.LearningProgress;
 import bean.TuiJian;
 import bean.User;
@@ -142,17 +134,24 @@ public class QuestionFragment extends Fragment {
 
     public void initBanner(final Context context)
     {
+
+        //缓存文件
         File cachFile=new File(context.getExternalCacheDir().toString(),"okCache");
 
+        //文件大小
         int cacheSize=10*1024*1024;
 
+
         Cache cache=new Cache(cachFile,cacheSize);
+
+        //客户端基本配置
         OkHttpClient client=new OkHttpClient.Builder()
                 .addInterceptor(new CacheInterceptor(context))
                 .addNetworkInterceptor(new CacheInterceptor(context))
                 .cache(cache)
                 .build();
 
+        //网络请求基本参数
         Retrofit retrofit=new Retrofit.Builder()
                 .baseUrl("https://gitee.com/gujunjie/jsonServer/raw/master/")
                 .client(client)

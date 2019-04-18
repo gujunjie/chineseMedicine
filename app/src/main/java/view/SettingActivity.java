@@ -1,23 +1,25 @@
-package com.example.abc.chinesemedicine;
+package view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.example.abc.chinesemedicine.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import customview.MyTitleBar;
 
-public class UserDataActivity extends AppCompatActivity {
+public class SettingActivity extends AppCompatActivity {
 
-    @BindView(R.id.userData_titleBar)
-    MyTitleBar userDataTitleBar;
+    @BindView(R.id.setting_titleBar)
+    MyTitleBar settingTitleBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_data);
+        setContentView(R.layout.activity_setting);
         ButterKnife.bind(this);
 
-        userDataTitleBar.getActivityForFinish(this);
+        settingTitleBar.getActivityForFinish(this);
     }
 }

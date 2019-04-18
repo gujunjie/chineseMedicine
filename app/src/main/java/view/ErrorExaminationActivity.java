@@ -1,4 +1,4 @@
-package com.example.abc.chinesemedicine;
+package view;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.abc.chinesemedicine.MyApplication;
+import com.example.abc.chinesemedicine.R;
 import com.example.abc.chinesemedicine.greendao.CollectionDao;
 import com.example.abc.chinesemedicine.greendao.ErrorExaminationDao;
 import com.example.abc.chinesemedicine.greendao.ExaminationDao;
@@ -45,7 +47,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import util.DataBaseUtil;
-import view.ErrorExamFragment;
 
 public class ErrorExaminationActivity extends AppCompatActivity {
 
@@ -92,7 +93,7 @@ public class ErrorExaminationActivity extends AppCompatActivity {
     }
 
     public void initUI() {
-        errorExamTitleBar.getActivityForFinish(this);
+        errorExamTitleBar.getActivityForFinish(this,false);
         sortType = getIntent().getStringExtra("sortType");
         errorExamTitleBar.setTitle(sortType);
 

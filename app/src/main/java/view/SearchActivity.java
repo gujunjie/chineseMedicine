@@ -73,20 +73,28 @@ public class SearchActivity extends BaseActivity<SearchContract.SearchView, Sear
 
     @Override
     public void initAutoCompleteTextView(List<String> list) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, list);
-        autoCompleteTextView.setAdapter(adapter);
-        autoCompleteTextView.setDropDownVerticalOffset(8);//设置提示列表的垂直偏移量
-        //设置搜索提示
 
+        //新建自动补全控件的适配器，将获取到的提示字符列表链接到适配器
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, list);
+        //设置适配器
+        autoCompleteTextView.setAdapter(adapter);
+        //设置提示列表的垂直偏移量
+        autoCompleteTextView.setDropDownVerticalOffset(8);
+
+
+        //软键盘搜索事件
         autoCompleteTextView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                //保存搜索记录
+
                 String input = v.getText().toString().trim();
                 if (!input.equals("")) {
+                    //用户输入不为空就保存搜索记录
                     DataBaseUtil.saveHistorySearch(input);
+                    //跳转搜索结果界面
                     turnInSearchResultActivity(input);
                 } else {
+                    //输入为空就提示
                     Snackbar.make(autoCompleteTextView,"搜索内容不能为空",Snackbar.LENGTH_SHORT).setAction("好的", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -96,17 +104,19 @@ public class SearchActivity extends BaseActivity<SearchContract.SearchView, Sear
                 }
                 return true;
             }
-        });//软键盘搜索事件
+        });
 
+
+        //搜索建议选择事件
         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //保存搜索记录
+
                 String tips = autoCompleteTextView.getText().toString().trim();
-                DataBaseUtil.saveHistorySearch(tips);
-                turnInSearchResultActivity(tips);
+                DataBaseUtil.saveHistorySearch(tips);//保存搜索记录
+                turnInSearchResultActivity(tips);//跳转搜索结果界面
             }
-        });//搜索建议选择事件
+        });
 
     }
 

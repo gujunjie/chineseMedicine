@@ -10,27 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.abc.chinesemedicine.LearningActivity;
-import com.example.abc.chinesemedicine.MyApplication;
+import view.LearningActivity;
+
 import com.example.abc.chinesemedicine.R;
-import com.example.abc.chinesemedicine.greendao.AcuPointDao;
-import com.example.abc.chinesemedicine.greendao.ChineseMedicineDao;
-import com.example.abc.chinesemedicine.greendao.ChinesePatentDrugDao;
-import com.example.abc.chinesemedicine.greendao.MedicalBookDao;
-import com.example.abc.chinesemedicine.greendao.PrescriptionDao;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.AcuPoint;
-import bean.ChineseMedicine;
-import bean.ChinesePatentDrug;
-import bean.Examination;
-import bean.MedicalBook;
-import bean.Prescription;
 import bean.SearchResult;
 
 public class LearningCollectionRecyclerViewAdapter extends RecyclerView.Adapter<LearningCollectionRecyclerViewAdapter.ViewHolder> {

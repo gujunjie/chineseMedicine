@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.abc.chinesemedicine.EnlargePhotoActivity;
 import com.example.abc.chinesemedicine.R;
 
 import org.greenrobot.eventbus.EventBus;

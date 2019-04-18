@@ -152,7 +152,8 @@ public class ExamFragment extends Fragment {
                     sv_e.setSectionTextColor(getResources().getColor(R.color.colorCorrect));
                     break;
             }
-            EventBus.getDefault().post(new MessageEvent(true));//用户答对，发送给activity更新UI
+            EventBus.getDefault().post(new MessageEvent(true));
+            //用户答对，发送给activity更新UI
 
 
 
@@ -205,7 +206,8 @@ public class ExamFragment extends Fragment {
                     sv_e.setSectionTextColor(getResources().getColor(R.color.colorError));
                     break;
             }
-            EventBus.getDefault().post(new MessageEvent(false));//用户答错，发送给activity更新UI
+            EventBus.getDefault().post(new MessageEvent(false));
+            //用户答错，发送给activity更新UI
 
             ll_answer.setVisibility(View.VISIBLE);
             tv_correctSection.setText("答案 "+examination.getCorrectSection());

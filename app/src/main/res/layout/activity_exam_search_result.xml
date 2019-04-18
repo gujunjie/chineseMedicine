@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorBackground"
-    tools:context=".ExamSearchResultActivity">
+    tools:context="view.ExamSearchResultActivity">
 
     <customview.MyTitleBar
         android:id="@+id/examSearchResult_titleBar"

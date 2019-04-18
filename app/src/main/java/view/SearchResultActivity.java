@@ -131,7 +131,11 @@ public class SearchResultActivity extends AppCompatActivity {
         Observable.create(new ObservableOnSubscribe<List<SearchResult>>() {
             @Override
             public void subscribe(ObservableEmitter<List<SearchResult>> e) {
+
+                //获取到用户的搜索关键之后，调用数据库搜索字符包含的结果，即模糊查询
+                //先在中药数据库中查找
                 List<ChineseMedicine> chineseMedicinelist = MyApplication.getDaoSession().getChineseMedicineDao().queryBuilder().where(ChineseMedicineDao.Properties.Name.like("%" + searchKeyWord + "%")).list();
+                //搜索结果不为空就把属性赋值给搜索结果类的对象，并加入搜索结果列表
                 if (chineseMedicinelist.size() != 0) {
                     for (int i = 0; i < chineseMedicinelist.size(); i++) {
                         SearchResult result = new SearchResult();
@@ -142,6 +146,7 @@ public class SearchResultActivity extends AppCompatActivity {
                     }
                 }
 
+                //在中成药数据库中查找
                 List<ChinesePatentDrug> drugList = MyApplication.getDaoSession().getChinesePatentDrugDao().queryBuilder().where(ChinesePatentDrugDao.Properties.Name.like("%" + searchKeyWord + "%")).list();
                 if (drugList.size() != 0) {
                     for (int i = 0; i < drugList.size(); i++) {
@@ -152,6 +157,8 @@ public class SearchResultActivity extends AppCompatActivity {
                         resultList.add(result);
                     }
                 }
+
+                //在穴位数据库中查找
                 List<AcuPoint> pointList=MyApplication.getDaoSession().getAcuPointDao().queryBuilder().where(AcuPointDao.Properties.Name.like("%" + searchKeyWord + "%")).list();
                 if (pointList.size() != 0) {
                     for (int i = 0; i < pointList.size(); i++) {
@@ -162,7 +169,7 @@ public class SearchResultActivity extends AppCompatActivity {
                         resultList.add(result);
                     }
                 }
-
+                //在方剂数据库中查找
                 List<Prescription> prescriptionList=MyApplication.getDaoSession().getPrescriptionDao().queryBuilder().where(PrescriptionDao.Properties.Name.like("%" + searchKeyWord + "%")).list();
                 if (prescriptionList.size() != 0) {
                     for (int i = 0; i < prescriptionList.size(); i++) {
@@ -174,6 +181,7 @@ public class SearchResultActivity extends AppCompatActivity {
                     }
                 }
 
+                //在医书数据库中查找
                 List<MedicalBook> bookList=MyApplication.getDaoSession().getMedicalBookDao().queryBuilder().where(MedicalBookDao.Properties.Name.like("%" + searchKeyWord + "%")).list();
                 if (bookList.size() != 0) {
                     for (int i = 0; i < bookList.size(); i++) {
@@ -184,7 +192,7 @@ public class SearchResultActivity extends AppCompatActivity {
                         resultList.add(result);
                     }
                 }
-
+                //在试题数据库中查找
                 List<Examination> examinationList=MyApplication.getDaoSession().getExaminationDao().queryBuilder().where(ExaminationDao.Properties.Title.like("%" + searchKeyWord + "%")).list();
                 if (examinationList.size() != 0) {
                     for (int i = 0; i < examinationList.size(); i++) {
@@ -209,19 +217,22 @@ public class SearchResultActivity extends AppCompatActivity {
                     @Override
                     public void onNext(List<SearchResult> value) {
                         if (resultList.size() != 0) {
-
+                            //搜索结果不为空就结果栏可见，为空提示不可见
                             rvSearchResult.setVisibility(View.VISIBLE);
-                            tvShowNothing.setVisibility(View.GONE);//搜索结果不为空就结果栏可见，为空提示不可见
+                            tvShowNothing.setVisibility(View.GONE);
+
+                            //给结果栏填充数据
                             SearchResultRecyclerViewAdapter adapter = new SearchResultRecyclerViewAdapter(SearchResultActivity.this, value);
                             StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
                             rvSearchResult.setAdapter(adapter);
                             rvSearchResult.setLayoutManager(manager);
-                            tvShowResultCount.setText("全部结果"+"("+value.size()+")");//给结果栏填充数据
+                            tvShowResultCount.setText("全部结果"+"("+value.size()+")");
 
                         } else {
+                            //搜索结果为空，就为空提示可见，结果栏不可见
                             tvShowNothing.setVisibility(View.VISIBLE);
                             rvSearchResult.setVisibility(View.GONE);
-                            tvShowResultCount.setText("全部结果"+"(0)");//搜索结果为空，就为空提示可见，结果栏不可见
+                            tvShowResultCount.setText("全部结果"+"(0)");
                         }
                     }
 

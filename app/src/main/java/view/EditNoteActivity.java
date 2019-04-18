@@ -1,11 +1,12 @@
-package com.example.abc.chinesemedicine;
+package view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
+import com.example.abc.chinesemedicine.MyApplication;
+import com.example.abc.chinesemedicine.R;
 import com.example.abc.chinesemedicine.greendao.NoteDao;
 
 import bean.Note;
@@ -97,7 +98,7 @@ public class EditNoteActivity extends AppCompatActivity {
     public void saveChange()
     {
 
-        NoteDao dao=MyApplication.getDaoSession().getNoteDao();
+        NoteDao dao= MyApplication.getDaoSession().getNoteDao();
         note.setTitle(etNoteTitle.getText().toString().trim());
         note.setNoteText(etNoteText.getText().toString().trim());
         note.setTime(TimeUtil.getSystemTime());

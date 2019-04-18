@@ -1,10 +1,12 @@
-package com.example.abc.chinesemedicine;
+package view;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
+
+import com.example.abc.chinesemedicine.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
