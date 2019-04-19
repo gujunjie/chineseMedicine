@@ -2,6 +2,7 @@ package com.example.abc.chinesemedicine;
 
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 
 import com.example.abc.chinesemedicine.greendao.DaoMaster;
@@ -44,4 +45,8 @@ public class MyApplication extends Application {
         return mDaoSession;
     }
 
+    public static void nightMode()
+    {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+    }
 }

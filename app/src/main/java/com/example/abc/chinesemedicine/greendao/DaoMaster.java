@@ -28,6 +28,7 @@ public class DaoMaster extends AbstractDaoMaster {
         CollectionDao.createTable(db, ifNotExists);
         ErrorExaminationDao.createTable(db, ifNotExists);
         ExaminationDao.createTable(db, ifNotExists);
+        ExamProgressDao.createTable(db, ifNotExists);
         HotSearchDao.createTable(db, ifNotExists);
         LearningProgressDao.createTable(db, ifNotExists);
         MedicalBookDao.createTable(db, ifNotExists);
@@ -36,7 +37,6 @@ public class DaoMaster extends AbstractDaoMaster {
         SearchHistoryDao.createTable(db, ifNotExists);
         StudyTimeLineDao.createTable(db, ifNotExists);
         UserDao.createTable(db, ifNotExists);
-        ExamProgressDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
@@ -48,6 +48,7 @@ public class DaoMaster extends AbstractDaoMaster {
         CollectionDao.dropTable(db, ifExists);
         ErrorExaminationDao.dropTable(db, ifExists);
         ExaminationDao.dropTable(db, ifExists);
+        ExamProgressDao.dropTable(db, ifExists);
         HotSearchDao.dropTable(db, ifExists);
         LearningProgressDao.dropTable(db, ifExists);
         MedicalBookDao.dropTable(db, ifExists);
@@ -56,7 +57,6 @@ public class DaoMaster extends AbstractDaoMaster {
         SearchHistoryDao.dropTable(db, ifExists);
         StudyTimeLineDao.dropTable(db, ifExists);
         UserDao.dropTable(db, ifExists);
-        ExamProgressDao.dropTable(db, ifExists);
     }
 
     /**
@@ -82,6 +82,7 @@ public class DaoMaster extends AbstractDaoMaster {
         registerDaoClass(CollectionDao.class);
         registerDaoClass(ErrorExaminationDao.class);
         registerDaoClass(ExaminationDao.class);
+        registerDaoClass(ExamProgressDao.class);
         registerDaoClass(HotSearchDao.class);
         registerDaoClass(LearningProgressDao.class);
         registerDaoClass(MedicalBookDao.class);
@@ -90,7 +91,6 @@ public class DaoMaster extends AbstractDaoMaster {
         registerDaoClass(SearchHistoryDao.class);
         registerDaoClass(StudyTimeLineDao.class);
         registerDaoClass(UserDao.class);
-        registerDaoClass(ExamProgressDao.class);
     }
 
     public DaoSession newSession() {
