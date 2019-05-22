@@ -45,8 +45,5 @@ public class MyApplication extends Application {
         return mDaoSession;
     }
 
-    public static void nightMode()
-    {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-    }
+
 }

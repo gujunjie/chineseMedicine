@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.abc.chinesemedicine.R;
 
@@ -27,6 +28,8 @@ public class UserFragment extends Fragment {
     private SettingItemView siv_studyTimeLine;
 
     private SettingItemView siv_setting;
+
+    private SettingItemView siv_share;
 
     private CircleImageView userIcon;
 
@@ -50,6 +53,7 @@ public class UserFragment extends Fragment {
         siv_userData=(SettingItemView) view.findViewById(R.id.siv_userData);
         siv_studyTimeLine=(SettingItemView) view.findViewById(R.id.siv_studyTimeLine);
         siv_setting=(SettingItemView) view.findViewById(R.id.siv_setting);
+        siv_share=(SettingItemView) view.findViewById(R.id.siv_share);
         btn_setting=(Button)view.findViewById(R.id.btn_setting);
     }
 
@@ -98,6 +102,13 @@ public class UserFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent=new Intent(getActivity(), SettingActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        siv_share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(),"敬请期待",Toast.LENGTH_SHORT).show();
             }
         });
 

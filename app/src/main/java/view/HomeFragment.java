@@ -108,9 +108,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void initBanner() {
 
         list = new ArrayList<>();
-        list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1544430961&di=54b013cc19fbf79fd0b8c1ecca026f71&imgtype=jpg&er=1&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F6d81800a19d8bc3e47599fde898ba61ea8d34555.jpg");
-        list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1544430994&di=61afb9905da2c640a206fc044c678ae2&imgtype=jpg&er=1&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F503d269759ee3d6d29d11fdf48166d224f4ade8b.jpg");
-        list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1544431043&di=e88cb4a835d9247a6d3f760defa13024&imgtype=jpg&er=1&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F6159252dd42a28341517241e50b5c9ea15cebf75.jpg");
+        list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556126562810&di=ad2d1418eee7deee7bd3dabaea04bd7d&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F012ccc5b5fc4e8a801215c8f8867e1.jpg%401280w_1l_2o_100sh.jpg");
+        list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556126858846&di=784de6df5f140dbef92249804693eb5b&imgtype=0&src=http%3A%2F%2Fs15.sinaimg.cn%2Fmw690%2F006VT6H5zy7dI7NDko69e%26690");
+        list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1556117509&di=d60125aba926035ccf9e872bc5fc613b&src=http://i0.hdslb.com/bfs/article/8d3e695c16dc0b48e5aeb22dbf5be14303386d2e.jpg");
         banner.setImageLoader(new GlideImageLoader()).setBannerStyle(BannerConfig.NOT_INDICATOR).setDelayTime(2500).setImages(list).start();
 
         banner.setOnBannerListener(new OnBannerListener() {

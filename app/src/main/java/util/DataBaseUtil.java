@@ -135,6 +135,7 @@ public class DataBaseUtil {
             io.reactivex.Observable.create(new ObservableOnSubscribe<String>() {
                 @Override
                 public void subscribe(ObservableEmitter<String> e) {
+                    addUser();
                     addChineseMedicine();
                     addHotSearch();
                     addSecondCategory();
@@ -142,7 +143,6 @@ public class DataBaseUtil {
                     addAcuPoint();
                     addPrescription();
                     addMedicalBook();
-                    addUser();
                     addExam();
                     e.onNext("初始化数据成功");
                 }
